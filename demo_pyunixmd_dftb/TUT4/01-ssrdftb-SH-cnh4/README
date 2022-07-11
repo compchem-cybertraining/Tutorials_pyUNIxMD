@@ -6,5 +6,5 @@ $ python input_gen.py -d ../../TUT1/01-dftb-BOMD-cnh4/sampling/ -f run.py -n 200
 3. Execute the dynamics
 $ python submit_all.py
 
-4. Test a poopulation analysis by
+4. Test a population analysis by
 $ python statistical_analysis.py -n 5 -s 300 -t 2
