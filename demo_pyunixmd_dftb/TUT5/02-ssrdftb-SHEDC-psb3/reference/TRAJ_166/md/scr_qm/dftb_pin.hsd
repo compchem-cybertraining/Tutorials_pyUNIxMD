@@ -1,0 +1,127 @@
+Geometry = GenFormat {
+14 C
+C H N
+1   1  -5.3035786100E+00   1.9063060000E-02   7.0587298000E-01
+2   1  -4.3129458100E+00  -5.0799092000E-01   2.6650060000E-02
+3   2  -5.8885579100E+00   8.5923614000E-01   4.1553691000E-01
+4   2  -5.7072503000E+00  -4.6472744000E-01   1.5350984200E+00
+5   2  -3.8203668000E+00  -1.4594124900E+00   3.4394979000E-01
+6   1  -3.8374331700E+00   3.1507250000E-01  -1.1430475400E+00
+7   1  -2.7892133700E+00   1.0858755800E+00  -7.0802451000E-01
+8   2  -4.3552538800E+00   4.7450284000E-01  -2.0580991600E+00
+9   2  -2.6153411400E+00   1.9472719500E+00  -1.3742531700E+00
+10   1  -2.2823687300E+00   1.1133541100E+00   6.7809388000E-01
+11   2  -2.9029601200E+00   1.0960887600E+00   1.5006308000E+00
+12   3  -9.4663993000E-01   9.9513016000E-01   6.1681905000E-01
+13   2  -3.7429856000E-01   8.1993348000E-01   1.4074973000E+00
+14   2  -4.0283614000E-01   1.4062484600E+00  -7.9672460000E-02
+}
+Hamiltonian = DFTB {
+  SCC = Yes
+  SCCTolerance = 1e-06
+  MaxSCCIterations = 1000
+  SpinConstants = {
+    ShellResolvedSpin = Yes
+    C = {
+-0.04559 -0.02930 -0.02930 -0.02755
+    }
+    H = {
+-0.07925
+    }
+    N = {
+-0.04687 -0.03170 -0.03170 -0.03072
+    }
+  }
+  RangeSeparated = LC {
+    Screening = matrixbased {}
+  }
+  Charge = 1
+  MaxAngularMomentum = {
+    C = 'p'
+    H = 's'
+    N = 'p'
+  }
+  SlaterKosterFiles = Type2FileNames {
+    Prefix = '/home/dhhan/program/slko/ob2-1-1/base/'
+    Separator = '-'
+    Suffix = '.skf'
+    LowerCaseTypeName = No
+  }
+  PolynomialRepulsive = {}
+  ShellResolvedSCC = No
+  OldSKInterpolation = No
+  ReadInitialCharges = No
+  InitialCharges = {}
+  HCorrection = None {}
+  SpinPolarisation = {}
+  ElectricField = {}
+  Solver = RelativelyRobust {}
+  OnSiteCorrection = {}
+  Dispersion = {}
+  Solvation = {}
+  Electrostatics = GammaFunctional {}
+  ThirdOrder = No
+  ThirdOrderFull = No
+  Differentiation = FiniteDiff {
+    Delta = 1.2207031250000000E-004
+  }
+  ForceEvaluation = "Traditional"
+}
+Analysis = {
+  CalculateForces = Yes
+  WriteBandOut = Yes
+  WriteEigenvectors = Yes
+  MullikenAnalysis = Yes
+  ProjectStates = {}
+  AtomResolvedEnergies = No
+  EigenvectorsAsText = No
+}
+Options = {
+  WriteDetailedXml = Yes
+  WriteDetailedOut = Yes
+  TimingVerbosity = -1
+  WriteAutotestTag = No
+  WriteResultsTag = No
+  RestartFrequency = 20
+  RandomSeed = 0
+  WriteHS = No
+  WriteRealHS = No
+  MinimiseMemoryUsage = No
+  ShowFoldedCoords = No
+  WriteChargesAsText = No
+}
+REKS = SSR22 {
+  Energy = {
+    Functional = {
+'PPS' 'OSS'
+    }
+    StateInteractions = Yes
+    IncludeAllStates = No
+  }
+  TargetState = 1
+  ReadEigenvectors = No
+  FONmaxIter = 50
+  shift = 0.3
+  SpinTuning = {
+3.2  3.2  3.2
+  }
+  Gradient = ConjugateGradient {
+    CGmaxIter = 100
+    Tolerance = 1e-08
+    Preconditioner = Yes
+    SaveMemory = No
+  }
+  RelaxedDensity = No
+  NonAdiabaticCoupling = Yes
+  VerbosityLevel = 1
+  TargetMicrostate = 0
+  TransitionDipole = No
+}
+ParserOptions = {
+  ParserVersion = 8
+  WriteHSDInput = Yes
+  StopAfterParsing = No
+  IgnoreUnprocessedNodes = No
+}
+Driver = {}
+ExcitedState = {}

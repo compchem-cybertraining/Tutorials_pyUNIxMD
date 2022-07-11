@@ -1,0 +1,6 @@
+1. Make MD inputs (you can increase the number of trajectories if you want.)
+$ python input_gen.py -d /user/username/TUT1/02-dftb-BOMD-psb3/sampling -f run.py -n 1
+
+2. Execute the dynamics
+$ cd TRAJ_0
+$ python run.py > log

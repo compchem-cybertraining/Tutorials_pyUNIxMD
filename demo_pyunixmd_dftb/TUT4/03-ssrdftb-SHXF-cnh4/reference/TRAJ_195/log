@@ -1,0 +1,113 @@
+--------------------------------------------------------------------
+
+                      PyUNIxMD version 20.1
+
+                          < Developers >
+    Seung Kyu Min,  In Seong Lee,  Jong-Kwon Ha,  Daeho Han,
+    Kicheol Kim,  Tae In Kim,  Sung Wook Moon
+
+--------------------------------------------------------------------
+
+    Please cite PyUNIxMD as follows:
+    I. S. Lee, J.-K. Ha, D. Han, T. I. Kim, S. W. Moon, & S. K. Min.
+    PyUNIxMD: A Python-based excited state molecular dynamics package.
+    Journal of Computational Chemistry, 42:1755-1766. 2021
+
+    PyUNIxMD begins on 2022-06-26 01:54:21
+
+--------------------------------------------------------------------
+                      Initial Coordinate (au)
+--------------------------------------------------------------------
+               X              Y              Z            Mass
+  C      -0.06857058     0.01573488     0.01205921    21894.16674
+  N      -0.09078486    -0.10310139     2.48918007    25532.72508
+  H       1.80717546     0.14090328    -1.07801498     1837.36222
+  H       1.68645614    -0.13685949     3.38158304     1837.36222
+  H      -1.83415952    -0.20447158     3.45054587     1837.36222
+  H      -1.87292258     0.17996692    -1.00810175     1837.36222
+
+--------------------------------------------------------------------
+                       Initial Velocity (au)
+--------------------------------------------------------------------
+               X              Y              Z
+  C       0.00005630     0.00015225     0.00010860
+  N      -0.00033258    -0.00017007    -0.00004658
+  H       0.00037376    -0.00028251    -0.00022672
+  H       0.00144209     0.00051920    -0.00000025
+  H       0.00213254     0.00094623    -0.00032297
+  H       0.00000240    -0.00063370    -0.00009682
+
+--------------------------------------------------------------------
+                       Molecule Information
+--------------------------------------------------------------------
+  Number of Atoms (QM)     =                6
+  Degrees of Freedom       =               12
+  Charge                   =                1
+  Number of Electrons      =               16
+  Number of States         =                2
+
+--------------------------------------------------------------------
+                       Dynamics Information
+--------------------------------------------------------------------
+  QM Program               =         dftbplus
+  QM Method                =              SSR
+
+  MQC Method               =             SHXF
+  Time Interval (fs)       =         0.250000
+  Initial State (0:GS)     =                1
+  Nuclear Step             =              300
+  Electronic Step          =             1000
+  Propagation Scheme       =          density
+
+  Rescaling after Hop      =          augment
+  Rescaling after Reject   =          reverse
+
+  Density Threshold        =         0.010000
+  Sigma                    =            0.070
+
+  Aux. Total E             =     Real Total E
+
+  Output Frequency         =                1
+  Verbosity Level          =                0
+
+--------------------------------------------------------------------
+                      Thermostat Information
+--------------------------------------------------------------------
+  Thermostat                 =  Nose-Hoover chain
+  Target Temperature (K)     =            300.000
+  Time Scale (fs)            =              2.000
+  Chain Length               =                  3
+  Order                      =                  3
+  Integrator Steps           =                  1
+
+
+----------------------------------------------------------------------------------------------------------------------
+                                                   Start Dynamics
+----------------------------------------------------------------------------------------------------------------------
+ #INFO    STEP  State    Kinetic(H)   Potential(H)     Total(H)   Temperature(K)   Norm.
+ INFO        0    1      0.01010745    -6.16022103    -6.15011358   531.946072    1.00000
+ INFO        1    1      0.00996764    -6.16011144    -6.15014380   524.587992    1.00000
+ INFO        2    1      0.00955553    -6.15978106    -6.15022553   502.898810    1.00000
+ INFO        3    1      0.00889969    -6.15924437    -6.15034468   468.382658    1.00000
+ INFO        4    1      0.00806191    -6.15854547    -6.15048356   424.291255    1.00000
+ INFO        5    1      0.00713408    -6.15775954    -6.15062546   375.460417    1.00000
+ INFO        6    1      0.00622995    -6.15698845    -6.15075850   327.876833    1.00000
+ INFO        7    1      0.00547233    -6.15635044    -6.15087811   288.004091    1.00000
+ INFO        8    1      0.00497637    -6.15596301    -6.15098664   261.901909    1.00000
+ INFO        9    1      0.00483134    -6.15592306    -6.15109172   254.268967    1.00000
+ INFO       10    1      0.00508351    -6.15628743    -6.15120392   267.540502    1.00000
+ INFO       11    1      0.00572313    -6.15705902    -6.15133589   301.203293    1.00000
+ INFO       12    1      0.00667910    -6.15818230    -6.15150320   351.514946    1.00000
+ INFO       13    1      0.00782410    -6.15954992    -6.15172582   411.775441    1.00000
+ INFO       14    1      0.00899170    -6.16101964    -6.15202794   473.225034    1.00000
+ INFO       15    1      0.01000377    -6.16243801    -6.15243424   526.489297    1.00000
+Traceback (most recent call last):
+  File "run.py", line 19, in <module>
+    md.run(qm=qm)
+  File "/home/dhhan/CyberTraining/unixmd-master/src/mqc/shxf.py", line 221, in run
+    qm.get_data(self.mol, base_dir, bo_list, self.dt, istep, calc_force_only=False)
+  File "/home/dhhan/CyberTraining/unixmd-master/src/qm/dftbplus/ssr.py", line 128, in get_data
+    self.extract_QM(molecule, bo_list, calc_force_only)
+  File "/home/dhhan/CyberTraining/unixmd-master/src/qm/dftbplus/ssr.py", line 495, in extract_QM
+    molecule.states[ist].energy = energy[ist]
+IndexError: index 0 is out of bounds for axis 0 with size 0

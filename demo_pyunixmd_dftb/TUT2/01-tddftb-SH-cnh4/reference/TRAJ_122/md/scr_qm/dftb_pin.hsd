@@ -1,0 +1,107 @@
+Geometry = GenFormat {
+6 C
+C N H
+1   1  -3.7326680000E-02   1.1293066000E-01  -2.7952820000E-02
+2   2  -4.2414080000E-02  -7.0953050000E-02   1.3511860700E+00
+3   3   8.4471674000E-01  -3.6200225000E-01  -6.2628966000E-01
+4   3   8.6100104000E-01  -2.3544101000E-01   1.8403888500E+00
+5   3  -9.7305117000E-01  -4.8637910000E-02   1.8355394400E+00
+6   3  -9.1140861000E-01  -3.8339134000E-01  -6.0107739000E-01
+}
+Hamiltonian = DFTB {
+  SCC = Yes
+  SCCTolerance = 1e-06
+  MaxSCCIterations = 100
+  Mixer = broyden {
+    MixingParameter = 0.20000000000000001
+    InverseJacobiWeight = 1.0000000000000000E-002
+    MinimalWeight = 1.0000000000000000
+    MaximalWeight = 100000.00000000000
+    WeightFactor = 1.0000000000000000E-002
+  }
+  ReadInitialCharges = No
+  Charge = 1
+  Filling = Fermi {
+    Temperature [K] = 0.0
+  }
+  MaxAngularMomentum = {
+    N = 'p'
+    C = 'p'
+    H = 's'
+  }
+  SlaterKosterFiles = Type2FileNames {
+    Prefix = '/home/dhhan/program/slko/mio-1-1/'
+    Separator = '-'
+    Suffix = '.skf'
+    LowerCaseTypeName = No
+  }
+  PolynomialRepulsive = {}
+  ShellResolvedSCC = No
+  OldSKInterpolation = No
+  RangeSeparated = None {}
+  InitialCharges = {}
+  HCorrection = None {}
+  SpinPolarisation = {}
+  ElectricField = {}
+  Solver = RelativelyRobust {}
+  OnSiteCorrection = {}
+  Dispersion = {}
+  Solvation = {}
+  Electrostatics = GammaFunctional {}
+  ThirdOrder = No
+  ThirdOrderFull = No
+  Differentiation = FiniteDiff {
+    Delta = 1.2207031250000000E-004
+  }
+  ForceEvaluation = "Traditional"
+}
+Analysis = {
+  CalculateForces = Yes
+  WriteBandOut = Yes
+  WriteEigenvectors = Yes
+  MullikenAnalysis = Yes
+  ProjectStates = {}
+  AtomResolvedEnergies = No
+  EigenvectorsAsText = No
+}
+Options = {
+  WriteDetailedXml = Yes
+  WriteDetailedOut = Yes
+  TimingVerbosity = -1
+  WriteAutotestTag = No
+  WriteResultsTag = No
+  RestartFrequency = 20
+  RandomSeed = 0
+  WriteHS = No
+  WriteRealHS = No
+  MinimiseMemoryUsage = No
+  ShowFoldedCoords = No
+  WriteChargesAsText = No
+}
+ExcitedState = Casida {
+  NrOfExcitations = 8
+  StateOfInterest = 1
+  Symmetry = singlet
+  WriteTransitions = Yes
+  WriteSPTransitions = Yes
+  WriteMulliken = Yes
+  WriteXplusY = Yes
+  EnergyWindow [eV] = 0.0
+  ExcitedStateForces = Yes
+  OscillatorWindow = 0.0000000000000000
+  CacheCharges = Yes
+  WriteCoefficients = No
+  WriteEigenvectors = No
+  WriteDensityMatrix = No
+  WriteTransitionDipole = No
+  WriteStatusArnoldi = No
+  TestArnoldi = No
+}
+ParserOptions = {
+  ParserVersion = 8
+  WriteHSDInput = Yes
+  StopAfterParsing = No
+  IgnoreUnprocessedNodes = No
+}
+Driver = {}
+Reks = None {}
