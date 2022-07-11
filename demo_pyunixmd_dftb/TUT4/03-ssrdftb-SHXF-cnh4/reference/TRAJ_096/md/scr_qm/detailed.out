@@ -1,0 +1,89 @@
+REKS do not use any electronic distribution function
+
+Calculation with static geometry
+
+********************************************************************************************
+  iSCC       reks energy        Diff energy         x_a       SCC error   
+   53       -6.2885881789      -0.0000000000     0.999964    0.00000090
+********************************************************************************************
+
+ SA-REKS optimizes the avergaed state, not individual states
+ These charges do not mean the charges for individual states
+ Similarly to this, the values in band.out file indicate
+ the band energies and occupations for the averaged state
+ If you want to compute the relaxed density,
+ please, set 'RelaxedDensity = Yes' option
+
+ Total charge:     1.00000000
+
+ Atomic gross charges (e)
+ Atom           Charge
+    1       0.11090316
+    2      -0.11106712
+    3       0.18988014
+    4       0.30985874
+    5       0.31048416
+    6       0.18994092
+
+Nr. of electrons (up):     12.00000000
+Atom populations (up)
+ Atom       Population
+    1       3.88909684
+    2       5.11106712
+    3       0.81011986
+    4       0.69014126
+    5       0.68951584
+    6       0.81005908
+
+l-shell populations (up)
+ Atom Sh.   l       Population
+    1   1   0       1.17750637
+    1   2   1       2.71159046
+    2   1   0       1.38318425
+    2   2   1       3.72788287
+    3   1   0       0.81011986
+    4   1   0       0.69014126
+    5   1   0       0.68951584
+    6   1   0       0.81005908
+
+Orbital populations (up)
+ Atom Sh.   l   m       Population  Label
+    1   1   0   0       1.17750637  s
+    1   2   1  -1       0.86026789  p_y
+    1   2   1   0       0.88038455  p_z
+    1   2   1   1       0.97093803  p_x
+    2   1   0   0       1.38318425  s
+    2   2   1  -1       1.10463982  p_y
+    2   2   1   0       1.11129781  p_z
+    2   2   1   1       1.51194523  p_x
+    3   1   0   0       0.81011986  s
+    4   1   0   0       0.69014126  s
+    5   1   0   0       0.68951584  s
+    6   1   0   0       0.81005908  s
+
+Input / Output electrons (q):     12.0000000000
+
+Energy H0:                          -6.5271806842 H         -177.6136 eV
+Energy SCC:                          0.1349214791 H            3.6714 eV
+Energy SPIN:                        -0.0000201237 H           -0.0005 eV
+Energy Fock:                        -0.2065871291 H           -5.6215 eV
+Total Electronic energy:            -6.5988664578 H         -179.5643 eV
+Repulsive energy:                    0.1817264833 H            4.9450 eV
+
+Excitation Energy:                   0.0000000000 H            0.0000 eV
+
+Total energy:                       -6.4171830693 H         -174.6204 eV
+
+SCC converged
+
+Total Forces
+    1      0.000877245932     -0.003392792996      0.022779421558
+    2     -0.004735998152      0.001982005460     -0.017541798001
+    3      0.005911372390     -0.004849592826      0.000141531801
+    4      0.007553342374      0.002452397218     -0.002454765947
+    5     -0.004253572792     -0.001473783843     -0.004265336466
+    6     -0.005352389752      0.005281766987      0.001340947055
+
+Maximal derivative component:        0.227794E-01 au
+
+

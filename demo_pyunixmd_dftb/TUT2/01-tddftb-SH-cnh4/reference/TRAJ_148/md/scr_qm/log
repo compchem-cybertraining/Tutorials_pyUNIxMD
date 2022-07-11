@@ -1,0 +1,98 @@
+|===============================================================================
+|
+|  DFTB+ release 20.1
+|
+|  Copyright (C) 2006 - 2020  DFTB+ developers group
+|
+|===============================================================================
+|
+|  When publishing results obtained with DFTB+, please cite the following
+|  reference:
+|
+|  * DFTB+, a software package for efficient approximate density functional
+|    theory based atomistic simulations, J. Chem. Phys. 152, 124101 (2020).
+|    [doi: 10.1063/1.5143190]
+|
+|  You should also cite additional publications crediting the parametrization
+|  data you use. Please consult the documentation of the SK-files for the
+|  references.
+|
+|===============================================================================
+
+Reading input file 'dftb_in.hsd'
+Parser version: 8
+
+--------------------------------------------------------------------------------
+Reading SK-files:
+Done.
+
+
+Processed input in HSD format written to 'dftb_pin.hsd'
+
+Starting initialization...
+--------------------------------------------------------------------------------
+WARNING!
+-> Excited state forces are not implemented yet for fractional occupations, kT=  0.3158E-02K
+OpenMP threads:              1
+Chosen random seed:          506123531
+Mode:                        Static calculation
+Self consistent charges:     Yes
+SCC-tolerance:                 0.100000E-05
+Max. scc iterations:                    100
+Shell resolved Hubbard:      No
+Spin polarisation:           No
+Nr. of up electrons:             6.000000
+Nr. of down electrons:           6.000000
+Periodic boundaries:         No
+Electronic solver:           Relatively robust
+Mixer:                       Broyden mixer
+Mixing parameter:                  0.200000
+Maximal SCC-cycles:                     100
+Nr. of chrg. vec. in memory:              0
+Electronic temperature:        0.100000E-07 H      0.272114E-06 eV
+Initial charges:             Set automatically (system chrg:   0.100E+01)
+Included shells:             C:  s, p
+                             N:  s, p
+                             H:  s
+Extra options:
+                             Mulliken analysis
+                             Force calculation
+Force type                   original
+                             Eigenvector printing
+
+--------------------------------------------------------------------------------
+
+***  Geometry step: 0
+
+ iSCC Total electronic   Diff electronic      SCC error    
+    1   -0.52264888E+01    0.00000000E+00    0.11051936E+01
+    2   -0.52509515E+01   -0.24462777E-01    0.69416636E+00
+    3   -0.52599217E+01   -0.89702023E-02    0.30414838E+00
+    4   -0.49898765E+01    0.27004525E+00    0.16306847E+01
+    5   -0.52562346E+01   -0.26635809E+00    0.29913437E+00
+    6   -0.52652413E+01   -0.90067063E-02    0.44648166E-01
+    7   -0.52653821E+01   -0.14083744E-03    0.21409776E-01
+    8   -0.52654280E+01   -0.45849274E-04    0.19876871E-02
+    9   -0.52654264E+01    0.15839477E-05    0.44164984E-02
+   10   -0.52654279E+01   -0.15496866E-05    0.14307447E-02
+   11   -0.52654281E+01   -0.15991398E-06    0.46399442E-03
+   12   -0.52654281E+01   -0.17658711E-07    0.10170313E-03
+   13   -0.52654281E+01   -0.92170183E-09    0.59947931E-05
+   14   -0.52654281E+01   -0.33137937E-11    0.69251387E-08
+>> Charges saved for restart in charges.bin
+
+Total Energy:                       -5.0432658520 H         -137.2342 eV
+Extrapolated to 0:                  -5.1315366355 H         -139.6362 eV
+Total Mermin free energy:           -5.0432658520 H         -137.2342 eV
+Force related energy:               -5.1315366355 H         -139.6362 eV
+
+--------------------------------------------------------------------------------
+DFTB+ running times                          cpu [s]             wall clock [s]
+--------------------------------------------------------------------------------
+Global initialisation                  +     0.00  (  3.2%)      0.01  (  3.4%)
+SCC                                    +     0.02  ( 64.3%)      0.26  ( 89.8%)
+Post-SCC processing                    +     0.01  ( 29.2%)      0.02  (  6.1%)
+--------------------------------------------------------------------------------
+Missing                                +     0.00  (  3.2%)      0.00  (  0.7%)
+Total                                  =     0.03  (100.0%)      0.29  (100.0%)
+--------------------------------------------------------------------------------

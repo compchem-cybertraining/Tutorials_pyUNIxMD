@@ -1,0 +1,93 @@
+|===============================================================================
+|
+|  DFTB+ release 20.1
+|
+|  Copyright (C) 2006 - 2020  DFTB+ developers group
+|
+|===============================================================================
+|
+|  When publishing results obtained with DFTB+, please cite the following
+|  reference:
+|
+|  * DFTB+, a software package for efficient approximate density functional
+|    theory based atomistic simulations, J. Chem. Phys. 152, 124101 (2020).
+|    [doi: 10.1063/1.5143190]
+|
+|  You should also cite additional publications crediting the parametrization
+|  data you use. Please consult the documentation of the SK-files for the
+|  references.
+|
+|===============================================================================
+
+Reading input file 'dftb_in.hsd'
+Parser version: 8
+
+--------------------------------------------------------------------------------
+Reading SK-files:
+Done.
+
+
+Processed input in HSD format written to 'dftb_pin.hsd'
+
+Starting initialization...
+--------------------------------------------------------------------------------
+WARNING!
+-> Excited state forces are not implemented yet for fractional occupations, kT=  0.3158E-02K
+OpenMP threads:              1
+Chosen random seed:          435508220
+Mode:                        Static calculation
+Self consistent charges:     Yes
+SCC-tolerance:                 0.100000E-05
+Max. scc iterations:                    100
+Shell resolved Hubbard:      No
+Spin polarisation:           No
+Nr. of up electrons:             6.000000
+Nr. of down electrons:           6.000000
+Periodic boundaries:         No
+Electronic solver:           Relatively robust
+Mixer:                       Broyden mixer
+Mixing parameter:                  0.200000
+Maximal SCC-cycles:                     100
+Nr. of chrg. vec. in memory:              0
+Electronic temperature:        0.100000E-07 H      0.272114E-06 eV
+Initial charges:             Set automatically (system chrg:   0.100E+01)
+Included shells:             C:  s, p
+                             N:  s, p
+                             H:  s
+Extra options:
+                             Mulliken analysis
+                             Force calculation
+Force type                   original
+                             Eigenvector printing
+
+--------------------------------------------------------------------------------
+
+***  Geometry step: 0
+
+ iSCC Total electronic   Diff electronic      SCC error    
+    1   -0.53822916E+01    0.00000000E+00    0.86160226E+00
+    2   -0.53888250E+01   -0.65334045E-02    0.59207380E+00
+    3   -0.53936408E+01   -0.48157710E-02    0.93642327E-01
+    4   -0.53931145E+01    0.52627880E-03    0.16383067E+00
+    5   -0.53941028E+01   -0.98827258E-03    0.21836649E-01
+    6   -0.53941135E+01   -0.10721883E-04    0.10666526E-01
+    7   -0.53941168E+01   -0.33533565E-05    0.24598383E-03
+    8   -0.53941169E+01   -0.50172932E-09    0.20589593E-03
+    9   -0.53941169E+01   -0.15949819E-08    0.17393447E-05
+   10   -0.53941169E+01   -0.87929664E-13    0.87856187E-06
+>> Charges saved for restart in charges.bin
+
+Total Energy:                       -5.0943826239 H         -138.6252 eV
+Extrapolated to 0:                  -5.1863439964 H         -141.1276 eV
+Total Mermin free energy:           -5.0943826239 H         -138.6252 eV
+Force related energy:               -5.1863439964 H         -141.1276 eV
+
+--------------------------------------------------------------------------------
+DFTB+ running times                          cpu [s]             wall clock [s]
+--------------------------------------------------------------------------------
+SCC                                    +     0.01  ( 42.8%)      0.03  ( 57.7%)
+Post-SCC processing                    +     0.01  ( 49.0%)      0.02  ( 34.6%)
+--------------------------------------------------------------------------------
+Missing                                +     0.00  (  8.3%)      0.00  (  7.7%)
+Total                                  =     0.02  (100.0%)      0.05  (100.0%)
+--------------------------------------------------------------------------------
