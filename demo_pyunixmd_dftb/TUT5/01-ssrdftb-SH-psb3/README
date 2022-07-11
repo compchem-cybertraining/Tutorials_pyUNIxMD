@@ -1,0 +1,10 @@
+1. Edit the path variables in run.py accordingly.
+
+2. Make MD inputs (you can increase the number of trajectories if you want.)
+$ python input_gen.py -d ../../TUT1/02-dftb-BOMD-psb3/sampling/ -f run.py -n 200
+
+3. Execute the dynamics
+$ python submit_all.py
+
+4. Test a population analysis by
+$ python statistical_analysis.py -n 5 -s 600 -t 2

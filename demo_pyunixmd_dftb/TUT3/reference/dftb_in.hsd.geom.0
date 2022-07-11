@@ -1,0 +1,50 @@
+Geometry = GenFormat{
+  <<< 'geometry.gen'
+}
+Hamiltonian = DFTB{
+  SCC = Yes
+  SCCTolerance = 1e-06
+  MaxSCCIterations = 100
+  Mixer = broyden{}
+  ReadInitialCharges = No
+  Charge = 1
+  Filling = Fermi{
+    Temperature[K] = 0.0
+  }
+  MaxAngularMomentum = {
+    H = 's'
+    C = 'p'
+    N = 'p'
+  }
+  SlaterKosterFiles = Type2FileNames{
+    Prefix = '/home/dhhan/program/slko/mio-1-1/'
+    Separator = '-'
+    Suffix = '.skf'
+    LowerCaseTypeName = No
+  }
+}
+Analysis = {
+  CalculateForces = Yes
+  WriteBandOut = Yes
+  WriteEigenvectors = Yes
+  MullikenAnalysis = Yes
+}
+Options = {
+  WriteDetailedXml = Yes
+  WriteDetailedOut = Yes
+  TimingVerbosity = -1
+}
+ExcitedState = Casida{
+  NrOfExcitations = 6
+  StateOfInterest = 1
+  Symmetry = singlet
+  WriteTransitions = Yes
+  WriteSPTransitions = No
+  WriteMulliken = Yes
+  WriteXplusY = No
+  EnergyWindow [eV] = 0.0
+  ExcitedStateForces = No
+}
+ParserOptions = {
+  ParserVersion = 8
+}

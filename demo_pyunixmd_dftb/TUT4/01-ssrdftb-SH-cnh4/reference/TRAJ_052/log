@@ -1,0 +1,104 @@
+--------------------------------------------------------------------
+
+                      PyUNIxMD version 20.1
+
+                          < Developers >
+    Seung Kyu Min,  In Seong Lee,  Jong-Kwon Ha,  Daeho Han,
+    Kicheol Kim,  Tae In Kim,  Sung Wook Moon
+
+--------------------------------------------------------------------
+
+    Please cite PyUNIxMD as follows:
+    I. S. Lee, J.-K. Ha, D. Han, T. I. Kim, S. W. Moon, & S. K. Min.
+    PyUNIxMD: A Python-based excited state molecular dynamics package.
+    Journal of Computational Chemistry, 42:1755-1766. 2021
+
+    PyUNIxMD begins on 2022-06-26 02:14:42
+
+--------------------------------------------------------------------
+                      Initial Coordinate (au)
+--------------------------------------------------------------------
+               X              Y              Z            Mass
+  C      -0.06212280     0.03516338     0.05517533    21894.16674
+  N      -0.07524316    -0.09666368     2.43945193    25532.72508
+  H       1.73385096    -0.06290741    -1.02708108     1837.36222
+  H       1.47132796    -0.20697738     3.43833761     1837.36222
+  H      -1.79188624    -0.13216751     3.51293929     1837.36222
+  H      -1.91954872     0.06061863    -1.00091707     1837.36222
+
+--------------------------------------------------------------------
+                       Initial Velocity (au)
+--------------------------------------------------------------------
+               X              Y              Z
+  C      -0.00009953    -0.00004600    -0.00027811
+  N       0.00005415     0.00004954     0.00025266
+  H       0.00073090     0.00029028    -0.00025148
+  H      -0.00045397    -0.00041265     0.00026988
+  H       0.00021474    -0.00008658    -0.00035490
+  H      -0.00005807     0.00006876     0.00013949
+
+--------------------------------------------------------------------
+                       Molecule Information
+--------------------------------------------------------------------
+  Number of Atoms (QM)     =                6
+  Degrees of Freedom       =               12
+  Charge                   =                1
+  Number of Electrons      =               16
+  Number of States         =                2
+
+--------------------------------------------------------------------
+                       Dynamics Information
+--------------------------------------------------------------------
+  QM Program               =         dftbplus
+  QM Method                =              SSR
+
+  MQC Method               =               SH
+  Time Interval (fs)       =         0.250000
+  Initial State (0:GS)     =                1
+  Nuclear Step             =              300
+  Electronic Step          =             1000
+  Propagation Scheme       =          density
+
+  Rescaling after Hop      =          augment
+  Rescaling after Reject   =          reverse
+
+  Output Frequency         =                1
+  Verbosity Level          =                0
+
+--------------------------------------------------------------------
+                      Thermostat Information
+--------------------------------------------------------------------
+  Thermostat                 =  Nose-Hoover chain
+  Target Temperature (K)     =            300.000
+  Time Scale (fs)            =              3.000
+  Chain Length               =                  3
+  Order                      =                  3
+  Integrator Steps           =                  1
+
+
+----------------------------------------------------------------------------------------------------------------------
+                                                   Start Dynamics
+----------------------------------------------------------------------------------------------------------------------
+ #INFO    STEP  State    Kinetic(H)   Potential(H)     Total(H)   Temperature(K)   Norm.
+ INFO        0    1      0.00309128    -6.14914310    -6.14605182   162.691351    1.00000
+ INFO        1    1      0.00410074    -6.15015308    -6.14605234   215.818264    1.00000
+ INFO        2    1      0.00547019    -6.15152138    -6.14605119   287.891092    1.00000
+ INFO        3    1      0.00712132    -6.15317397    -6.14605265   374.788594    1.00000
+ INFO        4    1      0.00894128    -6.15500796    -6.14606668   470.571640    1.00000
+ INFO        5    1      0.01079140    -6.15690133    -6.14610993   567.941544    1.00000
+ INFO        6    1      0.01252191    -6.15872667    -6.14620476   659.017064    1.00000
+ INFO        7    1      0.01399088    -6.16036616    -6.14637528   736.327321    1.00000
+ INFO        8    1      0.01508334    -6.16172591    -6.14664257   793.822711    1.00000
+ INFO        9    1      0.01572694    -6.16274616    -6.14701922   827.694926    1.00000
+ INFO       10    1      0.01590094    -6.16340679    -6.14750585   836.852272    1.00000
+ INFO       11    1      0.01563632    -6.16372669    -6.14809037   822.925453    1.00000
+Traceback (most recent call last):
+  File "run.py", line 19, in <module>
+    md.run(qm=qm)
+  File "/home/dhhan/CyberTraining/unixmd-master/src/mqc/sh.py", line 165, in run
+    qm.get_data(self.mol, base_dir, bo_list, self.dt, istep, calc_force_only=False)
+  File "/home/dhhan/CyberTraining/unixmd-master/src/qm/dftbplus/ssr.py", line 128, in get_data
+    self.extract_QM(molecule, bo_list, calc_force_only)
+  File "/home/dhhan/CyberTraining/unixmd-master/src/qm/dftbplus/ssr.py", line 495, in extract_QM
+    molecule.states[ist].energy = energy[ist]
+IndexError: index 0 is out of bounds for axis 0 with size 0

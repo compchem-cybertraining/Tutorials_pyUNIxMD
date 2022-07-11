@@ -1,0 +1,253 @@
+|===============================================================================
+|
+|  DFTB+ release 20.1
+|
+|  Copyright (C) 2006 - 2020  DFTB+ developers group
+|
+|===============================================================================
+|
+|  When publishing results obtained with DFTB+, please cite the following
+|  reference:
+|
+|  * DFTB+, a software package for efficient approximate density functional
+|    theory based atomistic simulations, J. Chem. Phys. 152, 124101 (2020).
+|    [doi: 10.1063/1.5143190]
+|
+|  You should also cite additional publications crediting the parametrization
+|  data you use. Please consult the documentation of the SK-files for the
+|  references.
+|
+|===============================================================================
+
+Reading input file 'dftb_in.hsd'
+Parser version: 8
+
+--------------------------------------------------------------------------------
+Reading SK-files:
+Done.
+
+
+Processed input in HSD format written to 'dftb_pin.hsd'
+
+Starting initialization...
+--------------------------------------------------------------------------------
+OpenMP threads:              1
+Chosen random seed:          449661681
+Mode:                        Static calculation
+Self consistent charges:     Yes
+SCC-tolerance:                 0.100000E-05
+Max. scc iterations:                   1000
+Shell resolved Hubbard:      No
+Spin polarisation:           No
+Nr. of up electrons:             6.000000
+Nr. of down electrons:           6.000000
+Periodic boundaries:         No
+Electronic solver:           Relatively robust
+Maximal SCC-cycles:                    1000
+Initial charges:             Set automatically (system chrg:   0.100E+01)
+Included shells:             C:  s, p
+                             N:  s, p
+                             H:  s
+Spin coupling constants:     C   1(s)-1(s):  -0.455900E-01
+                             C   1(s)-2(p):  -0.293000E-01
+                             C   2(p)-1(s):  -0.293000E-01
+                             C   2(p)-2(p):  -0.275500E-01
+                             N   1(s)-1(s):  -0.468700E-01
+                             N   1(s)-2(p):  -0.317000E-01
+                             N   2(p)-1(s):  -0.317000E-01
+                             N   2(p)-2(p):  -0.307200E-01
+                             H   1(s)-1(s):  -0.792500E-01
+Range separated hybrid:      Yes
+  Screening parameter omega:   0.300000E+00
+  Range separated algorithm:   MatrixBased
+Extra options:
+                             Mulliken analysis
+                             Force calculation
+Force type                   original
+                             Eigenvector printing
+
+
+REKS Calcuation:             Yes
+SSR(2,2) Calcuation:         Yes
+Energy Functional:           (PPS+OSS)/2
+Number of Core Orbitals:                  5
+Number of Active Orbitals:                2
+Number of Basis:                         12
+Number of States:                         2
+State-Averaging Weight:          0.500000
+                                 0.500000
+State of Interest:                        2
+Initial Guess:               Diagonalize H0 matrix
+Newton-Raphson for FON opt:  Yes
+NR max. Iterations:                      50
+Level Shifting:              Yes
+Shift Value:                     0.300000
+W Scale Factor:              C  =    3.200000
+                             N  =    3.200000
+                             H  =    3.200000
+Transition Dipole:           No
+Gradient of Microstate:      No
+CP-REKS Solver:              Preconditioned Conjugate-Gradient
+CG max. Iterations:                     100
+CG Tolerance:                  0.100000E-07
+Memory for A and Hxc:        Direct Updating Without Saving
+Non-Adiabatic Coupling:      Yes
+
+--------------------------------------------------------------------------------
+
+***  Geometry step: 0
+
+  iSCC       reks energy        Diff energy         x_a       SCC error   
+    1       -6.1730379459       0.0000000000     0.999792    1.16995112
+    2       -6.1815435081      -0.0085055622     0.999997    0.04311452
+    3       -6.1832482596      -0.0017047515     1.000000    0.01936831
+    4       -6.1836355981      -0.0003873385     1.000000    0.00756125
+    5       -6.1837494070      -0.0001138089     1.000000    0.00359665
+    6       -6.1837870698      -0.0000376628     1.000000    0.00194781
+    7       -6.1838005537      -0.0000134839     1.000000    0.00116895
+    8       -6.1838056990      -0.0000051454     1.000000    0.00073378
+    9       -6.1838077662      -0.0000020672     1.000000    0.00046726
+   10       -6.1838086309      -0.0000008647     1.000000    0.00030117
+   11       -6.1838090041      -0.0000003732     1.000000    0.00019609
+   12       -6.1838091691      -0.0000001650     1.000000    0.00012870
+   13       -6.1838092434      -0.0000000743     1.000000    0.00008499
+   14       -6.1838092774      -0.0000000340     1.000000    0.00005910
+   15       -6.1838092932      -0.0000000157     1.000000    0.00004174
+   16       -6.1838093005      -0.0000000074     1.000000    0.00002952
+   17       -6.1838093040      -0.0000000035     1.000000    0.00002090
+   18       -6.1838093056      -0.0000000017     1.000000    0.00001483
+   19       -6.1838093064      -0.0000000008     1.000000    0.00001054
+   20       -6.1838093068      -0.0000000004     1.000000    0.00000750
+   21       -6.1838093070      -0.0000000002     1.000000    0.00000535
+   22       -6.1838093071      -0.0000000001     1.000000    0.00000382
+   23       -6.1838093071      -0.0000000000     1.000000    0.00000274
+   24       -6.1838093072      -0.0000000000     1.000000    0.00000196
+   25       -6.1838093072      -0.0000000000     1.000000    0.00000141
+   26       -6.1838093072      -0.0000000000     1.000000    0.00000102
+   27       -6.1838093072      -0.0000000000     1.000000    0.00000073
+  
+--------------------------------------------------
+ Final SA-REKS(2,2) energy:      -6.18380931
+  
+ State     Energy      FON(1)    FON(2)   Spin
+  PPS   -6.20234511   2.000000  0.000000  0.00
+  OSS   -6.16527350   1.000000  1.000000  0.00
+ Trip   -6.18478614   1.000000  1.000000  1.00
+--------------------------------------------------
+
+ Lagrangian Wab:  -0.01688216 -0.01688216
+
+--------------------------------------------------
+ SSR: 2SI-2SA-REKS(2,2) Hamiltonian matrix
+               PPS           OSS
+   PPS    -6.20234511   -0.02386890
+   OSS    -0.02386890   -6.16527350
+--------------------------------------------------
+
+----------------------------------------------------------------
+ SSR: 2SI-2SA-REKS(2,2) states
+                    E_n       C_{PPS}    C_{OSS}
+ SSR state  1   -6.21403017  -0.898149  -0.439690
+ SSR state  2   -6.15358845   0.439690  -0.898149
+----------------------------------------------------------------
+
+ unrelaxed SSR FONs for S1:  1.193328  0.806672
+
+Total Energy:                       -6.1535884460 H         -167.4477 eV
+Extrapolated to 0:                  -6.1535884460 H         -167.4477 eV
+
+----------------------------------------------------------------------------------
+ Solving CP-REKS equation for  1 state vector...
+----------------------------------------------------------------------------------
+  CG solver: Constructing Y initial guess
+  CG solver: Iteration    1    eps =    0.001556848210
+  CG solver: Iteration    2    eps =    0.000055336181
+  CG solver: Iteration    3    eps =    0.000003963922
+  CG solver: Iteration    4    eps =    0.000000182865
+  CG solver: Iteration    5    eps =    0.000000013727
+  CG solver: Iteration    6    eps =    0.000000000693
+  Convergence reached in CG solver after    6 iterations
+  CG solver: Calculating converged R, Z, Q2 matrix
+----------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------
+ Solving CP-REKS equation for SI between  1 and  2 state vectors...
+----------------------------------------------------------------------------------
+  CG solver: Constructing Y initial guess
+  CG solver: Iteration    1    eps =    0.002010137174
+  CG solver: Iteration    2    eps =    0.000921056112
+  CG solver: Iteration    3    eps =    0.000018184863
+  CG solver: Iteration    4    eps =    0.000000815428
+  CG solver: Iteration    5    eps =    0.000000039072
+  CG solver: Iteration    6    eps =    0.000000003394
+  Convergence reached in CG solver after    6 iterations
+  CG solver: Calculating converged R, Z, Q2 matrix
+----------------------------------------------------------------------------------
+
+--------------------------------------------------
+ Gradient Information
+--------------------------------------------------
+           1 st state (SSR)
+     0.12192099    -0.11812082    -0.16391636
+     0.00841183    -0.08875973     0.00190985
+    -0.17260896     0.14905165     0.16326897
+     0.05004689     0.08210312     0.01005761
+    -0.02142800    -0.02860067    -0.02705510
+     0.01365725     0.00432645     0.01573502
+
+           2 st state (SSR)
+     0.12579297    -0.12767884    -0.09063903
+    -0.01820462    -0.10207293    -0.05528963
+    -0.13541313     0.18882651     0.15663807
+     0.06346333     0.05412229    -0.00460191
+    -0.03132266     0.01462308    -0.02246265
+    -0.00431590    -0.02782011     0.01635515
+--------------------------------------------------
+ Coupling Information
+--------------------------------------------------
+ between  1 and  2 states
+--------------------------------------------------
+ g vector - difference gradient
+    -0.00009284     0.00846631    -0.05144257
+    -0.00358267     0.03109790     0.03720707
+    -0.01029212    -0.01349111     0.00411298
+     0.00356158    -0.00583415     0.00698723
+     0.00727496    -0.02384541     0.00088412
+     0.00313109     0.00360646     0.00225116
+
+ h vector - derivative coupling
+    -0.00237910    -0.00052387    -0.00644029
+     0.01963197    -0.01572157     0.00731688
+    -0.01555465    -0.01470309     0.00100374
+    -0.01125921     0.02224414     0.00385429
+     0.00061441    -0.00884564    -0.00359387
+     0.00894657     0.01755003    -0.00214076
+
+ G vector - GDV
+    -0.00193599     0.00477901    -0.03663866
+     0.01330822     0.00665660     0.02859974
+    -0.01859791    -0.01988743     0.00331545
+    -0.00670822     0.01399042     0.00732976
+     0.00494733    -0.02161188    -0.00229622
+     0.00898657     0.01607328    -0.00031007
+
+ H vector - DCV - non-adiabatic coupling
+    -0.02292922    -0.11594865     0.60686580
+     0.24603552    -0.56590612    -0.41194961
+    -0.02335284     0.02709099    -0.04356023
+    -0.16079561     0.30196400    -0.05219271
+    -0.08882987     0.22183432    -0.04802273
+     0.04987201     0.13096547    -0.05114053
+--------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+DFTB+ running times                          cpu [s]             wall clock [s]
+--------------------------------------------------------------------------------
+SCC                                    +     0.01  ( 54.3%)      0.01  ( 44.1%)
+Post-SCC processing                    +     0.01  ( 39.7%)      0.01  ( 32.4%)
+  Force calculation                          0.01  ( 38.7%)      0.01  ( 29.4%)
+--------------------------------------------------------------------------------
+Missing                                +     0.00  (  6.0%)      0.01  ( 23.5%)
+Total                                  =     0.02  (100.0%)      0.03  (100.0%)
+--------------------------------------------------------------------------------
