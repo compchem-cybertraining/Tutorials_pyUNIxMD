@@ -22,7 +22,7 @@ qm = qm.dftbplus.DFTB(molecule=mol, version="20.1", install_path="/user/username
 thermo = NHC(time_scale = 10.0, temperature=300.)
 
 # Determine MD method.
-md = mqc.BOMD(molecule=mol, thermostat=thermo, nsteps=50000, dt=0.5, istate=0)
+md = mqc.BOMD(molecule=mol, thermostat=thermo, nsteps=5000, dt=0.5, istate=0)
 
 # Execute the simulation.
 md.run(qm=qm)
