@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MQC &mdash; PyUNIxMD  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BOMD" href="bomd.html" />
+    <link rel="prev" title="Tinker" href="../mm/prog_tinker.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../unixmd.html" class="icon icon-home">
+            PyUNIxMD
+          </a>
+              <div class="version">
+                21.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">1. PyUNIxMD Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflow.html">3. Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">4. Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main.html">5. PyUNIxMD Objects</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../system_bath/main.html">System &amp; Bath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qm/main.html">QM_calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mm/main.html">MM_calculator</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MQC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bomd.html">BOMD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ct.html">CTMQC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eh.html">Ehrenfest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sh.html">Surface Hopping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shxf.html">DISH-XF</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/main.html">6. Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility_scripts.html">7. PyUNIxMD utility scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/main.html">8. References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../unixmd.html">PyUNIxMD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../unixmd.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../main.html"><span class="section-number">5. </span>PyUNIxMD Objects</a></li>
+      <li class="breadcrumb-item active">MQC</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/objects/mqc/main.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mqc">
+<span id="objects-mqc"></span><h1>MQC<a class="headerlink" href="#mqc" title="Permalink to this heading"></a></h1>
+<p>Mixed quantum-classical (MQC) dynamics is one of theoretical tools to simulate nonadiabatic processes in molecular or extended systems. This method is characterized by propagating the electrons through quantum mechanics but nuclear dynamics through classical trajectories, to overcome the computational cost of calculating the correlated systems.</p>
+<p>PyUNIxMD provides a variety of MQC methods:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bomd.html">BOMD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ct.html">CTMQC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eh.html">Ehrenfest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sh.html">Surface Hopping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shxf.html">DISH-XF</a></li>
+</ul>
+</div>
+<p>In your running script, you need to specify the MQC method you want to use by making an object of it.
+In PyUNIxMD, MQC methods are provided in the form of Python classes under <code class="xref py py-class docutils literal notranslate"><span class="pre">MQC</span></code> class.
+The class names are tabulated below.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>MQC methods</p></th>
+<th class="head"><p>Class names</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>BOMD</p></td>
+<td><p>BOMD</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ehrenfest</p></td>
+<td><p>Eh</p></td>
+</tr>
+<tr class="row-even"><td><p>FSSH</p></td>
+<td><p>SH</p></td>
+</tr>
+<tr class="row-odd"><td><p>DISH-XF</p></td>
+<td><p>SHXF</p></td>
+</tr>
+</tbody>
+</table>
+<p>For example, an MD object of the FSSH method can be created as follows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mqc</span>
+
+<span class="n">md</span> <span class="o">=</span> <span class="n">mqc</span><span class="o">.</span><span class="n">SH</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The parameters for the initialization are different for each MQC method. For the detailed list of these parameters, see the subsections.</p>
+<p>All classes specifying an MQC method have their own <code class="docutils literal notranslate"><span class="pre">run</span></code> method. The <code class="docutils literal notranslate"><span class="pre">run</span></code> method is used to perform the dynamics at the end of your running script.
+Parameters for the run method are listed below.</p>
+<p>Plus, The <code class="docutils literal notranslate"><span class="pre">run</span></code> method deals with restart options of dynamics calculations. PyUNIxMD saves the objects for MQC and QM in a binary formatted file (‘RESTART.bin’) under <strong>output_dir</strong> directory using the ‘pickle’ package at every time step.
+The ‘RESTART.bin’ file is overwritten at every successful MD step, therefore the file contains the information of a trajectory at the last successful MD step.
+You can restart the dynamics simulation by reading the ‘RESTART.bin’ file using ‘pickle’ package.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameters</p></th>
+<th class="head"><p>Work</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>qm</strong>
+(<code class="xref py py-class docutils literal notranslate"><span class="pre">QM_calculator</span></code>)</p></td>
+<td><p>QM object containing on-the-fly
+calculation information</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>mm</strong>
+(<code class="xref py py-class docutils literal notranslate"><span class="pre">MM_calculator</span></code>)</p></td>
+<td><p>MM object containing MM calculation information</p></td>
+<td><p><em>None</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>output_dir</strong>
+<em>(string)</em></p></td>
+<td><p>Name of directory where outputs to be saved</p></td>
+<td><p><em>‘./’</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>l_save_qm_log</strong>
+<em>(boolean)</em></p></td>
+<td><p>Logical for saving QM calculation log</p></td>
+<td><p><em>False</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>l_save_mm_log</strong>
+<em>(boolean)</em></p></td>
+<td><p>Logical for saving MM calculation log</p></td>
+<td><p><em>False</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>l_save_scr</strong>
+<em>(boolean)</em></p></td>
+<td><p>Logical for saving scratch directory</p></td>
+<td><p><em>True</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>restart</strong>
+<em>(string)</em></p></td>
+<td><p>Option for controlling dynamics restarting</p></td>
+<td><p><em>None</em></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ex.</strong> Running FSSH dynamics with an MD object of the FSSH method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mqc</span>
+
+<span class="n">md</span> <span class="o">=</span> <span class="n">mqc</span><span class="o">.</span><span class="n">SH</span><span class="p">(</span><span class="n">molecule</span><span class="o">=</span><span class="n">mol</span><span class="p">,</span> <span class="n">nsteps</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.125</span><span class="p">,</span> <span class="n">istate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">elec_object</span><span class="o">=</span><span class="s2">&quot;density&quot;</span><span class="p">)</span>
+
+<span class="n">md</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qm</span><span class="o">=</span><span class="n">qm</span><span class="p">,</span> <span class="n">output_dir</span><span class="o">=</span><span class="s2">&quot;./TRAJ.sh&quot;</span><span class="p">,</span> <span class="n">l_save_scr</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">l_save_qm_log</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Making molecule and QM objects are omitted in this sample code,
+but they must be declared to use a run method in advance.</p>
+</div>
+<p><strong>Ex.</strong> Restarting a dynamics simulation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="c1"># Read the binary file and load the information</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./RESTART.bin&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_restart</span><span class="p">:</span>
+    <span class="n">restart</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f_restart</span><span class="p">)</span>
+<span class="n">qm</span> <span class="o">=</span> <span class="n">restart</span><span class="p">[</span><span class="s2">&quot;qm&quot;</span><span class="p">]</span>
+<span class="n">md</span> <span class="o">=</span> <span class="n">restart</span><span class="p">[</span><span class="s2">&quot;md&quot;</span><span class="p">]</span>
+
+<span class="c1"># The dynamics is continued from the last step stored in the &#39;RESTART.bin&#39; file.</span>
+<span class="c1"># The output files are appended with the restarted dynamics, therefore the MD output files should exist.</span>
+<span class="n">md</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qm</span><span class="o">=</span><span class="n">qm</span><span class="p">,</span> <span class="n">restart</span><span class="o">=</span><span class="s1">&#39;append&#39;</span><span class="p">)</span>
+
+<span class="c1"># The time is set to zero and restart a new dynamics from the information in the &#39;RESTART.bin&#39; file.</span>
+<span class="c1"># The new output files are written.</span>
+<span class="n">md</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qm</span><span class="o">=</span><span class="n">qm</span><span class="p">,</span> <span class="n">restart</span><span class="o">=</span><span class="s1">&#39;write&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<h2>Detailed description of parameters</h2><ul>
+<li><p><strong>output_dir</strong> <em>(string)</em> - Default: <em>‘./’</em></p>
+<p>This parameter designates the directory for dynamics output. All subdirectories (‘md/’, ‘qm_log/’, and ‘mm_log/’) for output files will be generated under <strong>output_dir</strong>.
+If the subdirectories are already present, old subdirectories will be renamed with ‘_old’ and new subdirectories will be made.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>l_save_qm_log</strong> <em>(boolean)</em> - Default: <em>False</em></p>
+<p>This parameter determines whether to save QM calculation logs. Logs will be saved in ‘<strong>output_dir</strong>/qm_log/’.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>l_save_mm_log</strong> <em>(boolean)</em> - Default: <em>False</em></p>
+<p>This parameter determines whether to save MM calculation logs. Logs will be saved in ‘<strong>output_dir</strong>/mm_log/’.
+If <strong>MM</strong> = <em>None</em>, this parameter will be ignored.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>l_save_scr</strong> <em>(boolean)</em> - Default: <em>True</em></p>
+<p>This parameter determines whether to save scratch output directory in ‘<strong>output_dir</strong>/md/scr_qm/’ after QM calculation, and ‘<strong>output_dir</strong>/md/scr_mm/’ after MM calculation.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>restart</strong> <em>(string)</em> - Default: <em>None</em></p>
+<p>If this parameter is not set (<em>None</em>), all objects will be initialized for a new dynamics simulation.
+Otherwise, ‘RESTART.bin’ is read and a dynamics simulation is restarted from the image read from the file without initialization of objects.</p>
+<ul class="simple">
+<li><p><em>‘write’</em>: The dynamics simulation is restarted at resetting the time step to zero and writing new MD output files.</p></li>
+<li><p><em>‘append’</em>: The dynamics simulation is continued from the image appending the existing MD output files.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../mm/prog_tinker.html" class="btn btn-neutral float-left" title="Tinker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bomd.html" class="btn btn-neutral float-right" title="BOMD" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, mingroup.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

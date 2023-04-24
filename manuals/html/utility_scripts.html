@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7. PyUNIxMD utility scripts &mdash; PyUNIxMD  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="8. References" href="references/main.html" />
+    <link rel="prev" title="6. Modules" href="modules/main.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="unixmd.html" class="icon icon-home">
+            PyUNIxMD
+          </a>
+              <div class="version">
+                21.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">1. PyUNIxMD Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">3. Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">4. Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/main.html">5. PyUNIxMD Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/main.html">6. Modules</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. PyUNIxMD utility scripts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#input-gen-py">input_gen.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#statistical-analysis-py">statistical_analysis.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#motion-analysis-py">motion_analysis.py</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references/main.html">8. References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="unixmd.html">PyUNIxMD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="unixmd.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">7. </span>PyUNIxMD utility scripts</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/utility_scripts.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pyunixmd-utility-scripts">
+<h1><span class="section-number">7. </span>PyUNIxMD utility scripts<a class="headerlink" href="#pyunixmd-utility-scripts" title="Permalink to this heading"></a></h1>
+<p>PyUNIxMD provides utility scripts for user convenience such as preparing dynamics running script and post-processing MD data.
+These scripts are located in ‘$PYUNIXMDHOME/util/’.
+Different from PyUNIxMD running script, options of utility scripts are controlled by command line, not from script file itself.
+Short description of each script can be also found from using <code class="code docutils literal notranslate"><span class="pre">-h</span></code> command.
+Documents of detailed description of each script are as follows.</p>
+<section id="input-gen-py">
+<h2>input_gen.py<a class="headerlink" href="#input-gen-py" title="Permalink to this heading"></a></h2>
+<p>Python utility script for PyUNIxMD running script generator.
+In this script, running script of each trajectory are generated from 1) sampled geometry files and 2) running script.
+After running a script, ‘TRAJ_(number)/’ directories will be generated. Each directory contains extended XYZ coordinate file and PyUNIxMD running script.
+The important thing is that sampled geometry files must be named in ‘sample_(number).xyz’ and prepared running script must read geometry from ‘geom.xyz’ file.</p>
+<p><strong>Ex.</strong> Example of ‘run.py’ which reads geometry from ‘geom.xyz’.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">molecule</span> <span class="kn">import</span> <span class="n">Molecule</span>
+
+<span class="o">...</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;geom.xyz&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">geom</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="o">...</span>
+
+<span class="n">mol</span> <span class="o">=</span> <span class="n">Molecule</span><span class="p">(</span><span class="n">geometry</span><span class="o">=</span><span class="n">geom</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>-d</strong>, <strong>-dir</strong></p></td>
+<td><p>Directory name of sampled files, these files must be written
+in extended XYZ format. Default value is ‘Sampled/’</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>-f</strong>, <strong>-file</strong></p></td>
+<td><p>Filename of basic running script template, this file must be
+written in running script format. Default value is ‘run.py’</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>-n</strong>, <strong>-ntrajs</strong></p></td>
+<td><p>Total number of trajectories for sampling.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>-h</strong></p></td>
+<td><p>Call out help message.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ex.</strong> Making 100 trajectories of running scripts, based on XYZ from ‘Sampled/’ and running script from ‘run_base.py’.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls
+Sampled/<span class="w"> </span>run_base.py
+
+$<span class="w"> </span>python3<span class="w"> </span>input_gen.py<span class="w"> </span>-dir<span class="w"> </span>Sampled/<span class="w"> </span>-file<span class="w"> </span>run_base.py<span class="w"> </span>-ntrajs<span class="w"> </span><span class="m">100</span>
+</pre></div>
+</div>
+<p>After running a script, 100 input directories with name ‘TRAJ_001/’ to ‘TRAJ_100/’ will be made.
+Each directory contains running script and extended XYZ file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls
+Sampled/<span class="w"> </span>run_base.py<span class="w"> </span>TRAJ_001/<span class="w"> </span>TRAJ_002/<span class="w"> </span>...<span class="w"> </span>TRAJ_100/
+
+$<span class="w"> </span>ls<span class="w"> </span>TRAJ_001/
+geom.xyz<span class="w"> </span>run.py
+</pre></div>
+</div>
+</section>
+<section id="statistical-analysis-py">
+<h2>statistical_analysis.py<a class="headerlink" href="#statistical-analysis-py" title="Permalink to this heading"></a></h2>
+<p>Python utility script for PyUNIxMD output analysis.
+In this script, PyUNIxMD output files are post-process into organized analysis data.
+Currently, three statistical parameters can be measured: BO population, BO coherence, NACME averaging.</p>
+<ol class="arabic simple">
+<li><p>BO population analysis based on the running state of each trajectory or based on density matrix of each trajectory</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[P_{i}(t) = \frac{N_{i}(t)}{N_{traj}}\]</div>
+<div class="math notranslate nohighlight">
+\[&lt;\rho_{ii}(t)&gt; = \frac{\sum_{I}^{N_{traj}} \rho_{ii}^{(I)}(t)}{N_{traj}}\]</div>
+<ol class="arabic simple" start="2">
+<li><p>BO coherence analysis based on density matrix of each trajectory</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[&lt;\left\vert\rho_{ij}(t)\right\vert^{2}&gt; = \frac{\sum_{I}^{N_{traj}} \rho_{ii}^{(I)}(t)\rho_{jj}^{(I)}(t)}{N_{traj}}\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Averaging NACME, phase is ignored with absolute value</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[&lt;\left\vert\sigma_{ij}(t)\right\vert&gt; = \frac{\sum_{I}^{N_{traj}} \left\vert\sigma_{ij}^{(I)}(t)\right\vert}{N_{traj}}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(N_{traj}\)</span> represents total trajectory number, <span class="math notranslate nohighlight">\(N_i(t)\)</span> represents the number of trajectories in <span class="math notranslate nohighlight">\(i\)</span> state in time <span class="math notranslate nohighlight">\(t\)</span>.
+After running a script, analysis results can be found in current directory.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>-n</strong>, <strong>-ntrajs</strong></p></td>
+<td><p>Total number of trajectories for analysis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>-s</strong>, <strong>-nsteps</strong></p></td>
+<td><p>Total number of steps for analysis.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>-t</strong>, <strong>-nstates</strong></p></td>
+<td><p>Total number of states for analysis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>-h</strong></p></td>
+<td><p>Call out help message.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ex.</strong> Statistical analysis on 100 trajectories, first 10 steps in 3 states.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls
+TRAJ_001/<span class="w"> </span>TRAJ_002/<span class="w"> </span>...<span class="w"> </span>TRAJ_100/
+
+$<span class="w"> </span>python3<span class="w"> </span>statistical_analysis.py<span class="w"> </span>-n<span class="w"> </span><span class="m">100</span><span class="w"> </span>-s<span class="w"> </span><span class="m">10</span><span class="w"> </span>-t<span class="w"> </span><span class="m">3</span>
+</pre></div>
+</div>
+<p>After running a script, ‘AVG_POPRUN’, ‘AVG_POPRHO’, ‘AVG_COHRHO’, ‘AVG_NACME’ files will be generated in running directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls
+AVG_POPRUN<span class="w"> </span>AVG_POPRHO<span class="w"> </span>AVG_COHRHO<span class="w"> </span>AVG_NACME<span class="w"> </span>TRAJ_001/<span class="w"> </span>TRAJ_002/<span class="w"> </span>...<span class="w"> </span>TRAJ_100/
+</pre></div>
+</div>
+<p>Each generated file represents BO population based on running state, BO population based on density matrix, BO coherence based on density matrix, and averaged NACME, respectively.
+Format of output files are following.</p>
+<ul class="simple">
+<li><p>AVG_POPRUN</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#   Running state based averaged BO population</span>
+&lt;MD_step&gt;<span class="w">   </span>&lt;population_state_0&gt;<span class="w">   </span>&lt;population_state_1&gt;<span class="w">   </span>&lt;population_state_2&gt;
+&lt;MD_step&gt;<span class="w">   </span>&lt;population_state_0&gt;<span class="w">   </span>&lt;population_state_1&gt;<span class="w">   </span>&lt;population_state_2&gt;
+&lt;MD_step&gt;<span class="w">   </span>&lt;population_state_0&gt;<span class="w">   </span>&lt;population_state_1&gt;<span class="w">   </span>&lt;population_state_2&gt;
+...
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AVG_POPRHO</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#   Density matrix based averaged BO population</span>
+&lt;MD_step&gt;<span class="w">   </span>&lt;population_state_0&gt;<span class="w">   </span>&lt;population_state_1&gt;<span class="w">   </span>&lt;population_state_2&gt;
+&lt;MD_step&gt;<span class="w">   </span>&lt;population_state_0&gt;<span class="w">   </span>&lt;population_state_1&gt;<span class="w">   </span>&lt;population_state_2&gt;
+&lt;MD_step&gt;<span class="w">   </span>&lt;population_state_0&gt;<span class="w">   </span>&lt;population_state_1&gt;<span class="w">   </span>&lt;population_state_2&gt;
+...
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AVG_COHRHO</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#   Averaged electronic coherence</span>
+&lt;MD_step&gt;<span class="w">   </span>&lt;coherence_state_0&gt;<span class="w">   </span>&lt;coherence_state_1&gt;<span class="w">   </span>&lt;coherence_state_2&gt;
+&lt;MD_step&gt;<span class="w">   </span>&lt;coherence_state_0&gt;<span class="w">   </span>&lt;coherence_state_1&gt;<span class="w">   </span>&lt;coherence_state_2&gt;
+&lt;MD_step&gt;<span class="w">   </span>&lt;coherence_state_0&gt;<span class="w">   </span>&lt;coherence_state_1&gt;<span class="w">   </span>&lt;coherence_state_2&gt;
+...
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AVG_NACME</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#   Averaged Non-Adiabatic Coupling Matrix Eliments: off-diagonal</span>
+&lt;MD_step&gt;<span class="w">   </span>&lt;NACME_<span class="o">(</span><span class="m">0</span>,<span class="w"> </span><span class="m">1</span><span class="o">)</span>&gt;<span class="w">   </span>&lt;NACME_<span class="o">(</span><span class="m">0</span>,<span class="w"> </span><span class="m">2</span><span class="o">)</span>&gt;<span class="w">   </span>&lt;NACME_<span class="o">(</span><span class="m">1</span>,<span class="w"> </span><span class="m">2</span><span class="o">)</span>&gt;
+&lt;MD_step&gt;<span class="w">   </span>&lt;NACME_<span class="o">(</span><span class="m">0</span>,<span class="w"> </span><span class="m">1</span><span class="o">)</span>&gt;<span class="w">   </span>&lt;NACME_<span class="o">(</span><span class="m">0</span>,<span class="w"> </span><span class="m">2</span><span class="o">)</span>&gt;<span class="w">   </span>&lt;NACME_<span class="o">(</span><span class="m">1</span>,<span class="w"> </span><span class="m">2</span><span class="o">)</span>&gt;
+&lt;MD_step&gt;<span class="w">   </span>&lt;NACME_<span class="o">(</span><span class="m">0</span>,<span class="w"> </span><span class="m">1</span><span class="o">)</span>&gt;<span class="w">   </span>&lt;NACME_<span class="o">(</span><span class="m">0</span>,<span class="w"> </span><span class="m">2</span><span class="o">)</span>&gt;<span class="w">   </span>&lt;NACME_<span class="o">(</span><span class="m">1</span>,<span class="w"> </span><span class="m">2</span><span class="o">)</span>&gt;
+...
+</pre></div>
+</div>
+</section>
+<section id="motion-analysis-py">
+<h2>motion_analysis.py<a class="headerlink" href="#motion-analysis-py" title="Permalink to this heading"></a></h2>
+<p>Python utility script for PyUNIxMD output analysis.
+In this script, PyUNIxMD ‘MOVIE.xyz’ output file is post-process into given geometry criterion.
+Currently, three geometrical parameters can be measured: bond length, bond angle, and dihedral angle.</p>
+<ol class="arabic simple">
+<li><p>In the bond length analysis, bond length between two given atoms will be calculated from given geometry information.</p></li>
+<li><p>In the bond angle analysis, angle between three given atoms will be calculated. Here, second atom will be a vertex of angle.</p></li>
+<li><p>In the dihedral angle analysis, dihedral angle between four or six given atoms will be calculated.
+In four atom case, dihedral angle between (1,2,3),(2,3,4) plane will be calculated and dihedreal axis will be atom2-atom3.
+In six atom case, dihedral angle between (1,2,3),(4,5,6) plane will be calculated and dihedral axis will be atom3-atom4.</p></li>
+</ol>
+<p>After running a script, analysis results will be saved in md output directory in each trajectory (‘TRAJ_(number)/md/’).
+If averaging argument is given, averaged results can be found in current directory.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>-n</strong>, <strong>–ntrajs</strong></p></td>
+<td><p>Total number of trajectories for analysis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>-s</strong>, <strong>–nsteps</strong></p></td>
+<td><p>Total number of steps.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>-b</strong>, <strong>–bond</strong></p></td>
+<td><p>Target bond length between two atoms.
+Two target atom numbers must be given as arguments.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>-a</strong>, <strong>–angle</strong></p></td>
+<td><p>Target bond angle between three atoms.
+Three target atom numbers must be given as arguments.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>-d</strong>, <strong>–dihedeal</strong></p></td>
+<td><p>Target dihedral angle between four or six atoms.
+4 or 6 target atom numbers must be given as arguments.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>-m</strong>, <strong>–mean</strong></p></td>
+<td><p>Calculate averaged values through total trajectories.
+This is optional argument.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>-h</strong></p></td>
+<td><p>Call out help message.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ex.</strong> Analyze bond length between atom 1 and 4 in 100 trajectories, first 10 steps. Averaging through total trajectories either.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls
+TRAJ_001/<span class="w"> </span>TRAJ_002/<span class="w"> </span>...<span class="w"> </span>TRAJ_100/
+
+$<span class="w"> </span>python3<span class="w"> </span>motion_analysis.py<span class="w"> </span>-n<span class="w"> </span><span class="m">100</span><span class="w"> </span>-s<span class="w"> </span><span class="m">10</span><span class="w"> </span>-b<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span>-m
+</pre></div>
+</div>
+<p>After running a script, ‘AVG_BOND’ file will be generated in running directory and ‘BOND’ file will be generated in each trajectory directory.
+‘AVG_BOND’ shows averaged bond length between two input atom number through total trajectories and
+‘BOND’ shows bond length between two input atom number in each trajectory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ls
+AVG_BOND<span class="w"> </span>TRAJ_001/<span class="w"> </span>TRAJ_002/<span class="w"> </span>...<span class="w"> </span>TRAJ_100/
+
+$<span class="w"> </span>ls<span class="w"> </span>TRAJ_001/md/
+BOND<span class="w"> </span><span class="o">(</span>other<span class="w"> </span>MD<span class="w"> </span>outputs<span class="o">)</span><span class="w"> </span>...
+</pre></div>
+</div>
+<p>Format of output files are following. Ouput file of bond angle and dihedral angle has same template.</p>
+<ul class="simple">
+<li><p>BOND</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#   Bond length between &lt;atom_1&gt; and &lt;atom_2&gt;</span>
+&lt;MD_step&gt;<span class="w">  </span>&lt;Bond_length&gt;
+&lt;MD_step&gt;<span class="w">  </span>&lt;Bond_length&gt;
+&lt;MD_step&gt;<span class="w">  </span>&lt;Bond_length&gt;
+...
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>AVG_BOND</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#   Averaged bond length between &lt;atom_1&gt; and &lt;atom_2&gt;</span>
+&lt;MD_step&gt;<span class="w">  </span>&lt;Averaged_bond_length&gt;
+&lt;MD_step&gt;<span class="w">  </span>&lt;Averaged_bond_length&gt;
+&lt;MD_step&gt;<span class="w">  </span>&lt;Averaged_bond_length&gt;
+...
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules/main.html" class="btn btn-neutral float-left" title="6. Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="references/main.html" class="btn btn-neutral float-right" title="8. References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, mingroup.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

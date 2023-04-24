@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Molpro &mdash; PyUNIxMD  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Q-Chem" href="prog_qchem.html" />
+    <link rel="prev" title="Gaussian 09" href="prog_gaussian09.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../unixmd.html" class="icon icon-home">
+            PyUNIxMD
+          </a>
+              <div class="version">
+                21.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">1. PyUNIxMD Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflow.html">3. Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">4. Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main.html">5. PyUNIxMD Objects</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../system_bath/main.html">System &amp; Bath</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="main.html">QM_calculator</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="prog_columbus.html">Columbus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prog_dftbplus.html">DFTB+</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prog_gaussian09.html">Gaussian 09</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Molpro</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sa-casscf">(SA-)CASSCF</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="prog_qchem.html">Q-Chem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prog_terachem.html">TeraChem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prog_turbomole.html">TURBOMOLE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model.html">Model Systems</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mm/main.html">MM_calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mqc/main.html">MQC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/main.html">6. Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility_scripts.html">7. PyUNIxMD utility scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/main.html">8. References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../unixmd.html">PyUNIxMD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../unixmd.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../main.html"><span class="section-number">5. </span>PyUNIxMD Objects</a></li>
+          <li class="breadcrumb-item"><a href="main.html">QM_calculator</a></li>
+      <li class="breadcrumb-item active">Molpro</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/objects/qm/prog_molpro.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="molpro">
+<h1>Molpro<a class="headerlink" href="#molpro" title="Permalink to this heading"></a></h1>
+<p>Molpro <span id="id1">[<a class="reference internal" href="../../references/main.html#id6" title="H.-J. Werner, P. J. Knowles, G. Knizia, F. R. Manby, and M. Schütz. Molpro: a general-purpose quantum chemistry program package. WIREs Computational Molecular Science, 2:242-253, 2012.">7</a>]</span> is a comprehensive system of ab initio programs for advanced molecular electronic structure
+calculations, designed and maintained by many authors. It comprises efficient and well-parallelized
+programs for standard computational chemistry applications, such as DFT or many wave function based
+methods. Among them, the state-averaged complete active space self consistent field (SA-CASSCF) method is interfaced to the current version of PyUNIxMD.</p>
+<ul class="simple">
+<li><p>(SA-)CASSCF is the most famous multi-configurational SCF (MCSCF) method.
+Since Molpro supports calculations of analytical gradients of (SA-)CASSCF states as well as nonadiabatic coupling vectors (NACVs) among them with coupled-perturbed CASSCF (CP-CASSCF) equations, excited state molecular dynamics simulations are possible.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BOMD</p></th>
+<th class="head"><p>SH(XF)</p></th>
+<th class="head"><p>Eh</p></th>
+<th class="head"><p>nac</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>(SA-)CASSCF</p></td>
+<td><p>o</p></td>
+<td><p>o</p></td>
+<td><p>o</p></td>
+<td><p>o</p></td>
+</tr>
+</tbody>
+</table>
+<section id="sa-casscf">
+<h2>(SA-)CASSCF<a class="headerlink" href="#sa-casscf" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameters</p></th>
+<th class="head"><p>Work</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>molecule</strong>
+(<code class="xref py py-class docutils literal notranslate"><span class="pre">Molecule</span></code>)</p></td>
+<td><p>Molecule object</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>basis_set</strong>
+<em>(string)</em></p></td>
+<td><p>Basis set information</p></td>
+<td><p><em>‘sto-3g’</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>memory</strong>
+<em>(string)</em></p></td>
+<td><p>Allocatable memory in the calculations</p></td>
+<td><p><em>‘500m’</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>guess</strong>
+<em>(string)</em></p></td>
+<td><p>Initial guess for (SA-)CASSCF calculations</p></td>
+<td><p><em>‘hf’</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>guess_file</strong>
+<em>(string)</em></p></td>
+<td><p>File containing initial guesses for (SA-)CASSCF calculations</p></td>
+<td><p><em>‘./wf.wfu’</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>scf_max_iter</strong>
+<em>(integer)</em></p></td>
+<td><p>Maximum number of HF iterations</p></td>
+<td><p><em>20</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>scf_en_tol</strong>
+<em>(double)</em></p></td>
+<td><p>Energy convergence threshold for HF iterations</p></td>
+<td><p><em>1E-8</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>scf_rho_tol</strong>
+<em>(double)</em></p></td>
+<td><p>Density convergence threshold for HF iterations</p></td>
+<td><p><em>1E-6</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>mcscf_max_iter</strong>
+<em>(integer)</em></p></td>
+<td><p>Maximum number of (SA-)CASSCF iterations</p></td>
+<td><p><em>20</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>mcscf_en_tol</strong>
+<em>(double)</em></p></td>
+<td><p>Energy convergence threshold for (SA-)CASSCF iterations</p></td>
+<td><p><em>1E-8</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>mcscf_grad_tol</strong>
+<em>(double)</em></p></td>
+<td><p>Gradient convergence threshold for (SA-)CASSCF iterations</p></td>
+<td><p><em>1E-6</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>mcscf_step_tol</strong>
+<em>(double)</em></p></td>
+<td><p>Step length convergence threshold for (SA-)CASSCF iterations</p></td>
+<td><p><em>1E-2</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>active_elec</strong>
+<em>(integer)</em></p></td>
+<td><p>Number of electrons in active space</p></td>
+<td><p><em>2</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>active_orb</strong>
+<em>(integer)</em></p></td>
+<td><p>Number of orbitals in active space</p></td>
+<td><p><em>2</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>cpscf_grad_tol</strong>
+<em>(double)</em></p></td>
+<td><p>Gradient convergence threshold for CP-CASSCF equations</p></td>
+<td><p><em>1E-7</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>qm_path</strong>
+<em>(string)</em></p></td>
+<td><p>Path for QM binary</p></td>
+<td><p><em>‘./’</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>nthreads</strong>
+<em>(integer)</em></p></td>
+<td><p>Number of threads in the calculations</p></td>
+<td><p><em>1</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>version</strong>
+<em>(string)</em></p></td>
+<td><p>Version of Molpro</p></td>
+<td><p><em>‘2015.1’</em></p></td>
+</tr>
+</tbody>
+</table>
+<section id="example-input-for-casscf">
+<h3>Example input for CASSCF<a class="headerlink" href="#example-input-for-casscf" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">molecule</span> <span class="kn">import</span> <span class="n">Molecule</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">qm</span><span class="o">,</span> <span class="nn">mqc</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">geom</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="linenos"> 5</span><span class="s1">3</span>
+<span class="linenos"> 6</span><span class="s1">example</span>
+<span class="linenos"> 7</span><span class="s1">O  1.14  3.77  0.00  0.00  0.00  0.00</span>
+<span class="linenos"> 8</span><span class="s1">H  2.11  3.77  0.00  0.00  0.00  0.00</span>
+<span class="linenos"> 9</span><span class="s1">H  0.81  4.45  0.60  0.00  0.00  0.00</span>
+<span class="linenos">10</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="n">mol</span> <span class="o">=</span> <span class="n">Molecule</span><span class="p">(</span><span class="n">geometry</span><span class="o">=</span><span class="n">geom</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">nstates</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">unit_pos</span><span class="o">=</span><span class="s1">&#39;angs&#39;</span><span class="p">)</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="n">qm</span> <span class="o">=</span> <span class="n">qm</span><span class="o">.</span><span class="n">molpro</span><span class="o">.</span><span class="n">CASSCF</span><span class="p">(</span><span class="n">molecule</span><span class="o">=</span><span class="n">mol</span><span class="p">,</span> <span class="n">basis_set</span><span class="o">=</span><span class="s1">&#39;6-31g*&#39;</span><span class="p">,</span> <span class="n">guess</span><span class="o">=</span><span class="s1">&#39;hf&#39;</span><span class="p">,</span> \
+<span class="linenos">15</span>    <span class="n">active_elec</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">active_orb</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">qm_path</span><span class="o">=</span><span class="s1">&#39;/opt/molpro2015.1/bin/&#39;</span><span class="p">)</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="n">md</span> <span class="o">=</span> <span class="n">mqc</span><span class="o">.</span><span class="n">SHXF</span><span class="p">(</span><span class="n">molecule</span><span class="o">=</span><span class="n">mol</span><span class="p">,</span> <span class="n">nsteps</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">nesteps</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">unit_dt</span><span class="o">=</span><span class="s1">&#39;au&#39;</span><span class="p">,</span> \
+<span class="linenos">18</span>    <span class="n">sigma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">istate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">hop_rescale</span><span class="o">=</span><span class="s1">&#39;energy&#39;</span><span class="p">,</span> <span class="n">elec_object</span><span class="o">=</span><span class="s1">&#39;density&#39;</span><span class="p">)</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="n">md</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qm</span><span class="o">=</span><span class="n">qm</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="detailed-description-of-the-parameters">
+<h3>Detailed description of the parameters<a class="headerlink" href="#detailed-description-of-the-parameters" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please refer Molpro (version 2015.1) manual for available options and more detailed descripttion about the input of Molpro.</p>
+</div>
+<ul>
+<li><p><strong>basis_set</strong> <em>(string)</em> - Default: <em>‘sto-3g’</em></p>
+<p>The <strong>basis_set</strong> determines the basis set for atomic orbitals.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>memory</strong> <em>(string)</em> - Default: <em>‘500m’</em></p>
+<p>This parameter determines the memory to be allocated for the Molpro calculation.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>guess</strong> <em>(string)</em> - Default: <em>‘hf’</em></p>
+<p>This parameter determines the initial guess method for the (SA-)CASSCF calculations.</p>
+<ul class="simple">
+<li><p><em>‘hf’</em>: Initial guess orbitals for the (SA-)CASSCF calculations are generated from the HF calculations.</p></li>
+<li><p><em>‘read’</em>: Initial guesses of orbitals and CI coefficients are read from the ‘wf.wfu’ file which contains the orbitals and CI coefficients calculated at the previous time step.</p></li>
+</ul>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>guess_file</strong> <em>(string)</em> - Default: <em>‘./wf.wfu’</em></p>
+<p>The <strong>guess_file</strong> determines the name of the file containing orbitals for the initial guess of orbitals for the (SA-)CASSCF calculation at the first MD step.
+This parameter is effective only if <strong>guess</strong> = <em>‘read’</em>.
+If the file does not exist, <em>‘hf’</em> option is applied for the initial guess for the (SA-)CASSCF calculation at the first MD step.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>scf_max_iter</strong> <em>(integer)</em> - Default: <em>20</em></p>
+<p>This parameter determines the maximum number of the HF iterations.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>scf_en_tol</strong> <em>(double)</em> - Default: <em>1E-8</em></p>
+<p>This parameter determines the convergence threshold for the HF energy.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>scf_rho_tol</strong> <em>(double)</em> - Default: <em>1E-6</em></p>
+<p>This parameter determines the convergence threshold for the HF density matrix.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>mcscf_max_iter</strong> <em>(integer)</em> - Default: <em>20</em></p>
+<p>This parameter determines the maximum number of the (SA-)CASSCF interations.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>mcscf_en_tol</strong> <em>(integer)</em> - Default: <em>1E-8</em></p>
+<p>This parameter determines the convergence threshold for the (SA-)CASSCF energy.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>mcscf_grad_tol</strong> <em>(integer)</em> - Default: <em>1E-6</em></p>
+<p>This parameter determines the convergence threshold for the (SA-)CASSCF gradient.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>mcscf_step_tol</strong> <em>(integer)</em> - Default: <em>1E-2</em></p>
+<p>This parameter determines the convergence threshold for (SA-)CASSCF step length.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>active_elec</strong> <em>(integer)</em> - Default: <em>2</em></p>
+<p>This parameter determines the number of electrons to be included in the active space of the (SA-)CASSCF calculations.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>active_orb</strong> <em>(integer)</em> - Default: <em>2</em></p>
+<p>This parameter determines the number of orbitals to be included in the active space of the (SA-)CASSCF calculations.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>cpscf_grad_tol</strong> <em>(double)</em>  - Default: <em>1E-7</em></p>
+<p>This parameter determines the convergence threshold for the accuracy of the CP-MCSCF equations for the analytical gradients and NACVs of the (SA-)CASSCF states.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>qm_path</strong> <em>(string)</em> - Default: <em>‘./’</em></p>
+<p>This parameter determines the path to be searched by PyUNIxMD for the Molpro executable file, ‘molpro’ for the (SA-)CASSCF calculations.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>nthreads</strong> <em>(integer)</em> - Default: <em>1</em></p>
+<p>This parameter determines the number of thread for parallel execution of Molpro.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>version</strong> <em>(string)</em> - Default: <em>‘2015.1’</em></p>
+<p>This parameter indicates the version of Molpro to be executed.
+Currently, only version 2015.1 is interfaced.</p>
+</li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="prog_gaussian09.html" class="btn btn-neutral float-left" title="Gaussian 09" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="prog_qchem.html" class="btn btn-neutral float-right" title="Q-Chem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, mingroup.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

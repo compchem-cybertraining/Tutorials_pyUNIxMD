@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4. Quick Start &mdash; PyUNIxMD  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. PyUNIxMD Objects" href="objects/main.html" />
+    <link rel="prev" title="3. Workflow" href="workflow.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="unixmd.html" class="icon icon-home">
+            PyUNIxMD
+          </a>
+              <div class="version">
+                21.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">1. PyUNIxMD Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow.html">3. Workflow</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/main.html">5. PyUNIxMD Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/main.html">6. Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility_scripts.html">7. PyUNIxMD utility scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references/main.html">8. References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="unixmd.html">PyUNIxMD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="unixmd.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">4. </span>Quick Start</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/quick_start.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quick-start">
+<span id="id1"></span><h1><span class="section-number">4. </span>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this heading"></a></h1>
+<p>This section gives a simple MD example using PyUNIxMD.</p>
+<p>We will perform DISH-XF (decoherence induced surface hopping based on exact factorization) dynamics
+on Shin-Metiu model <span id="id2">[<a class="reference internal" href="references/main.html#id17" title="S. Shin and H. Metiu. Nonadiabatic effects on the charge transfer rate constant: a numerical study of a simple model system. Journal of Chemical Physics, 102:9285-9295, 1995.">15</a>]</span>, which is a standard model for nonadiabatic charge transfer.</p>
+<p>The running script is the following.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">molecule</span> <span class="kn">import</span> <span class="n">Molecule</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">qm</span><span class="o">,</span> <span class="nn">mqc</span>
+<span class="linenos"> 3</span><span class="kn">from</span> <span class="nn">misc</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">data</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;X1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1836</span> <span class="c1"># au</span>
+<span class="linenos"> 6</span><span class="kn">import</span> <span class="nn">random</span>
+<span class="linenos"> 7</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">geom</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="linenos">10</span><span class="s2">1</span>
+<span class="linenos">11</span><span class="s2">Shin-Metiu model</span>
+<span class="linenos">12</span><span class="s2">X1       -4.0     0.0</span>
+<span class="linenos">13</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="n">mol</span> <span class="o">=</span> <span class="n">Molecule</span><span class="p">(</span><span class="n">geometry</span><span class="o">=</span><span class="n">geom</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nstates</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ndof</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">unit_pos</span><span class="o">=</span><span class="s1">&#39;au&#39;</span><span class="p">,</span> <span class="n">l_model</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="n">qm</span> <span class="o">=</span> <span class="n">qm</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">Shin_Metiu</span><span class="p">(</span><span class="n">molecule</span><span class="o">=</span><span class="n">mol</span><span class="p">)</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="n">md</span> <span class="o">=</span> <span class="n">mqc</span><span class="o">.</span><span class="n">SHXF</span><span class="p">(</span><span class="n">molecule</span><span class="o">=</span><span class="n">mol</span><span class="p">,</span> <span class="n">nsteps</span><span class="o">=</span><span class="mi">2890</span><span class="p">,</span> <span class="n">nesteps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">unit_dt</span><span class="o">=</span><span class="s1">&#39;au&#39;</span><span class="p">,</span> \
+<span class="linenos">20</span>     <span class="n">sigma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">istate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">elec_object</span><span class="o">=</span><span class="s2">&quot;density&quot;</span><span class="p">)</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="n">md</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qm</span><span class="o">=</span><span class="n">qm</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Line 1-3</strong> import the PyUNIxMD packages.</p>
+<p><strong>Line 5</strong> sets the mass of a fictitious particle of the model.</p>
+<p><strong>Line 6-7</strong> set the random seed. This is for you to reproduce the same results here.
+DISH-XF is based on FSSH, so the results of a single trajectory are probabilistic. You can also comment out this part to check if the sequence of the random numbers vary.</p>
+<p><strong>Line 9-15</strong> set the system. The position and velocity of the X1 particle is given as -4.0 au and 0.0 au respectively.
+The dynamics propagates on 1D space, and two adiabatic states (the ground and the 1st excited states) are considered.</p>
+<p><strong>Line 17</strong> sets the QM method. We chose the Shin-Metiu model among model systems.</p>
+<p><strong>Line 19-20</strong> determine the MD method. DISH-XF method is selected. Initially the particle is on the 1st excited state denoted by <strong>istate</strong> = <em>1</em>.</p>
+<p><strong>Line 22</strong> runs the dynamics calculation.</p>
+<p>Preparing the above running script, run the dynamics.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python3<span class="w"> </span>running_script.py
+</pre></div>
+</div>
+<p>Invoking the command, you will see the standard output.
+It shows a summary of the calculation setting you put in the running script, and dynamics information at every time step.
+Each printout has its own name tag (INFO, DEBUG1, etc.) so that you can easily use <code class="code docutils literal notranslate"><span class="pre">grep</span></code> command.
+The meaning of columns of each tagged line is written when the dynamics information part begins.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>...<span class="o">)</span>
+----------------------------------------------------------------------------------------------------------------------
+<span class="w">                                                   </span>Start<span class="w"> </span>Dynamics
+----------------------------------------------------------------------------------------------------------------------
+<span class="w"> </span><span class="c1">#INFO    STEP  State    Max. Prob.       Rand.     Kinetic(H)   Potential(H)     Total(H)   Temperature(K)   Norm.</span>
+<span class="w"> </span>INFO<span class="w">        </span><span class="m">0</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">0</span>.00000<span class="w"> </span><span class="o">(</span><span class="m">1</span>-&gt;1<span class="o">)</span><span class="w">    </span><span class="m">0</span>.57140<span class="w">    </span><span class="m">0</span>.00000000<span class="w">    </span>-0.17271176<span class="w">    </span>-0.17271176<span class="w">     </span><span class="m">0</span>.000000<span class="w">    </span><span class="m">1</span>.00000
+<span class="w"> </span>INFO<span class="w">        </span><span class="m">1</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">0</span>.00000<span class="w"> </span><span class="o">(</span><span class="m">1</span>-&gt;0<span class="o">)</span><span class="w">    </span><span class="m">0</span>.42889<span class="w">    </span><span class="m">0</span>.00000008<span class="w">    </span>-0.17271184<span class="w">    </span>-0.17271176<span class="w">     </span><span class="m">0</span>.050486<span class="w">    </span><span class="m">1</span>.00000
+<span class="w"> </span>INFO<span class="w">        </span><span class="m">2</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">0</span>.00000<span class="w"> </span><span class="o">(</span><span class="m">1</span>-&gt;0<span class="o">)</span><span class="w">    </span><span class="m">0</span>.57809<span class="w">    </span><span class="m">0</span>.00000032<span class="w">    </span>-0.17271208<span class="w">    </span>-0.17271176<span class="w">     </span><span class="m">0</span>.201944<span class="w">    </span><span class="m">1</span>.00000
+<span class="w"> </span>INFO<span class="w">        </span><span class="m">3</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">0</span>.00000<span class="w"> </span><span class="o">(</span><span class="m">1</span>-&gt;0<span class="o">)</span><span class="w">    </span><span class="m">0</span>.20610<span class="w">    </span><span class="m">0</span>.00000072<span class="w">    </span>-0.17271248<span class="w">    </span>-0.17271176<span class="w">     </span><span class="m">0</span>.454373<span class="w">    </span><span class="m">1</span>.00000
+<span class="w"> </span>INFO<span class="w">        </span><span class="m">4</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">0</span>.00000<span class="w"> </span><span class="o">(</span><span class="m">1</span>-&gt;0<span class="o">)</span><span class="w">    </span><span class="m">0</span>.81332<span class="w">    </span><span class="m">0</span>.00000128<span class="w">    </span>-0.17271304<span class="w">    </span>-0.17271176<span class="w">     </span><span class="m">0</span>.807772<span class="w">    </span><span class="m">1</span>.00000
+<span class="w"> </span>INFO<span class="w">        </span><span class="m">5</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">0</span>.00000<span class="w"> </span><span class="o">(</span><span class="m">1</span>-&gt;0<span class="o">)</span><span class="w">    </span><span class="m">0</span>.82359<span class="w">    </span><span class="m">0</span>.00000200<span class="w">    </span>-0.17271376<span class="w">    </span>-0.17271176<span class="w">     </span><span class="m">1</span>.262138<span class="w">    </span><span class="m">1</span>.00000
+<span class="w"> </span>INFO<span class="w">        </span><span class="m">6</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">0</span>.00000<span class="w"> </span><span class="o">(</span><span class="m">1</span>-&gt;0<span class="o">)</span><span class="w">    </span><span class="m">0</span>.65347<span class="w">    </span><span class="m">0</span>.00000288<span class="w">    </span>-0.17271464<span class="w">    </span>-0.17271176<span class="w">     </span><span class="m">1</span>.817467<span class="w">    </span><span class="m">1</span>.00000
+<span class="w"> </span>INFO<span class="w">        </span><span class="m">7</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">0</span>.00000<span class="w"> </span><span class="o">(</span><span class="m">1</span>-&gt;0<span class="o">)</span><span class="w">    </span><span class="m">0</span>.16023<span class="w">    </span><span class="m">0</span>.00000392<span class="w">    </span>-0.17271568<span class="w">    </span>-0.17271176<span class="w">     </span><span class="m">2</span>.473758<span class="w">    </span><span class="m">1</span>.00000
+<span class="w"> </span>INFO<span class="w">        </span><span class="m">8</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">0</span>.00000<span class="w"> </span><span class="o">(</span><span class="m">1</span>-&gt;0<span class="o">)</span><span class="w">    </span><span class="m">0</span>.52067<span class="w">    </span><span class="m">0</span>.00000512<span class="w">    </span>-0.17271688<span class="w">    </span>-0.17271176<span class="w">     </span><span class="m">3</span>.231005<span class="w">    </span><span class="m">1</span>.00000
+<span class="w"> </span>INFO<span class="w">        </span><span class="m">9</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">0</span>.00000<span class="w"> </span><span class="o">(</span><span class="m">1</span>-&gt;0<span class="o">)</span><span class="w">    </span><span class="m">0</span>.32777<span class="w">    </span><span class="m">0</span>.00000647<span class="w">    </span>-0.17271824<span class="w">    </span>-0.17271176<span class="w">     </span><span class="m">4</span>.089203<span class="w">    </span><span class="m">1</span>.00000
+<span class="w"> </span>INFO<span class="w">       </span><span class="m">10</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">0</span>.00000<span class="w"> </span><span class="o">(</span><span class="m">1</span>-&gt;0<span class="o">)</span><span class="w">    </span><span class="m">0</span>.25000<span class="w">    </span><span class="m">0</span>.00000799<span class="w">    </span>-0.17271976<span class="w">    </span>-0.17271176<span class="w">     </span><span class="m">5</span>.048348<span class="w">    </span><span class="m">1</span>.00000
+<span class="w"> </span>INFO<span class="w">       </span><span class="m">11</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">0</span>.00000<span class="w"> </span><span class="o">(</span><span class="m">1</span>-&gt;0<span class="o">)</span><span class="w">    </span><span class="m">0</span>.95282<span class="w">    </span><span class="m">0</span>.00000967<span class="w">    </span>-0.17272143<span class="w">    </span>-0.17271176<span class="w">     </span><span class="m">6</span>.108432<span class="w">    </span><span class="m">1</span>.00000
+<span class="w"> </span>INFO<span class="w">       </span><span class="m">12</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">0</span>.00000<span class="w"> </span><span class="o">(</span><span class="m">1</span>-&gt;0<span class="o">)</span><span class="w">    </span><span class="m">0</span>.99656<span class="w">    </span><span class="m">0</span>.00001151<span class="w">    </span>-0.17272327<span class="w">    </span>-0.17271176<span class="w">     </span><span class="m">7</span>.269450<span class="w">    </span><span class="m">1</span>.00000
+<span class="w"> </span>INFO<span class="w">       </span><span class="m">13</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">0</span>.00000<span class="w"> </span><span class="o">(</span><span class="m">1</span>-&gt;0<span class="o">)</span><span class="w">    </span><span class="m">0</span>.04456<span class="w">    </span><span class="m">0</span>.00001351<span class="w">    </span>-0.17272527<span class="w">    </span>-0.17271176<span class="w">     </span><span class="m">8</span>.531394<span class="w">    </span><span class="m">1</span>.00000
+<span class="w"> </span>INFO<span class="w">       </span><span class="m">14</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">0</span>.00000<span class="w"> </span><span class="o">(</span><span class="m">1</span>-&gt;0<span class="o">)</span><span class="w">    </span><span class="m">0</span>.86016<span class="w">    </span><span class="m">0</span>.00001567<span class="w">    </span>-0.17272743<span class="w">    </span>-0.17271176<span class="w">     </span><span class="m">9</span>.894255<span class="w">    </span><span class="m">1</span>.00000
+<span class="w"> </span>INFO<span class="w">       </span><span class="m">15</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">0</span>.00000<span class="w"> </span><span class="o">(</span><span class="m">1</span>-&gt;0<span class="o">)</span><span class="w">    </span><span class="m">0</span>.60319<span class="w">    </span><span class="m">0</span>.00001798<span class="w">    </span>-0.17272975<span class="w">    </span>-0.17271176<span class="w">    </span><span class="m">11</span>.358024<span class="w">    </span><span class="m">1</span>.00000
+<span class="w"> </span>INFO<span class="w">       </span><span class="m">16</span><span class="w">    </span><span class="m">1</span><span class="w">    </span><span class="m">0</span>.00000<span class="w"> </span><span class="o">(</span><span class="m">1</span>-&gt;0<span class="o">)</span><span class="w">    </span><span class="m">0</span>.38161<span class="w">    </span><span class="m">0</span>.00002046<span class="w">    </span>-0.17273222<span class="w">    </span>-0.17271176<span class="w">    </span><span class="m">12</span>.922694<span class="w">    </span><span class="m">1</span>.00000
+<span class="w"> </span><span class="o">(</span>...<span class="o">)</span>
+</pre></div>
+</div>
+<p>Also, you will obtain the following output files:</p>
+<ul class="simple">
+<li><p>MDENERGY</p></li>
+</ul>
+<p>This file shows MD energies and energies of adiabatic states.
+There are only two energy values for the adiabatic states, E(0) and E(1) because you put <strong>nstates</strong> = <em>2</em>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#    Step     Kinetic(H)     Potential(H)   Total(H)       E(0)(H)        E(1)(H)</span>
+<span class="w">        </span><span class="m">0</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">    </span>-0.17271176<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21359101<span class="w">    </span>-0.17271176
+<span class="w">        </span><span class="m">1</span><span class="w">     </span><span class="m">0</span>.00000008<span class="w">    </span>-0.17271184<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21359105<span class="w">    </span>-0.17271184
+<span class="w">        </span><span class="m">2</span><span class="w">     </span><span class="m">0</span>.00000032<span class="w">    </span>-0.17271208<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21359116<span class="w">    </span>-0.17271208
+<span class="w">        </span><span class="m">3</span><span class="w">     </span><span class="m">0</span>.00000072<span class="w">    </span>-0.17271248<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21359136<span class="w">    </span>-0.17271248
+<span class="w">        </span><span class="m">4</span><span class="w">     </span><span class="m">0</span>.00000128<span class="w">    </span>-0.17271304<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21359164<span class="w">    </span>-0.17271304
+<span class="w">        </span><span class="m">5</span><span class="w">     </span><span class="m">0</span>.00000200<span class="w">    </span>-0.17271376<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21359199<span class="w">    </span>-0.17271376
+<span class="w">        </span><span class="m">6</span><span class="w">     </span><span class="m">0</span>.00000288<span class="w">    </span>-0.17271464<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21359242<span class="w">    </span>-0.17271464
+<span class="w">        </span><span class="m">7</span><span class="w">     </span><span class="m">0</span>.00000392<span class="w">    </span>-0.17271568<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21359293<span class="w">    </span>-0.17271568
+<span class="w">        </span><span class="m">8</span><span class="w">     </span><span class="m">0</span>.00000512<span class="w">    </span>-0.17271688<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21359352<span class="w">    </span>-0.17271688
+<span class="w">        </span><span class="m">9</span><span class="w">     </span><span class="m">0</span>.00000647<span class="w">    </span>-0.17271824<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21359419<span class="w">    </span>-0.17271824
+<span class="w">       </span><span class="m">10</span><span class="w">     </span><span class="m">0</span>.00000799<span class="w">    </span>-0.17271976<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21359493<span class="w">    </span>-0.17271976
+<span class="w">       </span><span class="m">11</span><span class="w">     </span><span class="m">0</span>.00000967<span class="w">    </span>-0.17272143<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21359576<span class="w">    </span>-0.17272143
+<span class="w">       </span><span class="m">12</span><span class="w">     </span><span class="m">0</span>.00001151<span class="w">    </span>-0.17272327<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21359666<span class="w">    </span>-0.17272327
+<span class="w">       </span><span class="m">13</span><span class="w">     </span><span class="m">0</span>.00001351<span class="w">    </span>-0.17272527<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21359764<span class="w">    </span>-0.17272527
+<span class="w">       </span><span class="m">14</span><span class="w">     </span><span class="m">0</span>.00001567<span class="w">    </span>-0.17272743<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21359870<span class="w">    </span>-0.17272743
+<span class="w">       </span><span class="m">15</span><span class="w">     </span><span class="m">0</span>.00001798<span class="w">    </span>-0.17272975<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21359984<span class="w">    </span>-0.17272975
+<span class="w">       </span><span class="m">16</span><span class="w">     </span><span class="m">0</span>.00002046<span class="w">    </span>-0.17273222<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21360106<span class="w">    </span>-0.17273222
+<span class="w">       </span><span class="m">17</span><span class="w">     </span><span class="m">0</span>.00002310<span class="w">    </span>-0.17273486<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21360235<span class="w">    </span>-0.17273486
+<span class="w">       </span><span class="m">18</span><span class="w">     </span><span class="m">0</span>.00002590<span class="w">    </span>-0.17273766<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21360373<span class="w">    </span>-0.17273766
+<span class="w">       </span><span class="m">19</span><span class="w">     </span><span class="m">0</span>.00002885<span class="w">    </span>-0.17274061<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21360518<span class="w">    </span>-0.17274061
+<span class="w">       </span><span class="m">20</span><span class="w">     </span><span class="m">0</span>.00003197<span class="w">    </span>-0.17274373<span class="w">    </span>-0.17271176<span class="w">    </span>-0.21360671<span class="w">    </span>-0.17274373
+<span class="o">(</span>...<span class="o">)</span>
+</pre></div>
+</div>
+<p>If you plot a energy-MD step graph with the values, it looks like the following.</p>
+<a class="reference internal image-reference" href="_images/ptraj.png"><img alt="_images/ptraj.png" src="_images/ptraj.png" style="width: 400pt;" /></a>
+<p>The potential energy shows a “hop” near the avoided crossing, while the total MD energy is conserved.</p>
+<ul class="simple">
+<li><p>MOVIE.xyz</p></li>
+</ul>
+<p>This file contains the position and the velocity of the particle at each MD step.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">     </span><span class="m">1</span>
+<span class="w">  </span>Step:<span class="w">     </span><span class="m">0</span><span class="w">            </span>Position<span class="o">(</span>A<span class="o">)</span><span class="w">                                  </span>Velocity<span class="o">(</span>au<span class="o">)</span>
+X1<span class="w">       </span>-2.11670900<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">     </span><span class="m">1</span>
+<span class="w">  </span>Step:<span class="w">     </span><span class="m">1</span><span class="w">            </span>Position<span class="o">(</span>A<span class="o">)</span><span class="w">                                  </span>Velocity<span class="o">(</span>au<span class="o">)</span>
+X1<span class="w">       </span>-2.11670776<span class="w">     </span><span class="m">0</span>.00000933
+<span class="w">     </span><span class="m">1</span>
+<span class="w">  </span>Step:<span class="w">     </span><span class="m">2</span><span class="w">            </span>Position<span class="o">(</span>A<span class="o">)</span><span class="w">                                  </span>Velocity<span class="o">(</span>au<span class="o">)</span>
+X1<span class="w">       </span>-2.11670406<span class="w">     </span><span class="m">0</span>.00001866
+<span class="w">     </span><span class="m">1</span>
+<span class="w">  </span>Step:<span class="w">     </span><span class="m">3</span><span class="w">            </span>Position<span class="o">(</span>A<span class="o">)</span><span class="w">                                  </span>Velocity<span class="o">(</span>au<span class="o">)</span>
+X1<span class="w">       </span>-2.11669789<span class="w">     </span><span class="m">0</span>.00002800
+<span class="w">     </span><span class="m">1</span>
+<span class="w">  </span>Step:<span class="w">     </span><span class="m">4</span><span class="w">            </span>Position<span class="o">(</span>A<span class="o">)</span><span class="w">                                  </span>Velocity<span class="o">(</span>au<span class="o">)</span>
+X1<span class="w">       </span>-2.11668924<span class="w">     </span><span class="m">0</span>.00003733
+<span class="o">(</span>...<span class="o">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>FINAL.xyz</p></li>
+</ul>
+<p>This file contains the position and the velocity of the final MD step.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">     </span><span class="m">1</span>
+<span class="w">  </span>Step:<span class="w">  </span><span class="m">2890</span><span class="w">            </span>Position<span class="o">(</span>A<span class="o">)</span><span class="w">                                  </span>Velocity<span class="o">(</span>au<span class="o">)</span>
+X1<span class="w">        </span><span class="m">3</span>.32357102<span class="w">     </span><span class="m">0</span>.00152546
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>BOPOP</p></li>
+</ul>
+<p>This file shows the adiabatic populations.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#     Density Matrix: population Re; see the manual for detail orders</span>
+<span class="w">        </span><span class="m">0</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">1</span>.00000000
+<span class="w">        </span><span class="m">1</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">1</span>.00000000
+<span class="w">        </span><span class="m">2</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">1</span>.00000000
+<span class="w">        </span><span class="m">3</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">1</span>.00000000
+<span class="w">        </span><span class="m">4</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">1</span>.00000000
+<span class="w">        </span><span class="m">5</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">1</span>.00000000
+<span class="w">        </span><span class="m">6</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">1</span>.00000000
+<span class="w">        </span><span class="m">7</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">1</span>.00000000
+<span class="w">        </span><span class="m">8</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">1</span>.00000000
+<span class="w">        </span><span class="m">9</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">1</span>.00000000
+<span class="o">(</span>...<span class="o">)</span>
+<span class="w">     </span><span class="m">1110</span><span class="w">     </span><span class="m">0</span>.80427175<span class="w">     </span><span class="m">0</span>.19572825
+<span class="w">     </span><span class="m">1111</span><span class="w">     </span><span class="m">0</span>.80530983<span class="w">     </span><span class="m">0</span>.19469017
+<span class="w">     </span><span class="m">1112</span><span class="w">     </span><span class="m">0</span>.80632251<span class="w">     </span><span class="m">0</span>.19367749
+<span class="w">     </span><span class="m">1113</span><span class="w">     </span><span class="m">0</span>.80731030<span class="w">     </span><span class="m">0</span>.19268970
+<span class="w">     </span><span class="m">1114</span><span class="w">     </span><span class="m">0</span>.80827368<span class="w">     </span><span class="m">0</span>.19172632
+<span class="w">     </span><span class="m">1115</span><span class="w">     </span><span class="m">0</span>.80921314<span class="w">     </span><span class="m">0</span>.19078686
+<span class="w">     </span><span class="m">1116</span><span class="w">     </span><span class="m">0</span>.81009964<span class="w">     </span><span class="m">0</span>.18990036
+<span class="w">     </span><span class="m">1117</span><span class="w">     </span><span class="m">0</span>.81104810<span class="w">     </span><span class="m">0</span>.18895190
+<span class="w">     </span><span class="m">1118</span><span class="w">     </span><span class="m">0</span>.81197284<span class="w">     </span><span class="m">0</span>.18802716
+<span class="w">     </span><span class="m">1119</span><span class="w">     </span><span class="m">0</span>.81287440<span class="w">     </span><span class="m">0</span>.18712560
+<span class="w">     </span><span class="m">1120</span><span class="w">     </span><span class="m">0</span>.81375331<span class="w">     </span><span class="m">0</span>.18624669
+<span class="o">(</span>...<span class="o">)</span>
+<span class="w">     </span><span class="m">2880</span><span class="w">     </span><span class="m">0</span>.99998268<span class="w">     </span><span class="m">0</span>.00001732
+<span class="w">     </span><span class="m">2881</span><span class="w">     </span><span class="m">0</span>.99998302<span class="w">     </span><span class="m">0</span>.00001698
+<span class="w">     </span><span class="m">2882</span><span class="w">     </span><span class="m">0</span>.99998337<span class="w">     </span><span class="m">0</span>.00001663
+<span class="w">     </span><span class="m">2883</span><span class="w">     </span><span class="m">0</span>.99998372<span class="w">     </span><span class="m">0</span>.00001628
+<span class="w">     </span><span class="m">2884</span><span class="w">     </span><span class="m">0</span>.99998407<span class="w">     </span><span class="m">0</span>.00001593
+<span class="w">     </span><span class="m">2885</span><span class="w">     </span><span class="m">0</span>.99998442<span class="w">     </span><span class="m">0</span>.00001558
+<span class="w">     </span><span class="m">2886</span><span class="w">     </span><span class="m">0</span>.99998477<span class="w">     </span><span class="m">0</span>.00001523
+<span class="w">     </span><span class="m">2887</span><span class="w">     </span><span class="m">0</span>.99998512<span class="w">     </span><span class="m">0</span>.00001488
+<span class="w">     </span><span class="m">2888</span><span class="w">     </span><span class="m">0</span>.99998546<span class="w">     </span><span class="m">0</span>.00001454
+<span class="w">     </span><span class="m">2889</span><span class="w">     </span><span class="m">0</span>.99998580<span class="w">     </span><span class="m">0</span>.00001420
+<span class="w">     </span><span class="m">2890</span><span class="w">     </span><span class="m">0</span>.99998614<span class="w">     </span><span class="m">0</span>.00001386
+</pre></div>
+</div>
+<p>The population changes when the particle passes the avoided crossing
+and the electronic state eventually collapses to the ground state due to the decoherence correction.
+The electronic coefficients are to be reset when the density matrix becomes diagonal, that is, an adiabatic state is recovered during the dynamics.
+In this case, the reset happened near Step 2000.
+If you plot them as a function of MD steps, it looks like the following.</p>
+<a class="reference internal image-reference" href="_images/ppop.png"><img alt="_images/ppop.png" src="_images/ppop.png" style="width: 400pt;" /></a>
+<ul class="simple">
+<li><p>BOCOH</p></li>
+</ul>
+<p>This file shows off-diagonal elements of the density matrix,
+so there are only two columns for real and imaginary components of the one off-diagonal element when <strong>nstates</strong> = <em>2</em>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#     Density Matrix: coherence Re-Im; see the manual for detail orders</span>
+<span class="w">        </span><span class="m">0</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">        </span><span class="m">1</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">        </span><span class="m">2</span><span class="w">     </span><span class="m">0</span>.00000013<span class="w">    </span>-0.00000000
+<span class="w">        </span><span class="m">3</span><span class="w">     </span><span class="m">0</span>.00000040<span class="w">    </span>-0.00000001
+<span class="w">        </span><span class="m">4</span><span class="w">     </span><span class="m">0</span>.00000079<span class="w">    </span>-0.00000002
+<span class="w">        </span><span class="m">5</span><span class="w">     </span><span class="m">0</span>.00000132<span class="w">    </span>-0.00000004
+<span class="w">        </span><span class="m">6</span><span class="w">     </span><span class="m">0</span>.00000197<span class="w">    </span>-0.00000007
+<span class="w">        </span><span class="m">7</span><span class="w">     </span><span class="m">0</span>.00000276<span class="w">    </span>-0.00000012
+<span class="w">        </span><span class="m">8</span><span class="w">     </span><span class="m">0</span>.00000368<span class="w">    </span>-0.00000019
+<span class="w">        </span><span class="m">9</span><span class="w">     </span><span class="m">0</span>.00000473<span class="w">    </span>-0.00000027
+<span class="o">(</span>...<span class="o">)</span>
+<span class="w">     </span><span class="m">1110</span><span class="w">     </span><span class="m">0</span>.26768393<span class="w">    </span>-0.29295544
+<span class="w">     </span><span class="m">1111</span><span class="w">     </span><span class="m">0</span>.26503720<span class="w">    </span>-0.29427900
+<span class="w">     </span><span class="m">1112</span><span class="w">     </span><span class="m">0</span>.26238625<span class="w">    </span>-0.29559935
+<span class="w">     </span><span class="m">1113</span><span class="w">     </span><span class="m">0</span>.25973087<span class="w">    </span>-0.29691633
+<span class="w">     </span><span class="m">1114</span><span class="w">     </span><span class="m">0</span>.25707089<span class="w">    </span>-0.29822977
+<span class="w">     </span><span class="m">1115</span><span class="w">     </span><span class="m">0</span>.25440609<span class="w">    </span>-0.29953952
+<span class="w">     </span><span class="m">1116</span><span class="w">     </span><span class="m">0</span>.25175133<span class="w">    </span>-0.30086314
+<span class="w">     </span><span class="m">1117</span><span class="w">     </span><span class="m">0</span>.24898586<span class="w">    </span>-0.30218251
+<span class="w">     </span><span class="m">1118</span><span class="w">     </span><span class="m">0</span>.24621450<span class="w">    </span>-0.30349715
+<span class="w">     </span><span class="m">1119</span><span class="w">     </span><span class="m">0</span>.24343700<span class="w">    </span>-0.30480680
+<span class="w">     </span><span class="m">1120</span><span class="w">     </span><span class="m">0</span>.24065311<span class="w">    </span>-0.30611125
+<span class="o">(</span>...<span class="o">)</span>
+<span class="w">     </span><span class="m">2880</span><span class="w">     </span><span class="m">0</span>.00329890<span class="w">     </span><span class="m">0</span>.00253652
+<span class="w">     </span><span class="m">2881</span><span class="w">     </span><span class="m">0</span>.00339667<span class="w">     </span><span class="m">0</span>.00233222
+<span class="w">     </span><span class="m">2882</span><span class="w">     </span><span class="m">0</span>.00348245<span class="w">     </span><span class="m">0</span>.00212230
+<span class="w">     </span><span class="m">2883</span><span class="w">     </span><span class="m">0</span>.00355592<span class="w">     </span><span class="m">0</span>.00190750
+<span class="w">     </span><span class="m">2884</span><span class="w">     </span><span class="m">0</span>.00361681<span class="w">     </span><span class="m">0</span>.00168860
+<span class="w">     </span><span class="m">2885</span><span class="w">     </span><span class="m">0</span>.00366490<span class="w">     </span><span class="m">0</span>.00146636
+<span class="w">     </span><span class="m">2886</span><span class="w">     </span><span class="m">0</span>.00369999<span class="w">     </span><span class="m">0</span>.00124157
+<span class="w">     </span><span class="m">2887</span><span class="w">     </span><span class="m">0</span>.00372196<span class="w">     </span><span class="m">0</span>.00101502
+<span class="w">     </span><span class="m">2888</span><span class="w">     </span><span class="m">0</span>.00373072<span class="w">     </span><span class="m">0</span>.00078753
+<span class="w">     </span><span class="m">2889</span><span class="w">     </span><span class="m">0</span>.00372624<span class="w">     </span><span class="m">0</span>.00055990
+<span class="w">     </span><span class="m">2890</span><span class="w">     </span><span class="m">0</span>.00370853<span class="w">     </span><span class="m">0</span>.00033293
+</pre></div>
+</div>
+<p>You can consider (de)coherence indicators given as the magnitude squares of the off-diagonal element.
+If you plot them as a function of MD steps, it looks like the following.</p>
+<a class="reference internal image-reference" href="_images/pcoh.png"><img alt="_images/pcoh.png" src="_images/pcoh.png" style="width: 400pt;" /></a>
+<ul class="simple">
+<li><p>NACME</p></li>
+</ul>
+<p>This file shows the nonadiabatic coupling matrix elements.
+You can check that there are finite values when the particle passes the avoided crossing.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#    Non-Adiabatic Coupling Matrix Elements: off-diagonal</span>
+<span class="w">         </span><span class="m">0</span><span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">         </span><span class="m">1</span><span class="w">    </span>-0.00000026
+<span class="w">         </span><span class="m">2</span><span class="w">    </span>-0.00000053
+<span class="w">         </span><span class="m">3</span><span class="w">    </span>-0.00000079
+<span class="w">         </span><span class="m">4</span><span class="w">    </span>-0.00000105
+<span class="w">         </span><span class="m">5</span><span class="w">    </span>-0.00000132
+<span class="w">         </span><span class="m">6</span><span class="w">    </span>-0.00000158
+<span class="w">         </span><span class="m">7</span><span class="w">    </span>-0.00000185
+<span class="w">         </span><span class="m">8</span><span class="w">    </span>-0.00000211
+<span class="w">         </span><span class="m">9</span><span class="w">    </span>-0.00000237
+<span class="o">(</span>...<span class="o">)</span>
+<span class="w">       </span><span class="m">990</span><span class="w">    </span>-0.01638578
+<span class="w">       </span><span class="m">991</span><span class="w">    </span>-0.01646735
+<span class="w">       </span><span class="m">992</span><span class="w">    </span>-0.01654045
+<span class="w">       </span><span class="m">993</span><span class="w">    </span>-0.01660486
+<span class="w">       </span><span class="m">994</span><span class="w">    </span>-0.01666035
+<span class="w">       </span><span class="m">995</span><span class="w">    </span>-0.01670674
+<span class="w">       </span><span class="m">996</span><span class="w">    </span>-0.01674388
+<span class="w">       </span><span class="m">997</span><span class="w">    </span>-0.01677165
+<span class="w">       </span><span class="m">998</span><span class="w">    </span>-0.01678995
+<span class="w">       </span><span class="m">999</span><span class="w">    </span>-0.01679871
+<span class="w">      </span><span class="m">1000</span><span class="w">    </span>-0.01679791
+<span class="o">(</span>...<span class="o">)</span>
+</pre></div>
+</div>
+<p>If you plot them as a function of MD steps, it looks like the following.</p>
+<a class="reference internal image-reference" href="_images/pnacme.png"><img alt="_images/pnacme.png" src="_images/pnacme.png" style="width: 400pt;" /></a>
+<ul class="simple">
+<li><p>SHPROB</p></li>
+</ul>
+<p>This file shows the hopping probabilities from the running state to the others at each MD step.
+You can check the running state from ‘SHSTATE’ file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#    Step        Prob(0)        Prob(1)</span>
+<span class="w">        </span><span class="m">0</span><span class="w">    </span>-0.00000000<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">        </span><span class="m">1</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">        </span><span class="m">2</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">        </span><span class="m">3</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">        </span><span class="m">4</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">        </span><span class="m">5</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">        </span><span class="m">6</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">        </span><span class="m">7</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">        </span><span class="m">8</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">        </span><span class="m">9</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">0</span>.00000000
+<span class="o">(</span>...<span class="o">)</span>
+<span class="w">     </span><span class="m">1110</span><span class="w">     </span><span class="m">0</span>.00513368<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">     </span><span class="m">1111</span><span class="w">     </span><span class="m">0</span>.00503911<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">     </span><span class="m">1112</span><span class="w">     </span><span class="m">0</span>.00494556<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">     </span><span class="m">1113</span><span class="w">     </span><span class="m">0</span>.00485301<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">     </span><span class="m">1114</span><span class="w">     </span><span class="m">0</span>.00476146<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">     </span><span class="m">1115</span><span class="w">     </span><span class="m">0</span>.00467091<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">     </span><span class="m">1116</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">     </span><span class="m">1117</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">     </span><span class="m">1118</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">     </span><span class="m">1119</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">0</span>.00000000
+<span class="w">     </span><span class="m">1120</span><span class="w">     </span><span class="m">0</span>.00000000<span class="w">     </span><span class="m">0</span>.00000000
+<span class="o">(</span>...<span class="o">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>SHSTATE</p></li>
+</ul>
+<p>This file shows the running state at each MD step.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#    Step    Running State</span>
+<span class="w">        </span><span class="m">0</span><span class="w">              </span><span class="m">1</span>
+<span class="w">        </span><span class="m">1</span><span class="w">              </span><span class="m">1</span>
+<span class="w">        </span><span class="m">2</span><span class="w">              </span><span class="m">1</span>
+<span class="w">        </span><span class="m">3</span><span class="w">              </span><span class="m">1</span>
+<span class="w">        </span><span class="m">4</span><span class="w">              </span><span class="m">1</span>
+<span class="w">        </span><span class="m">5</span><span class="w">              </span><span class="m">1</span>
+<span class="w">        </span><span class="m">6</span><span class="w">              </span><span class="m">1</span>
+<span class="w">        </span><span class="m">7</span><span class="w">              </span><span class="m">1</span>
+<span class="w">        </span><span class="m">8</span><span class="w">              </span><span class="m">1</span>
+<span class="w">        </span><span class="m">9</span><span class="w">              </span><span class="m">1</span>
+<span class="o">(</span>...<span class="o">)</span>
+<span class="w">     </span><span class="m">1110</span><span class="w">              </span><span class="m">1</span>
+<span class="w">     </span><span class="m">1111</span><span class="w">              </span><span class="m">1</span>
+<span class="w">     </span><span class="m">1112</span><span class="w">              </span><span class="m">1</span>
+<span class="w">     </span><span class="m">1113</span><span class="w">              </span><span class="m">1</span>
+<span class="w">     </span><span class="m">1114</span><span class="w">              </span><span class="m">1</span>
+<span class="w">     </span><span class="m">1115</span><span class="w">              </span><span class="m">0</span>
+<span class="w">     </span><span class="m">1116</span><span class="w">              </span><span class="m">0</span>
+<span class="w">     </span><span class="m">1117</span><span class="w">              </span><span class="m">0</span>
+<span class="w">     </span><span class="m">1118</span><span class="w">              </span><span class="m">0</span>
+<span class="w">     </span><span class="m">1119</span><span class="w">              </span><span class="m">0</span>
+<span class="w">     </span><span class="m">1120</span><span class="w">              </span><span class="m">0</span>
+<span class="o">(</span>...<span class="o">)</span>
+</pre></div>
+</div>
+<p>You can check the effect of the decoherence by performing a FSSH calculation
+by changing the MD setting in the above running script:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">md</span> <span class="o">=</span> <span class="n">mqc</span><span class="o">.</span><span class="n">SH</span><span class="p">(</span><span class="n">molecule</span><span class="o">=</span><span class="n">mol</span><span class="p">,</span> <span class="n">nsteps</span><span class="o">=</span><span class="mi">2890</span><span class="p">,</span> <span class="n">nesteps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">unit_dt</span><span class="o">=</span><span class="s1">&#39;au&#39;</span><span class="p">,</span> \
+     <span class="n">istate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">elec_object</span><span class="o">=</span><span class="s2">&quot;density&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then the populations and the coherence will be shown like this.</p>
+<a class="reference internal image-reference" href="_images/pcomp.png"><img alt="_images/pcomp.png" src="_images/pcomp.png" style="width: 400pt;" /></a>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="workflow.html" class="btn btn-neutral float-left" title="3. Workflow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="objects/main.html" class="btn btn-neutral float-right" title="5. PyUNIxMD Objects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, mingroup.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
