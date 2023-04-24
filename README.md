@@ -6,6 +6,11 @@ This repository is for containing hands-on materials for pyUNIxMD.
 
 To try these hands-on tutorials, you need to install the pyUNIxMD package [J. Comput. Chem. 2021, 42, 1755-1766] and set environment for DFTB+[J. Chem. Phys. 2020, 152, 124101].
 
+Videos and slides for hands-on instruction can be found in (this link)[https://compchem-cybertraining.github.io/Cyber_Training_Workshop_2022/_episodes/09-pyunixmd].
+
+
+
+
 Installation of pyUNIxMD
 ------------------------
 You can install pyUNIxMD from its Github page.
