@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tinker &mdash; PyUNIxMD  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="MQC" href="../mqc/main.html" />
+    <link rel="prev" title="MM_calculator" href="main.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../unixmd.html" class="icon icon-home">
+            PyUNIxMD
+          </a>
+              <div class="version">
+                21.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">1. PyUNIxMD Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflow.html">3. Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">4. Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main.html">5. PyUNIxMD Objects</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../system_bath/main.html">System &amp; Bath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qm/main.html">QM_calculator</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="main.html">MM_calculator</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Tinker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#detailed-description-of-parameters">Detailed description of parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mqc/main.html">MQC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/main.html">6. Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility_scripts.html">7. PyUNIxMD utility scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/main.html">8. References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../unixmd.html">PyUNIxMD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../unixmd.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../main.html"><span class="section-number">5. </span>PyUNIxMD Objects</a></li>
+          <li class="breadcrumb-item"><a href="main.html">MM_calculator</a></li>
+      <li class="breadcrumb-item active">Tinker</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/objects/mm/prog_tinker.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tinker">
+<h1>Tinker<a class="headerlink" href="#tinker" title="Permalink to this heading"></a></h1>
+<p>Tinker <span id="id1">[<a class="reference internal" href="../../references/main.html#id19" title="Joshua A. Rackers, Zhi Wang, Chao Lu, Marie L. Laury, Louis Lagardére, Michael J. Schnieders, Jean-Philip Piquemal, Pengyu Ren, and Jay W. Ponder. Tinker 8: software tools for molecular design. Journal of Chemical Theory and Computation, 14:5273-5289, 2018.">23</a>]</span> is a complete and general package for molecular mechanics and dynamics, with some special
+features for biopolymers. Tinker has the ability to use any of several common parameter sets, such
+as Amber (ff94, ff96, ff98, ff99, ff99SB), CHARMM (19, 22, 22/CMAP), Allinger MM (MM2-1991 and
+MM3-2000), OPLS (OPLS-UA, OPLS-AA), Merck Molecular Force (MMFF), Liam Dang’s polarizable model,
+AMOEBA (2004, 2009, 2013, 2017, 2018) polarizable atomic multipole force fields, AMOEBA+ that adds
+charge penetration effects, and HIPPO (Hydrogen-like Interatomic Polarizable POtential) force field.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameters</p></th>
+<th class="head"><p>Work</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>molecule</strong>
+(<code class="xref py py-class docutils literal notranslate"><span class="pre">Molecule</span></code>)</p></td>
+<td><p>Molecule object</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>scheme</strong>
+<em>(string)</em></p></td>
+<td><p>Type of QM/MM scheme</p></td>
+<td><p><em>None</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>embedding</strong>
+<em>(string)</em></p></td>
+<td><p>Charge embedding options</p></td>
+<td><p><em>None</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>vdw</strong>
+<em>(string)</em></p></td>
+<td><p>Van der Waals interactions</p></td>
+<td><p><em>None</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>l_periodic</strong>
+<em>(boolean)</em></p></td>
+<td><p>Use periodicity in the calculations</p></td>
+<td><p><em>False</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>cell_par</strong>
+<em>(double, list)</em></p></td>
+<td><p>Cell lattice parameters (lengths and angles)</p></td>
+<td><p><em>6 * [ 0.0 ]</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>xyz_file</strong>
+<em>(string)</em></p></td>
+<td><p>Initial tinker.xyz file</p></td>
+<td><p><em>‘./tinker.xyz’</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>key_file</strong>
+<em>(string)</em></p></td>
+<td><p>Initial tinker.key file</p></td>
+<td><p><em>‘./tinker.key’</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>mm_path</strong>
+<em>(string)</em></p></td>
+<td><p>Path for MM binary</p></td>
+<td><p><em>‘./’</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>nthreads</strong>
+<em>(integer)</em></p></td>
+<td><p>Number of threads in the calculations</p></td>
+<td><p><em>1</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>version</strong>
+<em>(string)</em></p></td>
+<td><p>Version of Tinker</p></td>
+<td><p><em>‘8.7’</em></p></td>
+</tr>
+</tbody>
+</table>
+<section id="detailed-description-of-parameters">
+<h2>Detailed description of parameters<a class="headerlink" href="#detailed-description-of-parameters" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p><strong>scheme</strong> <em>(string)</em> - Default: <em>None</em></p>
+<p>This parameter specifies type of the QM/MM scheme. The current version of PyUNIxMD supports two types of the QM/MM scheme.
+One is the subtractive scheme and the other is the additive scheme. The detailed expressions for
+these schemes are given in the literature. <span id="id2">[<a class="reference internal" href="../../references/main.html#id20" title="H. M. Senn and W. Thiel. Qm/mm methods for biomolecular systems. Angewandte Chemie International Edition, 48:1198-1229, 2009.">24</a>]</span></p>
+<ul class="simple">
+<li><p><em>‘additive’</em>: Total three calculations was carried out, which correspond
+to a QM calculation on the inner region, an MM calculation on the outer region,
+and an explicit QM-MM coupling term, respectively. In general, it is
+recommended to use the additive scheme for solution systems.</p></li>
+<li><p><em>‘subtractive’</em>: Total three calculations was carried out, which correspond
+to a QM calculation on the inner region, an MM calculation on the entire region,
+and an MM calculation on the inner region, respectively. In this scheme,
+no explicit QM-MM coupling terms are needed since they are implicitly included
+in three calculations. It is recommended to use the subtractive scheme for proteins.</p></li>
+</ul>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>embedding</strong> <em>(string)</em> - Default: <em>None</em></p>
+<p>This parameter specifies type of charge-charge interactions between the inner and outer regions.
+Current version of PyUNIxMD supports two types of charge-charge embedding.
+One is mechanical interaction and the other is electrostatic interaction.
+The <strong>embedding</strong> of the MM object must be same with the <strong>embedding</strong> defined in the QM object.
+If this parameter is <em>None</em>, the charge-charge embedding is not included in the QM/MM calculation.</p>
+<ul class="simple">
+<li><p><em>‘mechanical’</em>: The charge-charge interactions are treated at MM level.
+The energies are calculated from the interactions between point charges.</p></li>
+<li><p><em>‘electrostatic’</em>: The charge-charge interactions are treated at QM level.
+The point charges of the outer regions are added to the one-electron terms of the
+Hamiltonian in QM calculation. Hence, the polarization effect from the point charges are considered in this embedding.</p></li>
+</ul>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>vdw</strong> <em>(string)</em> - Default: <em>None</em></p>
+<p>This parameter specifies type of van der Waals interactions between the inner and outer regions.
+Current version of PyUNIxMD supports one type of van der Waals interaction,
+which is the Lennard-Jones interaction. The other types of van der Waals
+interactions provided in Tinker are not currently interfaced with PyUNIxMD.
+If this parameter is <em>None</em>, the van der Waals interactions are not included in the QM/MM calculation.</p>
+<ul class="simple">
+<li><p><em>‘lennardjones’</em>: The Lennard-Jones interactions are used for van der Waals interactions.</p></li>
+</ul>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>l_periodic</strong> <em>(boolean)</em> - Default: <em>False</em></p>
+<p>When <strong>l_periodic</strong> is set to <em>True</em>, a periodicity is considered in the calculation.
+Only <span class="math notranslate nohighlight">\(\Gamma\)</span>-point sampling is supported with Tinker when the periodicity is considered.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>cell_par</strong> <em>(double, list)</em> - Default: <em>6 * [ 0.0 ]</em></p>
+<p>This parameter specifies cell lattice parameters of the periodic unit cell.
+The list consists of six elements and first three elements correspond to
+the <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, and <span class="math notranslate nohighlight">\(c\)</span> lengths while the last three
+elements correspond to the <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(\beta\)</span>, and <span class="math notranslate nohighlight">\(\gamma\)</span> angles, respectively.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>xyz_file</strong> <em>(string)</em> - Default: <em>‘./tinker.xyz’</em></p>
+<p>This parameter specifies a TINKER Cartesian coordinates file of the initial geometry.
+This file must include correct atom types and bonding information.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>key_file</strong> <em>(string)</em> - Default: <em>‘./tinker.key’</em></p>
+<p>This parameter specifies initial ‘tinker.key’ file used in the calculations. The keywords of Tinker
+except <strong>embedding</strong>, <strong>vdw</strong>, and the periodicity can be included in this file.
+For example, if you want to add some constraints to the systems, then
+the related keywords can be added to the ‘tinker.key’ file.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>mm_path</strong> <em>(string)</em> - Default: <em>‘./’</em></p>
+<p>Path for Tinker binary. In our interfacing scripts, the executable file,
+‘testgrad’ (or ‘testgrad.x’) is used to calculate the energies and forces in MM level.</p>
+<p>This parameter determines a path for Tinker binaries such as testgrad.
+(For example, ‘/my_disk/my_name/Tinker/bin/’).</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>nthreads</strong> <em>(integer)</em> - Default: <em>1</em></p>
+<p>This parameter specifies number of threads in the calculation. To use this option, you must check
+that your binaries of Tinker supports OpenMP parallelization.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>version</strong> <em>(string)</em> - Default: <em>‘8.7’</em></p>
+<p>This parameter determines the version of Tinker.
+PyUNIxMD is currently based on version 8.7 of Tinker.</p>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="main.html" class="btn btn-neutral float-left" title="MM_calculator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../mqc/main.html" class="btn btn-neutral float-right" title="MQC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, mingroup.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

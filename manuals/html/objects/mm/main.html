@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MM_calculator &mdash; PyUNIxMD  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tinker" href="prog_tinker.html" />
+    <link rel="prev" title="Model Systems" href="../qm/model.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../unixmd.html" class="icon icon-home">
+            PyUNIxMD
+          </a>
+              <div class="version">
+                21.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">1. PyUNIxMD Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflow.html">3. Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">4. Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main.html">5. PyUNIxMD Objects</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../system_bath/main.html">System &amp; Bath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qm/main.html">QM_calculator</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">MM_calculator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="prog_tinker.html">Tinker</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mqc/main.html">MQC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/main.html">6. Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility_scripts.html">7. PyUNIxMD utility scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/main.html">8. References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../unixmd.html">PyUNIxMD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../unixmd.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../main.html"><span class="section-number">5. </span>PyUNIxMD Objects</a></li>
+      <li class="breadcrumb-item active">MM_calculator</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/objects/mm/main.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mm-calculator">
+<h1>MM_calculator<a class="headerlink" href="#mm-calculator" title="Permalink to this heading"></a></h1>
+<p>The propagation of molecular dynamics needs the information about potential enrgy surfaces.
+The object for MM calculator should be constructed in PyUNIxMD to evaluate the energies
+and the forces in QM/MM calculation. PyUNIxMD interfaces with the following in the current version.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="prog_tinker.html">Tinker</a></li>
+</ul>
+</div>
+<p>Only one MM program is supported in the current version of PyUNIxMD.
+If you want to add an interface of other programs such as Gromacs, you can refer to the Tinker interface.
+The key method of the MM interface is <code class="docutils literal notranslate"><span class="pre">get_data</span></code> method which makes input files, executes calculations and extracts information at every MD step.
+Detailed description of the <code class="docutils literal notranslate"><span class="pre">get_data</span></code> method is given in <a class="reference internal" href="../../modules/main.html#module-mm"><span class="std std-ref">Modules</span></a>.</p>
+<p><strong>Ex.</strong> Making an MM object with Tinker</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mm</span>
+
+<span class="n">mm</span> <span class="o">=</span> <span class="n">mm</span><span class="o">.</span><span class="n">Tinker</span><span class="p">(</span><span class="n">molecule</span><span class="o">=</span><span class="n">mol</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;subtractive&quot;</span><span class="p">,</span> <span class="n">l_periodic</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">xyz_file</span><span class="o">=</span><span class="s2">&quot;./tinker.xyz&quot;</span><span class="p">,</span> \
+    <span class="n">key_file</span><span class="o">=</span><span class="s2">&quot;./tinker.key&quot;</span><span class="p">,</span> <span class="n">embedding</span><span class="o">=</span><span class="s2">&quot;electrostatic&quot;</span><span class="p">,</span> <span class="n">vdw</span><span class="o">=</span><span class="s2">&quot;lennardjones&quot;</span><span class="p">,</span> \
+    <span class="n">mm_path</span><span class="o">=</span><span class="s2">&quot;/opt/tinker/bin/&quot;</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;8.7&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For QM/MM calculation, you must define <strong>scheme</strong> variable.
+In addition, the same <strong>embedding</strong> variable of the MM object should be used when one generate a QM object.</p>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../qm/model.html" class="btn btn-neutral float-left" title="Model Systems" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="prog_tinker.html" class="btn btn-neutral float-right" title="Tinker" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, mingroup.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

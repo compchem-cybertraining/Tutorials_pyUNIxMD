@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOMD &mdash; PyUNIxMD  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CTMQC" href="ct.html" />
+    <link rel="prev" title="MQC" href="main.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../unixmd.html" class="icon icon-home">
+            PyUNIxMD
+          </a>
+              <div class="version">
+                21.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">1. PyUNIxMD Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflow.html">3. Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">4. Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main.html">5. PyUNIxMD Objects</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../system_bath/main.html">System &amp; Bath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qm/main.html">QM_calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mm/main.html">MM_calculator</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="main.html">MQC</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">BOMD</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#detailed-description-of-the-parameters">Detailed description of the parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ct.html">CTMQC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eh.html">Ehrenfest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sh.html">Surface Hopping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shxf.html">DISH-XF</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/main.html">6. Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility_scripts.html">7. PyUNIxMD utility scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/main.html">8. References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../unixmd.html">PyUNIxMD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../unixmd.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../main.html"><span class="section-number">5. </span>PyUNIxMD Objects</a></li>
+          <li class="breadcrumb-item"><a href="main.html">MQC</a></li>
+      <li class="breadcrumb-item active">BOMD</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/objects/mqc/bomd.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bomd">
+<h1>BOMD<a class="headerlink" href="#bomd" title="Permalink to this heading"></a></h1>
+<p>The Born-Oppenheimer molecular dynamics (BOMD) is the most simplified form of the mixed
+quantum-classical dynamics, considering only a <em>single</em> potential energy surface.
+Briefly, the molecular wave function is approximated to a product between an eigenfunction of the
+Born-Oppenheimer Hamiltonian and its corresponding nuclear wave function as follows.</p>
+<div class="math notranslate nohighlight">
+\[\Psi(\underline{\underline{\mathbf{r}}},\underline{\underline{\mathbf{R}}},t) \approx
+\chi_{i}(\underline{\underline{\mathbf{R}}},t) \Phi_{i}(\underline{\underline{\mathbf{r}}};
+\underline{\underline{\mathbf{R}}}(t)),\]</div>
+<p>where <span class="math notranslate nohighlight">\(\underline{\underline{\mathbf{r}}}\)</span> is the collective index for electrons,
+<span class="math notranslate nohighlight">\(\underline{\underline{\mathbf{R}}}\)</span> is for nuclei, and the subscript <span class="math notranslate nohighlight">\(i\)</span>
+stands for an index of the eigenfunctions. The electronic wave function is parametrically
+dependent on <span class="math notranslate nohighlight">\(\underline{\underline{\mathbf{R}}}\)</span> given at each time t. Plugging
+the above product into the full molecular time-dependent Schroedinger equation and
+approximating the nuclear equation further within the quantum hydrodynamic formulation
+<span id="id1">[<a class="reference internal" href="../../references/main.html#id22" title="E. Madelung. Quantentheorie in hydrodynamischer form. Zeitschrift für Physik, 40:322-326, 1927.">25</a>]</span> <span id="id2">[<a class="reference internal" href="../../references/main.html#id21" title="J. J. Sakurai and S. F. Tuan. Modern quantum mechanics. Addison-Wesly, Boston, 1994.">26</a>]</span>, the coupled equations are deduced. The BO quantities are given only at positions belonging to a classical trajectory <span class="math notranslate nohighlight">\(\left\{\underline{\underline{\mathbf{R}}}^{(I)}(t) \right\}\)</span> from the dynamics.</p>
+<div class="math notranslate nohighlight">
+\[M_{\nu} \ddot{\mathbf{R}}_{\nu}^{(I)}(t) = - \nabla_{\nu}E_{i}^{(I)}(t),\]</div>
+<div class="math notranslate nohighlight">
+\[\hat{H}_{\mathrm{BO}}\Phi_{i}^{(I)}(t)
+ = E_{i}^{(I)}(t) \Phi_{i}^{(I)}(t),\]</div>
+<p>where <span class="math notranslate nohighlight">\(E_{i}^{(I)}(t)\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>-th BO energy eigenvalue, <span class="math notranslate nohighlight">\(\nu\)</span> is the index for each nucleus, and the superscript <span class="math notranslate nohighlight">\((I)\)</span> stands for the given trajectory <span class="math notranslate nohighlight">\(\left\{\underline{\underline{\mathbf{R}}}^{(I)}(t) \right\}\)</span>.</p>
+<p>In this implementation, the eigenvalue gradient (the negative BO force) of a given
+target state is provided by external electronic structure softwares
+or customized Hamiltonians, and the nuclear propagation is done by the Velocity-Verlet algorithm.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameters</p></th>
+<th class="head"><p>Work</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>molecule</strong>
+(<code class="xref py py-class docutils literal notranslate"><span class="pre">Molecule</span></code>)</p></td>
+<td><p>Molecule object</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>thermostat</strong>
+(<code class="xref py py-class docutils literal notranslate"><span class="pre">Thermostat</span></code>)</p></td>
+<td><p>Thermostat object</p></td>
+<td><p><em>None</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>istate</strong>
+<em>(integer)</em></p></td>
+<td><p>Electronic state</p></td>
+<td><p><em>0</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>dt</strong>
+<em>(double)</em></p></td>
+<td><p>Time interval</p></td>
+<td><p><em>0.5</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>nsteps</strong>
+<em>(integer)</em></p></td>
+<td><p>Total step of nuclear propagation</p></td>
+<td><p><em>1000</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>unit_dt</strong>
+<em>(string)</em></p></td>
+<td><p>Unit of time interval</p></td>
+<td><p><em>‘fs’</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>out_freq</strong>
+<em>(integer)</em></p></td>
+<td><p>Frequency of printing output</p></td>
+<td><p><em>1</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>verbosity</strong>
+<em>(integer)</em></p></td>
+<td><p>Verbosity of output</p></td>
+<td><p><em>0</em></p></td>
+</tr>
+</tbody>
+</table>
+<section id="detailed-description-of-the-parameters">
+<h2>Detailed description of the parameters<a class="headerlink" href="#detailed-description-of-the-parameters" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p><strong>istate</strong> <em>(integer)</em> - Default: <em>0</em> (Ground state)</p>
+<p>This parameter specifies the adiabatic state which provides the potential energy surface nuclei follow. The possible range is from <em>0</em> to <code class="docutils literal notranslate"><span class="pre">molecule.nst</span> <span class="pre">-</span> <span class="pre">1</span></code>.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>dt</strong> <em>(double)</em> - Default: <em>0.5</em></p>
+<p>This parameter determines the time interval of the nuclear time steps.
+You can select the unit of time for the dynamics with the <strong>unit_dt</strong> parameter.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>nsteps</strong> <em>(integer)</em> - Default: <em>1000</em></p>
+<p>This parameter determines the total number of the nuclear time steps.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>unit_dt</strong> <em>(string)</em> - Default: <em>‘fs’</em></p>
+<p>This parameter determines the unit of time for the simulation.</p>
+<ul class="simple">
+<li><p><em>‘fs’</em>: Femtosecond</p></li>
+<li><p><em>‘au’</em>: Atomic unit</p></li>
+</ul>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>out_freq</strong> <em>(integer)</em> - Default: <em>1</em></p>
+<p>PyUNIxMD prints and writes the dynamics information at every <strong>out_freq</strong> time steps.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>verbosity</strong> <em>(integer)</em> - Default: <em>0</em></p>
+<p>This parameter determines the verbosity of the output files and stream.
+BOMD does not print or write any additional data.</p>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="main.html" class="btn btn-neutral float-left" title="MQC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ct.html" class="btn btn-neutral float-right" title="CTMQC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, mingroup.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TeraChem &mdash; PyUNIxMD  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="TURBOMOLE" href="prog_turbomole.html" />
+    <link rel="prev" title="Q-Chem" href="prog_qchem.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../unixmd.html" class="icon icon-home">
+            PyUNIxMD
+          </a>
+              <div class="version">
+                21.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">1. PyUNIxMD Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflow.html">3. Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">4. Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main.html">5. PyUNIxMD Objects</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../system_bath/main.html">System &amp; Bath</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="main.html">QM_calculator</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="prog_columbus.html">Columbus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prog_dftbplus.html">DFTB+</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prog_gaussian09.html">Gaussian 09</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prog_molpro.html">Molpro</a></li>
+<li class="toctree-l3"><a class="reference internal" href="prog_qchem.html">Q-Chem</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">TeraChem</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ssr">SSR</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="prog_turbomole.html">TURBOMOLE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="model.html">Model Systems</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mm/main.html">MM_calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mqc/main.html">MQC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/main.html">6. Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility_scripts.html">7. PyUNIxMD utility scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/main.html">8. References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../unixmd.html">PyUNIxMD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../unixmd.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../main.html"><span class="section-number">5. </span>PyUNIxMD Objects</a></li>
+          <li class="breadcrumb-item"><a href="main.html">QM_calculator</a></li>
+      <li class="breadcrumb-item active">TeraChem</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/objects/qm/prog_terachem.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="terachem">
+<h1>TeraChem<a class="headerlink" href="#terachem" title="Permalink to this heading"></a></h1>
+<p>TeraChem <span id="id1">[<a class="reference internal" href="../../references/main.html#id9" title="I. S. Ufimtsev and T. J. Martínez. Quantum chemistry on graphical processing units. 1. strategies for two-electron integral evaluation. Journal of Chemical Theory and Computation, 4:222-231, 2008.">11</a>, <a class="reference internal" href="../../references/main.html#id10" title="I. S. Ufimtsev and T. J. Martínez. Quantum chemistry on graphical processing units. 2. direct self-consistent-field implementation. Journal of Chemical Theory and Computation, 5:1004-1015, 2009.">12</a>, <a class="reference internal" href="../../references/main.html#id11" title="I. S. Ufimtsev and T. J. Martínez. Quantum chemistry on graphical processing units. 3. analytical energy gradients, geometry optimization, and first principles molecular dynamics. Journal of Chemical Theory and Computation, 5:2619-2628, 2009.">13</a>, <a class="reference internal" href="../../references/main.html#id12" title="I. S. Ufimtsev and T. J. Martínez. Graphical processing units for quantum chemistry. Computing in Science &amp; Engineering, 10:26-34, 2008.">20</a>, <a class="reference internal" href="../../references/main.html#id13" title="A. V. Titov, I. S. Ufimtsev, N. Luehr, and T. J. Martínez. Generating efficient quantum chemistry codes for novel architectures. Journal of Chemical Theory and Computation, 9:213-221, 2013.">21</a>, <a class="reference internal" href="../../references/main.html#id14" title="C. Song, L.-P. Wang, and T. J. Martínez. Automated code engine for graphical processing units: application to the effective core potential integrals and gradients. Journal of Chemical Theory and Computation, 12:92-106, 2016.">22</a>]</span> is general
+purpose quantum chemistry software designed to run on NVIDIA GPU
+architectures under a 64-bit Linux operating system. It includes many functionalities
+such as DFT or wave function based methods. Among them, the SSR method is interfaced with
+the current version of PyUNIxMD.</p>
+<ul class="simple">
+<li><p>In general, spin-restricted ensemble-referenced Kohn-Sham (REKS) method can be classified
+as single-state REKS, state-averaged REKS (SA-REKS) and state-interaction SA-REKS (SSR).
+In single-state REKS, only ground state is calculated and it can treat the multireference
+character. SA-REKS and SSR can calculate the excited state as well as ground state. The
+difference is that the state-interaction term is considered in SSR so that more accurate
+states can be generated. SSR can provide nonadiabatic couplings so it can be used for
+surface hopping or Ehrenfest dynamics.</p></li>
+</ul>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>BOMD</p></th>
+<th class="head"><p>SH(XF)</p></th>
+<th class="head"><p>Eh</p></th>
+<th class="head"><p>nac</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>single-state REKS</p></td>
+<td><p>o</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+</tr>
+<tr class="row-odd"><td><p>SA-REKS</p></td>
+<td><p>o</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+<td><p>x</p></td>
+</tr>
+<tr class="row-even"><td><p>SI-SA-REKS (SSR)</p></td>
+<td><p>o</p></td>
+<td><p>o</p></td>
+<td><p>o</p></td>
+<td><p>o</p></td>
+</tr>
+</tbody>
+</table>
+<section id="ssr">
+<h2>SSR<a class="headerlink" href="#ssr" title="Permalink to this heading"></a></h2>
+<p>PyUNIxMD automatically determines single-state REKS as BO interfaces for ground state BOMD.
+When we include the excited states, the SA-REKS or SSR methods can be exploited and these are
+determined from the <strong>l_state_interactions</strong> parameter.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the case of the SSR method, the calculation is possible only when the number
+of states (<code class="docutils literal notranslate"><span class="pre">molecule.nst</span></code>) is smaller than 4 due to the limited active space.
+If you want to treat more excited states, then increase the active space.</p>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameters</p></th>
+<th class="head"><p>Work</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>molecule</strong>
+(<code class="xref py py-class docutils literal notranslate"><span class="pre">Molecule</span></code>)</p></td>
+<td><p>Molecule object</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>basis_set</strong>
+<em>(string)</em></p></td>
+<td><p>Basis set information</p></td>
+<td><p><em>‘sto-3g’</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>functional</strong>
+<em>(string)</em></p></td>
+<td><p>Exchange-correlation functional information</p></td>
+<td><p><em>‘hf’</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>precision</strong>
+<em>(string)</em></p></td>
+<td><p>Precision in the calculations</p></td>
+<td><p><em>‘dynamic’</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>scf_wf_tol</strong>
+<em>(double)</em></p></td>
+<td><p>Wavefunction convergence for SCF iterations</p></td>
+<td><p><em>1E-2</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>scf_max_iter</strong>
+<em>(integer)</em></p></td>
+<td><p>Maximum number of SCF iterations</p></td>
+<td><p><em>300</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>active_space</strong>
+<em>(integer)</em></p></td>
+<td><p>Active space for SSR calculation</p></td>
+<td><p><em>2</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>guess</strong>
+<em>(string)</em></p></td>
+<td><p>Initial guess for REKS SCF iterations</p></td>
+<td><p><em>‘dft’</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>guess_file</strong>
+<em>(string)</em></p></td>
+<td><p>Initial guess file</p></td>
+<td><p><em>‘./c0’</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>reks_diis_tol</strong>
+<em>(double)</em></p></td>
+<td><p>DIIS error for REKS SCF iterations</p></td>
+<td><p><em>1E-6</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>reks_max_iter</strong>
+<em>(integer)</em></p></td>
+<td><p>Maximum number of REKS SCF iterations</p></td>
+<td><p><em>1000</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>shift</strong>
+<em>(double)</em></p></td>
+<td><p>Level shifting value in REKS SCF iterations</p></td>
+<td><p><em>0.3</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>l_state_interactions</strong>
+<em>(boolean)</em></p></td>
+<td><p>Include state-interaction terms to SA-REKS</p></td>
+<td><p><em>False</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>cpreks_grad_tol</strong>
+<em>(double)</em></p></td>
+<td><p>Gradient tolerance for CP-REKS equations</p></td>
+<td><p><em>1E-6</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>cpreks_max_iter</strong>
+<em>(integer)</em></p></td>
+<td><p>Maximum number of CP-REKS iterations</p></td>
+<td><p><em>1000</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>root_path</strong>
+<em>(string)</em></p></td>
+<td><p>Path for TeraChem root directory</p></td>
+<td><p><em>‘./’</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ngpus</strong>
+<em>(integer)</em></p></td>
+<td><p>Number of GPUs</p></td>
+<td><p><em>1</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>gpu_id</strong>
+<em>(integer, list)</em></p></td>
+<td><p>ID of used GPUs</p></td>
+<td><p><em>None</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>version</strong>
+<em>(string)</em></p></td>
+<td><p>Version of TeraChem</p></td>
+<td><p><em>‘1.93’</em></p></td>
+</tr>
+</tbody>
+</table>
+<section id="example-input-for-ssr">
+<h3>Example input for SSR<a class="headerlink" href="#example-input-for-ssr" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">molecule</span> <span class="kn">import</span> <span class="n">Molecule</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">qm</span><span class="o">,</span> <span class="nn">mqc</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="n">geom</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="linenos"> 5</span><span class="s1">3</span>
+<span class="linenos"> 6</span><span class="s1">example</span>
+<span class="linenos"> 7</span><span class="s1">O  1.14  3.77  0.00  0.00  0.00  0.00</span>
+<span class="linenos"> 8</span><span class="s1">H  2.11  3.77  0.00  0.00  0.00  0.00</span>
+<span class="linenos"> 9</span><span class="s1">H  0.81  4.45  0.60  0.00  0.00  0.00</span>
+<span class="linenos">10</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="n">mol</span> <span class="o">=</span> <span class="n">Molecule</span><span class="p">(</span><span class="n">geometry</span><span class="o">=</span><span class="n">geom</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">nstates</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">unit_pos</span><span class="o">=</span><span class="s1">&#39;angs&#39;</span><span class="p">)</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="n">qm</span> <span class="o">=</span> <span class="n">qm</span><span class="o">.</span><span class="n">terachem</span><span class="o">.</span><span class="n">SSR</span><span class="p">(</span><span class="n">molecule</span><span class="o">=</span><span class="n">mol</span><span class="p">,</span> <span class="n">active_space</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">guess</span><span class="o">=</span><span class="s1">&#39;dft&#39;</span><span class="p">,</span> <span class="n">basis_set</span><span class="o">=</span><span class="s1">&#39;sto-3g&#39;</span>\
+<span class="linenos">15</span>    <span class="n">l_state_interactions</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">shift</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">root_path</span><span class="o">=</span><span class="s1">&#39;/opt/terachem1.93/TeraChem/&#39;</span><span class="p">)</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="n">md</span> <span class="o">=</span> <span class="n">mqc</span><span class="o">.</span><span class="n">SHXF</span><span class="p">(</span><span class="n">molecule</span><span class="o">=</span><span class="n">mol</span><span class="p">,</span> <span class="n">nsteps</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">nesteps</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">unit_dt</span><span class="o">=</span><span class="s1">&#39;au&#39;</span><span class="p">,</span> \
+<span class="linenos">18</span>    <span class="n">sigma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">istate</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">hop_rescale</span><span class="o">=</span><span class="s1">&#39;energy&#39;</span><span class="p">,</span> <span class="n">elec_object</span><span class="o">=</span><span class="s1">&#39;density&#39;</span><span class="p">)</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="n">md</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qm</span><span class="o">=</span><span class="n">qm</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="detailed-description-of-parameters">
+<h3>Detailed description of parameters<a class="headerlink" href="#detailed-description-of-parameters" title="Permalink to this heading"></a></h3>
+<ul>
+<li><p><strong>basis_set</strong> <em>(string)</em> - Default: <em>‘sto-3g’</em></p>
+<p>This parameter specifies the basis set used in TeraChem.
+The available options of this parameter are the same as the original ones of TeraChem.
+It is recommended to check a TeraChem manual for the detailed list of <strong>basis_set</strong>.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>functional</strong> <em>(string)</em> - Default: <em>‘hf’</em></p>
+<p>This parameter specifies the exchange-correlation functional used in TeraChem.
+The available options of this parameter are same as the original ones of TeraChem.
+It is recommended to check a TeraChem manual for the detailed list of <strong>functional</strong>.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>precision</strong> <em>(string)</em> - Default: <em>‘dynamic’</em></p>
+<p>This parameter specifies a method to determine the accuracy of the evaluation of the integrals.
+The available options of this parameter are same as the original ones of TeraChem.
+It is recommended to check a TeraChem manual for the detailed list of <strong>precision</strong>.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>scf_wf_tol</strong> <em>(double)</em> - Default: <em>1E-2</em></p>
+<p>SCF cycles are considered converged when the wavefunction error is less than <strong>scf_wf_tol</strong>.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>scf_max_iter</strong> <em>(integer)</em> - Default: <em>300</em></p>
+<p>This parameter determines the maximum number of SCF iterations.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>active_space</strong> <em>(integer)</em> - Default: <em>2</em></p>
+<p>This parameter specifies the active space for SSR calculation. Detailed types of the REKS calculation are
+automatically determined by <code class="docutils literal notranslate"><span class="pre">molecule.nst</span></code> and <strong>l_state_interactions</strong> parameters. If <code class="docutils literal notranslate"><span class="pre">molecule.nst</span></code> is <em>1</em>,
+the single-state REKS calculation is carried out. When <code class="docutils literal notranslate"><span class="pre">molecule.nst</span></code> is larger than <em>1</em>,
+the SA-REKS or the SI-SA-REKS calculation is executed according to the <strong>l_state_interactions</strong> parameter.
+Currently, only (2,2) space is available for SSR calculation.</p>
+<ul class="simple">
+<li><p><em>2</em>: The numbers of electrons and orbitals are 2 and 2, respectively.</p></li>
+</ul>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>guess</strong> <em>(string)</em> - Default: <em>‘dft’</em></p>
+<p>This parameter determines the initial guess method for the SSR calculations.</p>
+<ul class="simple">
+<li><p><em>‘dft’</em>: Initial guess orbitals for the SSR calculations are generated from the DFT calculations.</p></li>
+<li><p><em>‘read’</em>: Initial guess orbitals are read from the ‘c0’ file which contains the orbitals calculated at the previous time step.</p></li>
+</ul>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>guess_file</strong> <em>(string)</em> - Default: <em>‘./c0’</em></p>
+<p>The <strong>guess_file</strong> determines the name of the file containing orbitals for the initial guess of orbitals for the SSR calculation at the first MD step.
+This parameter is effective only if <strong>guess</strong> = <em>‘read’</em>.
+If the file does not exist, <em>‘dft’</em> option is requested for the initial guess for the SSR calculation at the first MD step.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>reks_diis_tol</strong> <em>(double)</em> - Default: <em>1E-6</em></p>
+<p>The REKS SCF cycles are considered converged when the DIIS error is less than <strong>reks_diis_tol</strong>.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>reks_max_iter</strong> <em>(integer)</em> - Default: <em>1000</em></p>
+<p>This parameter determines the maximum number of the REKS SCF iterations.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>shift</strong> <em>(double)</em> - Default: <em>0.3</em></p>
+<p>This parameter specifies the level shifting value used in the REKS SCF iterations. It can be helpful to increase <strong>shift</strong> when
+it is hard to converge the SCC iterations.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>l_state_interactions</strong> <em>(boolean)</em> - Default: <em>False</em></p>
+<p>When <strong>l_state_interactions</strong> is set to <em>True</em>, state-interaction terms are included so that the SI-SA-REKS states are generated.
+Otherwise, the SA-REKS states are obtained. It is valid when <code class="docutils literal notranslate"><span class="pre">molecule.nst</span></code> is larger
+than <em>1</em>. In general, it generates more reliable adiabatic states.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>cpreks_grad_tol</strong> <em>(double)</em> - Default: <em>1E-6</em></p>
+<p>This parameter determines the tolerance used in the conjugate-gradient based algorithm for solving the CP-REKS equations.
+Sometimes, it can be helpful to use slightly loose tolerance for the stable molecular dynamics.
+In this case, <em>4E-6</em> is recommended for <strong>cpreks_grad_tol</strong>.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>cpreks_max_iter</strong> <em>(integer)</em> - Default: <em>1000</em></p>
+<p>This parameter determines the maximum number of the CP-REKS iterations.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>root_path</strong> <em>(string)</em> - Default: <em>‘./’</em></p>
+<p>This parameter determines the path for the TeraChem root directory. The <cite>$TeraChem</cite> environment
+variable determines the directory where the licensing file can be found, i.e., ‘<cite>$TeraChem</cite>/license.dat’
+(For example, <cite>$TeraChem</cite> is ‘/my_disk/my_name/TeraChem/’).
+Thus, <strong>root_path</strong> must be <em>‘`$TeraChem`/’</em>, not <em>‘`$TeraChem`/bin/’</em>.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>ngpus</strong> <em>(integer)</em> - Default: <em>1</em></p>
+<p>This parameter determines the number of GPUs used in TeraChem.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>gpu_id</strong> <em>(integer, list)</em> - Default: <em>None</em></p>
+<p>This parameter specifies the ID of used GPUs. If you want to use 2 GPUs with ID of 0 and 1,
+then put <em>[0, 1]</em> into <strong>gpu_id</strong>.
+The length of <strong>gpu_id</strong> should be same to <strong>ngpus</strong></p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>version</strong> <em>(string)</em> - Default: <em>‘1.93’</em></p>
+<p>This parameter determines the version of TeraChem.
+PyUNIxMD is currently based on version 1.93 and 1.99 of TeraChem.</p>
+</li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="prog_qchem.html" class="btn btn-neutral float-left" title="Q-Chem" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="prog_turbomole.html" class="btn btn-neutral float-right" title="TURBOMOLE" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, mingroup.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

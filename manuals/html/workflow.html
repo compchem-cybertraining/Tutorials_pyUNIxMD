@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. Workflow &mdash; PyUNIxMD  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Quick Start" href="quick_start.html" />
+    <link rel="prev" title="2. Installation" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="unixmd.html" class="icon icon-home">
+            PyUNIxMD
+          </a>
+              <div class="version">
+                21.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">1. PyUNIxMD Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">2. Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">4. Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="objects/main.html">5. PyUNIxMD Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/main.html">6. Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utility_scripts.html">7. PyUNIxMD utility scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references/main.html">8. References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="unixmd.html">PyUNIxMD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="unixmd.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><span class="section-number">3. </span>Workflow</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/workflow.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="workflow">
+<h1><span class="section-number">3. </span>Workflow<a class="headerlink" href="#workflow" title="Permalink to this heading"></a></h1>
+<p>Here, we explain how to run MD calculations with PyUNIxMD.</p>
+<p>You will make a running script for the MD calculation you want to perform. In your running script, you will create PyUNIxMD objects successively.
+A typical template of the running script is the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">molecule</span> <span class="kn">import</span> <span class="n">Molecule</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">qm</span><span class="o">,</span> <span class="nn">mqc</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">thermostat</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">geom</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="linenos"> 6</span><span class="s2">&lt;number of atoms&gt;</span>
+<span class="linenos"> 7</span><span class="s2">&lt;comment&gt;</span>
+<span class="linenos"> 8</span><span class="s2">&lt;symbol&gt; &lt;X&gt; &lt;Y&gt; &lt;Z&gt; &lt;V_X&gt; &lt;V_Y&gt; &lt;V_Z&gt;</span>
+<span class="linenos"> 9</span><span class="s2">&lt;symbol&gt; &lt;X&gt; &lt;Y&gt; &lt;Z&gt; &lt;V_X&gt; &lt;V_Y&gt; &lt;V_Z&gt;</span>
+<span class="linenos">10</span><span class="s2">...</span>
+<span class="linenos">11</span><span class="s2">&lt;symbol&gt; &lt;X&gt; &lt;Y&gt; &lt;Z&gt; &lt;V_X&gt; &lt;V_Y&gt; &lt;V_Z&gt;</span>
+<span class="linenos">12</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="n">mol</span> <span class="o">=</span> <span class="n">Molecule</span><span class="p">(</span><span class="n">geometry</span><span class="o">=</span><span class="n">geom</span><span class="p">,</span> <span class="n">nstates</span><span class="o">=</span><span class="n">NSTATES</span><span class="p">)</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="n">qm</span> <span class="o">=</span> <span class="n">qm</span><span class="o">.</span><span class="n">QM_PROG</span><span class="o">.</span><span class="n">QM_METHOD</span><span class="p">(</span><span class="n">ARGUMENTS</span><span class="p">)</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="n">bathT</span> <span class="o">=</span> <span class="n">thermostat</span><span class="o">.</span><span class="n">THERMO_TYPE</span><span class="p">(</span><span class="n">ARGUMENTS</span><span class="p">)</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="n">md</span> <span class="o">=</span> <span class="n">mqc</span><span class="o">.</span><span class="n">MD_TYPE</span><span class="p">(</span><span class="n">molecule</span><span class="o">=</span><span class="n">mol</span><span class="p">,</span> <span class="n">thermostat</span><span class="o">=</span><span class="n">bathT</span><span class="p">,</span> <span class="n">ARGUMENTS</span><span class="p">)</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="n">md</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qm</span><span class="o">=</span><span class="n">qm</span><span class="p">,</span> <span class="n">ARGUMENTS</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Line 1-3</strong> import the PyUNIxMD packages for the below jobs.</p>
+<p><strong>Line 5-14</strong> set a target system you are interested in.
+You need to prepare a string as an argument to specify initial geometry and velocities in extended XYZ format.
+NSTATES means the number of adiabatic states considered in the dynamics calculations.
+See <a class="reference internal" href="objects/system_bath/molecule.html#objects-molecule"><span class="std std-ref">Molecule</span></a> for the list of parameters.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mol</span></code> object must be created first because it will be used for making other objects.</p>
+</div>
+<p><strong>Line 16</strong> determines an electronic structure calculation program and its method to obtain QM information
+such as energies, forces, and nonadiabatic coupling vectors. QM_PROG is the directory name where the QM interface
+package is. QM_METHOD is a name of Python class specifying one of QM methods provided with that interface package.
+See <a class="reference internal" href="objects/qm/main.html#objects-qm-calculator"><span class="std std-ref">QM_calculator</span></a> for the list.</p>
+<p><strong>Line 18</strong> sets a thermostat. THERMO_TYPE is a name of Python class specifying how to control temperature. See <a class="reference internal" href="objects/system_bath/thermostat.html#objects-thermostat"><span class="std std-ref">Thermostat</span></a> for the list.</p>
+<p><strong>Line 20</strong> determines a dynamics method you want to use. MD_TYPE is a name of Python class specifying one of MQC methods (BOMD, Eh, SH, SHXF). See <a class="reference internal" href="objects/mqc/main.html#objects-mqc"><span class="std std-ref">MQC</span></a> for the details.</p>
+<p><strong>Line 22</strong> runs the dynamics calculation.</p>
+<p>Finally, you will execute your running script.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python3<span class="w"> </span>running_script.py
+</pre></div>
+</div>
+<p>Running MD calculations with PyUNIxMD, you will obtain output files under the following file tree.</p>
+<a class="reference internal image-reference" href="_images/pyunixmd_file_tree.png"><img alt="_images/pyunixmd_file_tree.png" src="_images/pyunixmd_file_tree.png" style="width: 400pt;" /></a>
+<p>The blue and light green boxes represent directories and files, respectively. The purple shades distinguish output files that vary according to the MQC methods.</p>
+<p>‘md/’ collects MD outputs, and ‘qm_log/’ and ‘mm_log/’ have logs of QM and MM calculations, respectively
+(The latter two directories are optional). ‘RESTART.bin’ is a binary used to restart a dynamics calculation. See <a class="reference internal" href="objects/mqc/main.html#objects-mqc"><span class="std std-ref">MQC</span></a> for the details.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since default of <strong>l_print_dm</strong> is <em>True</em>, thus PyUNIxMD provides ‘BOCOH’ and ‘BOPOP’ regardless of <strong>elec_object</strong>.
+If <strong>elec_object</strong> is <em>“coefficient”</em> and you set <strong>l_print_dm</strong> to <em>False</em>, then the outputs ‘BOCOH’ and ‘BOPOP’ are not written anymore.</p>
+</div>
+<p>Details of the MD output files and their formats are the following.</p>
+<ul class="simple">
+<li><p>MDENERGY</p></li>
+</ul>
+<p>This file shows MD energies and energies of adiabatic states.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;MD<span class="w"> </span>step&gt;<span class="w">   </span>&lt;kinetic<span class="w"> </span>energy&gt;<span class="w">   </span>&lt;potential<span class="w"> </span>energy&gt;<span class="w">   </span>&lt;total<span class="w"> </span>MD<span class="w"> </span>energy&gt;<span class="w">   </span>&lt;adiabatic<span class="w"> </span>energy<span class="w"> </span><span class="m">0</span>&gt;<span class="w">   </span>&lt;adiabatic<span class="w"> </span>energy<span class="w"> </span><span class="m">1</span>&gt;<span class="w"> </span>...<span class="w"> </span>&lt;adiabatic<span class="w"> </span>energy<span class="w"> </span>last&gt;
+&lt;MD<span class="w"> </span>step&gt;<span class="w">   </span>&lt;kinetic<span class="w"> </span>energy&gt;<span class="w">   </span>&lt;potential<span class="w"> </span>energy&gt;<span class="w">   </span>&lt;total<span class="w"> </span>MD<span class="w"> </span>energy&gt;<span class="w">   </span>&lt;adiabatic<span class="w"> </span>energy<span class="w"> </span><span class="m">0</span>&gt;<span class="w">   </span>&lt;adiabatic<span class="w"> </span>energy<span class="w"> </span><span class="m">1</span>&gt;<span class="w"> </span>...<span class="w"> </span>&lt;adiabatic<span class="w"> </span>energy<span class="w"> </span>last&gt;
+...
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>MOVIE.xyz</p></li>
+</ul>
+<p>This file contains positions and velocities at each MD step (a trajectory).
+For the ease of visualization, those snapshots are written chronically in the extended XYZ format.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;number<span class="w"> </span>of<span class="w"> </span>atoms&gt;
+Step:<span class="w">     </span><span class="m">0</span>
+&lt;symbol&gt;<span class="w"> </span>&lt;X&gt;<span class="w"> </span>&lt;Y&gt;<span class="w"> </span>&lt;Z&gt;<span class="w"> </span>&lt;V_X&gt;<span class="w"> </span>&lt;V_Y&gt;<span class="w"> </span>&lt;V_Z&gt;
+&lt;symbol&gt;<span class="w"> </span>&lt;X&gt;<span class="w"> </span>&lt;Y&gt;<span class="w"> </span>&lt;Z&gt;<span class="w"> </span>&lt;V_X&gt;<span class="w"> </span>&lt;V_Y&gt;<span class="w"> </span>&lt;V_Z&gt;
+...
+&lt;number<span class="w"> </span>of<span class="w"> </span>atoms&gt;
+Step:<span class="w">     </span><span class="m">1</span>
+&lt;symbol&gt;<span class="w"> </span>&lt;X&gt;<span class="w"> </span>&lt;Y&gt;<span class="w"> </span>&lt;Z&gt;<span class="w"> </span>&lt;V_X&gt;<span class="w"> </span>&lt;V_Y&gt;<span class="w"> </span>&lt;V_Z&gt;
+&lt;symbol&gt;<span class="w"> </span>&lt;X&gt;<span class="w"> </span>&lt;Y&gt;<span class="w"> </span>&lt;Z&gt;<span class="w"> </span>&lt;V_X&gt;<span class="w"> </span>&lt;V_Y&gt;<span class="w"> </span>&lt;V_Z&gt;
+...
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>FINAL.xyz</p></li>
+</ul>
+<p>This file contains the final position and velocity of an MD calculation.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;number<span class="w"> </span>of<span class="w"> </span>atoms&gt;
+Step:<span class="w">    </span>&lt;last<span class="w"> </span>MD<span class="w"> </span>step&gt;
+&lt;symbol&gt;<span class="w"> </span>&lt;X&gt;<span class="w"> </span>&lt;Y&gt;<span class="w"> </span>&lt;Z&gt;<span class="w"> </span>&lt;V_X&gt;<span class="w"> </span>&lt;V_Y&gt;<span class="w"> </span>&lt;V_Z&gt;
+&lt;symbol&gt;<span class="w"> </span>&lt;X&gt;<span class="w"> </span>&lt;Y&gt;<span class="w"> </span>&lt;Z&gt;<span class="w"> </span>&lt;V_X&gt;<span class="w"> </span>&lt;V_Y&gt;<span class="w"> </span>&lt;V_Z&gt;
+...
+&lt;symbol&gt;<span class="w"> </span>&lt;X&gt;<span class="w"> </span>&lt;Y&gt;<span class="w"> </span>&lt;Z&gt;<span class="w"> </span>&lt;V_X&gt;<span class="w"> </span>&lt;V_Y&gt;<span class="w"> </span>&lt;V_Z&gt;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>BOPOP</p></li>
+</ul>
+<p>This file shows the adiabatic populations (diagonal elements of the density matrix) at each MD step.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;MD<span class="w"> </span>step&gt;<span class="w"> </span>&lt;population<span class="w"> </span>of<span class="w"> </span>state<span class="w"> </span><span class="m">0</span>&gt;<span class="w"> </span>&lt;population<span class="w"> </span>of<span class="w"> </span>state<span class="w"> </span><span class="m">1</span>&gt;<span class="w"> </span>...<span class="w"> </span>&lt;population<span class="w"> </span>of<span class="w"> </span>last<span class="w"> </span>state&gt;
+&lt;MD<span class="w"> </span>step&gt;<span class="w"> </span>&lt;population<span class="w"> </span>of<span class="w"> </span>state<span class="w"> </span><span class="m">0</span>&gt;<span class="w"> </span>&lt;population<span class="w"> </span>of<span class="w"> </span>state<span class="w"> </span><span class="m">1</span>&gt;<span class="w"> </span>...<span class="w"> </span>&lt;population<span class="w"> </span>of<span class="w"> </span>last<span class="w"> </span>state&gt;
+...
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>BOCOH</p></li>
+</ul>
+<p>This file shows off-diagonal elements of the density matrix at each MD step. Only the upper triangular portions are given because of hermiticity. The real and imaginary part of each element are written alternately.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;MD<span class="w"> </span>step&gt;<span class="w"> </span>&lt;Re.<span class="w"> </span>element<span class="w"> </span><span class="m">0</span>,<span class="w"> </span><span class="m">1</span>&gt;<span class="w"> </span>&lt;Im.<span class="w"> </span>element<span class="w"> </span><span class="m">0</span>,<span class="w"> </span><span class="m">1</span>&gt;<span class="w"> </span>&lt;Re.<span class="w"> </span>element<span class="w"> </span><span class="m">0</span>,<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>&lt;Im.<span class="w"> </span>element<span class="w"> </span><span class="m">0</span>,<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>...<span class="w"> </span>&lt;Re.<span class="w"> </span>element<span class="w"> </span>last-1,<span class="w"> </span>last&gt;<span class="w"> </span>&lt;Im.<span class="w"> </span>element<span class="w"> </span>last-1,<span class="w"> </span>last&gt;
+&lt;MD<span class="w"> </span>step&gt;<span class="w"> </span>&lt;Re.<span class="w"> </span>element<span class="w"> </span><span class="m">0</span>,<span class="w"> </span><span class="m">1</span>&gt;<span class="w"> </span>&lt;Im.<span class="w"> </span>element<span class="w"> </span><span class="m">0</span>,<span class="w"> </span><span class="m">1</span>&gt;<span class="w"> </span>&lt;Re.<span class="w"> </span>element<span class="w"> </span><span class="m">0</span>,<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>&lt;Im.<span class="w"> </span>element<span class="w"> </span><span class="m">0</span>,<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>...<span class="w"> </span>&lt;Re.<span class="w"> </span>element<span class="w"> </span>last-1,<span class="w"> </span>last&gt;<span class="w"> </span>&lt;Im.<span class="w"> </span>element<span class="w"> </span>last-1,<span class="w"> </span>last&gt;
+...
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>NACME</p></li>
+</ul>
+<p>This file shows nonadiabatic coupling matrix elements at each MD step. Only the upper triangular portions are given because of antihermiticity.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;MD<span class="w"> </span>step&gt;<span class="w"> </span>&lt;element<span class="w"> </span><span class="m">0</span>,<span class="w"> </span><span class="m">1</span>&gt;<span class="w"> </span>&lt;element<span class="w"> </span><span class="m">0</span>,<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>...<span class="w"> </span>&lt;element<span class="w"> </span>last-1,<span class="w"> </span>last&gt;
+&lt;MD<span class="w"> </span>step&gt;<span class="w"> </span>&lt;element<span class="w"> </span><span class="m">0</span>,<span class="w"> </span><span class="m">1</span>&gt;<span class="w"> </span>&lt;element<span class="w"> </span><span class="m">0</span>,<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>...<span class="w"> </span>&lt;element<span class="w"> </span>last-1,<span class="w"> </span>last&gt;
+...
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>SHPROB</p></li>
+</ul>
+<p>This file shows hopping probabilities from the running state to the others at each MD step.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;MD<span class="w"> </span>step&gt;<span class="w"> </span>&lt;P<span class="o">(</span>running<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">0</span><span class="o">)</span>&gt;<span class="w"> </span>&lt;P<span class="o">(</span>running<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">1</span><span class="o">)</span>&gt;<span class="w"> </span>...<span class="w"> </span>&lt;P<span class="o">(</span>running<span class="w"> </span>-&gt;<span class="w"> </span>last<span class="o">)</span>&gt;
+&lt;MD<span class="w"> </span>step&gt;<span class="w"> </span>&lt;P<span class="o">(</span>running<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">0</span><span class="o">)</span>&gt;<span class="w"> </span>&lt;P<span class="o">(</span>running<span class="w"> </span>-&gt;<span class="w"> </span><span class="m">1</span><span class="o">)</span>&gt;<span class="w"> </span>...<span class="w"> </span>&lt;P<span class="o">(</span>running<span class="w"> </span>-&gt;<span class="w"> </span>last<span class="o">)</span>&gt;
+...
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>SHSTATE</p></li>
+</ul>
+<p>This file shows the running state at each MD step.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>&lt;MD<span class="w"> </span>step&gt;<span class="w"> </span>&lt;running&gt;
+&lt;MD<span class="w"> </span>step&gt;<span class="w"> </span>&lt;running&gt;
+...
+</pre></div>
+</div>
+<p>For a quick test of PyUNIxMD, see <a class="reference internal" href="quick_start.html#quick-start"><span class="std std-ref">Quick Start</span></a> . Also, you can refer to scripts and log files in ‘$PYUNIXMDHOME/examples/’ directory for practical calculations.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="install.html" class="btn btn-neutral float-left" title="2. Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="quick_start.html" class="btn btn-neutral float-right" title="4. Quick Start" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, mingroup.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

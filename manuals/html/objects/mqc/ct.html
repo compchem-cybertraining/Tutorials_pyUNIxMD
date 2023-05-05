@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTMQC &mdash; PyUNIxMD  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Ehrenfest" href="eh.html" />
+    <link rel="prev" title="BOMD" href="bomd.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../unixmd.html" class="icon icon-home">
+            PyUNIxMD
+          </a>
+              <div class="version">
+                21.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">1. PyUNIxMD Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflow.html">3. Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">4. Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main.html">5. PyUNIxMD Objects</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../system_bath/main.html">System &amp; Bath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qm/main.html">QM_calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mm/main.html">MM_calculator</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="main.html">MQC</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bomd.html">BOMD</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">CTMQC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#detailed-description-of-parameters">Detailed description of parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eh.html">Ehrenfest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sh.html">Surface Hopping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shxf.html">DISH-XF</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/main.html">6. Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility_scripts.html">7. PyUNIxMD utility scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/main.html">8. References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../unixmd.html">PyUNIxMD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../unixmd.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../main.html"><span class="section-number">5. </span>PyUNIxMD Objects</a></li>
+          <li class="breadcrumb-item"><a href="main.html">MQC</a></li>
+      <li class="breadcrumb-item active">CTMQC</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/objects/mqc/ct.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ctmqc">
+<h1>CTMQC<a class="headerlink" href="#ctmqc" title="Permalink to this heading"></a></h1>
+<p>Coupled-trajectory mixed quantum-classical (CTMQC) method is included in PyUNIxMD package.
+Electronic equation of motion in CTMQC contains “decoherence term” which is derived from exact factorization,
+in addition to Eherenfest term. The propagation of nuclei and electrons is done as follows.</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{F}_{\nu}^{(I)}=-\sum_{i} \nabla_{\nu}\mathbf{E}_{i}^{(I)}(t) + \sum_{i\neq j} C_{i}^{(I)\ast}(t)C_{j}^{(I)}(t)(E_{i}^{(I)}(t)-E_{j}^{(I)}(t))\mathbf{d}_{ij\nu}^{(I)}(t)
+- \sum_{i}|C_{i}^{(I)}(t)|^2\left(\sum^{N_n}_{\nu'=1}\frac{2}{\hbar M_{\nu'}}\mathbf{Q}^{(I)}_{\nu'}(t)\cdot\mathbf{f}^{(I)}_{i,\nu'}(t)\right)
+\left[\sum_{j}|C_{j}^{(I)}(t)|^2\mathbf{f}_{j,\nu}^{(I)}(t)-\mathbf{f}_{i,\nu}^{(I)}(t)\right],\]</div>
+<div class="math notranslate nohighlight">
+\[\dot C^{(I)}_k(t) = -\frac{i}{\hbar}E^{(I)}_k(t)C^{(I)}_k(t)
+- \sum_j\sum_{\nu}{\bf d}^{(I)}_{kj\nu}(t)\cdot\dot{\bf R}^{(I)}_\nu(t)C^{(I)}_j(t)
+- \sum_{\nu}^{N_n}\frac{\mathbf{Q}^{(I)}_{\nu}(t)}{\hbar M_{\nu}}\cdot\left[\sum_{j}|C^{(I)}_{j}(t)|^2\mathbf{f}^{(I)}_{j,\nu}(t)-\mathbf{f}^{(I)}_{k,\nu}(t)\right]C^{(I)}_{k}.\]</div>
+<p>Detailed description of CTMQC method is in the <span id="id1">[<a class="reference internal" href="../../references/main.html#id28" title="Federica Agostini, Seung Kyu Min, Ali Abedi, and EKU Gross. Quantum-classical nonadiabatic dynamics: coupled-vs independent-trajectory methods. Journal of chemical theory and computation, 12(5):2127–2143, 2016.">5</a>]</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We strongly recommend that users see detailed description of parameter.</p>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameters</p></th>
+<th class="head"><p>Work</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>molecules</strong>
+<em>(</em><code class="xref py py-class docutils literal notranslate"><span class="pre">Molecule</span></code>, <em>list)</em></p></td>
+<td><p>Molecule object</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>thermostat</strong>
+(<code class="xref py py-class docutils literal notranslate"><span class="pre">Thermostat</span></code>)</p></td>
+<td><p>Thermostat object</p></td>
+<td><p><em>None</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>istates</strong>
+<em>(integer, list)</em></p></td>
+<td><p>Initial states</p></td>
+<td><p><em>None</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>dt</strong>
+<em>(double)</em></p></td>
+<td><p>Time interval</p></td>
+<td><p><em>0.5</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>nsteps</strong>
+<em>(integer)</em></p></td>
+<td><p>Total step of nuclear propagation</p></td>
+<td><p><em>1000</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>nesteps</strong>
+<em>(integer)</em></p></td>
+<td><p>Total step of electronic propagation</p></td>
+<td><p><em>20</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>elec_object</strong>
+<em>(string)</em></p></td>
+<td><p>Electronic equation of motions</p></td>
+<td><p><em>‘coefficient’</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>propagator</strong>
+<em>(string)</em></p></td>
+<td><p>Electronic propagator</p></td>
+<td><p><em>‘rk4’</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>l_print_dm</strong>
+<em>(boolean)</em></p></td>
+<td><p>Logical to print BO population and coherence</p></td>
+<td><p><em>True</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>l_adj_nac</strong>
+<em>(boolean)</em></p></td>
+<td><p>Logical to adjust nonadiabatic coupling</p></td>
+<td><p><em>True</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>rho_threshold</strong>
+<em>(double)</em></p></td>
+<td><p>Electronic density threshold for decoherence
+term calculation</p></td>
+<td><p><em>0.01</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>init_coefs</strong>
+<em>(double/complex, 2D list)</em></p></td>
+<td><p>Initial BO coefficients</p></td>
+<td><p><em>None</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>dist_parameter</strong>
+<em>(double)</em></p></td>
+<td><p>Distance parameter to determine quantum
+momentum center</p></td>
+<td><p><em>10.0</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>min_sigma</strong>
+<em>(double)</em></p></td>
+<td><p>Minimum sigma value</p></td>
+<td><p><em>0.3</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>const_dist_cutoff</strong>
+<em>(double)</em></p></td>
+<td><p>Constant distance cutoff to determine
+variance</p></td>
+<td><p><em>None</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>const_center_cutoff</strong>
+<em>(double)</em></p></td>
+<td><p>Constant distance cutoff to determine
+center of quantum momentum</p></td>
+<td><p><em>None</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>unit_dt</strong>
+<em>(string)</em></p></td>
+<td><p>Unit of time step</p></td>
+<td><p><em>‘fs’</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>out_freq</strong>
+<em>(integer)</em></p></td>
+<td><p>Frequency of printing output</p></td>
+<td><p><em>1</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>verbosity</strong>
+<em>(integer)</em></p></td>
+<td><p>Verbosity of output</p></td>
+<td><p><em>0</em></p></td>
+</tr>
+</tbody>
+</table>
+<section id="detailed-description-of-parameters">
+<h2>Detailed description of parameters<a class="headerlink" href="#detailed-description-of-parameters" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>CTMQC requires multiple trajectories, different to other MQC methods. Therefore, The data type of <strong>molecules</strong>, and <strong>istates</strong> must be list.
+Also, the date type of elements in <strong>init_coefs</strong> must be list.</p>
+</div>
+<ul>
+<li><p><strong>molecules</strong></p>
+<p>This parameter defines molecular information for coupled trajectories.
+The data type of <strong>molecules</strong> must be list of which the elements are objects for <a class="reference internal" href="../system_bath/molecule.html#objects-molecule"><span class="std std-ref">Molecule</span></a>.
+For example, if the number of coupled trajectories is 3, then <strong>molecules</strong> can be given <em>[mol1, mol2, mol3]</em>
+where <em>mol1</em>, <em>mol2</em>, and <em>mol3</em> are objects for <a class="reference internal" href="../system_bath/molecule.html#objects-molecule"><span class="std std-ref">Molecule</span></a>.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>istates</strong> <em>(integer, list)</em> - Default: <em>None</em></p>
+<p>The BO coefficients and BO density matrices for coupled trajectories are initialized according to this parameter.
+The data type of <strong>istates</strong> must be list of which the elements are integer.
+Hence, the number of elements in <strong>istates</strong> must be same to the number of coupled trajectories.
+The possible range for element in <strong>istates</strong> is from <em>0</em> to <code class="docutils literal notranslate"><span class="pre">molecule.nst</span> <span class="pre">-</span> <span class="pre">1</span></code>.
+For example, if the number of coupled trajectories is 3, then <strong>istates</strong> can be <em>[0, 0, 0]</em>
+which means BO coefficients of ground state for all trajectories are initially set to 1.0.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>dt</strong> <em>(double)</em> - Default: <em>0.5</em></p>
+<p>This parameter determines the time interval of the nuclear time steps.
+You can select the unit of time for the dynamics with the <strong>unit_dt</strong> parameter.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>nsteps</strong> <em>(integer)</em> - Default: <em>1000</em></p>
+<p>This parameter determines the total number of the nuclear time steps.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>nesteps</strong> <em>(integer)</em> - Default: <em>20</em></p>
+<p>This parameter determines the number of electronic time steps between one nuclear time step for the integration of the electronic equation of motion.
+The electronic equation of motion is more sensitive to the time interval than the nuclear equation of motion since the electrons are much lighter than the nuclei.
+Therefore, the nuclear time step is further divided and electronic equation of motion is integrated with smaller time step.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>elec_object</strong> <em>(string)</em> - Default: <em>‘coefficient’</em></p>
+<p>The <strong>elec_object</strong> parameter determines the representation for the electronic state.
+Now, CTMQC is only vaild for <em>‘coefficient’</em>.</p>
+<ul class="simple">
+<li><p><em>‘coefficient’</em>: Propagates the coefficients, i.e., <span class="math notranslate nohighlight">\(\{C_{i}^{(I)}(t)\}\)</span></p></li>
+</ul>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>propagator</strong> <em>(string)</em> - Default: <em>‘rk4’</em></p>
+<p>This parameter determines the numerical integration method for the electronic equation of motion.
+Currently, only the RK4 algorithm (<em>‘rk4’</em>) is available.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>l_print_dm</strong> <em>(boolean)</em> - Default: <em>True</em></p>
+<p>This parameter determines whether to write output files for the density matrix elements (‘BOPOP’, ‘BOCOH’) or not.
+If this option is set to <em>True</em>, then the ‘BOPOP’ and ‘BOCOH’ files are written during the dynamics.
+This option is effective only if the parameter <strong>obj</strong> is set to <em>‘coefficient’</em> or ignored otherwise.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>l_adj_nac</strong> <em>(boolean)</em> - Default: <em>True</em></p>
+<p>If this parameter is set to <em>True</em>, the signs of the NACVs are adjusted to match the phases to the previous time step during the dynamics.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>rho_threshold</strong> <em>(double)</em> - Default: <em>0.01</em></p>
+<p>This parameter defines the numerical density threshold for the coherence.
+Specifically, if the populations of two or more states are larger than this value, the electronic state is ‘coherent’ and the decoherence term is calculated.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>init_coefs</strong> <em>(double/complex, 2D list)</em> - Default: <em>None</em></p>
+<p>This parameter defines the initial BO coefficients.
+The data type of element in this parameter must be list of which the elements are either real or complex values.
+The length of list, which is element of <strong>init_coefs</strong>, should be same to <code class="docutils literal notranslate"><span class="pre">molecule.nst</span></code>.
+For example, if <code class="docutils literal notranslate"><span class="pre">molecule.nst</span></code> = <em>2</em> and the number of coupled trajectories is 3, <strong>init_coefs</strong> can be given <em>[[1.0, 0.0], [1.0, 0.0], [1.0, 0.0]]</em>.
+If the parameter is not given, the BO coefficients and the density matrix are initialized according to <strong>istates</strong>.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>dist_parameter</strong> <em>(double)</em> - Default: <em>10.0</em></p>
+<p>This parameter defines distance parameter to determine variance and position of quantum momentum center.
+The distance cutoff is determined by <strong>dist_parameter</strong> <span class="math notranslate nohighlight">\(\times\)</span> <span class="math notranslate nohighlight">\(\sigma(t)\)</span>, where <span class="math notranslate nohighlight">\(\sigma(t)\)</span> is time-dependent variance.
+The <span class="math notranslate nohighlight">\(\sigma(t)\)</span> is constructed by trajectories in the distance cutoff.
+If a center of quantum momentum is located out of the distance cutoff, the quanum momentum is set to zero.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>min_sigma</strong> <em>(double)</em> - Default: <em>0.3</em></p>
+<p>This parameter defines minimum value for time-dependent variance.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>const_dist_cutoff</strong> <em>(double)</em> - Default: <em>None</em></p>
+<p>This parameter defines constant distance cutoff to determine variance.
+The <span class="math notranslate nohighlight">\(\sigma(t)\)</span> is constructed by trajectories in the distance cutoff.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>const_center_cutoff</strong> <em>(double)</em> - Default: <em>None</em></p>
+<p>This parameter defines constant distance cutoff to determine center of quantum momentum.
+If a center of quantum momentum is located out of the distance cutoff, the quanum momentum is set to zero.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>unit_dt</strong> <em>(string)</em> - Default: <em>‘fs’</em></p>
+<p>This parameter determines the unit of time for the simulation.</p>
+<ul class="simple">
+<li><p><em>‘fs’</em>: femtosecond</p></li>
+<li><p><em>‘au’</em>: atomic unit</p></li>
+</ul>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>out_freq</strong> <em>(integer)</em> - Default: <em>1</em></p>
+<p>PyUNIxMD prints and writes the dynamics information at every <strong>out_freq</strong> time steps.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>verbosity</strong> <em>(integer)</em> - Default: <em>0</em></p>
+<p>This parameter determines the verbosity of the output files and stream.</p>
+<ul class="simple">
+<li><p><strong>verbosity</strong> <span class="math notranslate nohighlight">\(\geq\)</span> <em>1</em>: Prints potential energy of all BO states.</p></li>
+<li><p><strong>verbosity</strong> <span class="math notranslate nohighlight">\(\geq\)</span> <em>2</em>: Writes the NACVs (‘NACV_<span class="math notranslate nohighlight">\(i\)</span>_<span class="math notranslate nohighlight">\(j\)</span>’).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bomd.html" class="btn btn-neutral float-left" title="BOMD" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="eh.html" class="btn btn-neutral float-right" title="Ehrenfest" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, mingroup.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

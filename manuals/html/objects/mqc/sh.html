@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Surface Hopping &mdash; PyUNIxMD  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="DISH-XF" href="shxf.html" />
+    <link rel="prev" title="Ehrenfest" href="eh.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../unixmd.html" class="icon icon-home">
+            PyUNIxMD
+          </a>
+              <div class="version">
+                21.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">1. PyUNIxMD Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../workflow.html">3. Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quick_start.html">4. Quick Start</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main.html">5. PyUNIxMD Objects</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../system_bath/main.html">System &amp; Bath</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qm/main.html">QM_calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mm/main.html">MM_calculator</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="main.html">MQC</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bomd.html">BOMD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ct.html">CTMQC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eh.html">Ehrenfest</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Surface Hopping</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#detailed-description-of-the-parameters">Detailed description of the parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="shxf.html">DISH-XF</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/main.html">6. Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../utility_scripts.html">7. PyUNIxMD utility scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/main.html">8. References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../unixmd.html">PyUNIxMD</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../unixmd.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../main.html"><span class="section-number">5. </span>PyUNIxMD Objects</a></li>
+          <li class="breadcrumb-item"><a href="main.html">MQC</a></li>
+      <li class="breadcrumb-item active">Surface Hopping</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/objects/mqc/sh.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="surface-hopping">
+<h1>Surface Hopping<a class="headerlink" href="#surface-hopping" title="Permalink to this heading"></a></h1>
+<p>Surface hopping dynamics, often called as Tully’s fewest switches surface hopping dynamics (FSSH) is one of the most popular MQC methods.
+It was introduced by Tully, J. C. in 1990 <span id="id1">[<a class="reference internal" href="../../references/main.html#id25" title="J. C. J. Tully. Molecular dynamics with electronic transitions. Jounal of Chemical Physics, 93:1061-1071, 1990.">2</a>]</span>, and has been augmented in various ways so far. The propagation of electrons and nuclei is done as follows.</p>
+<div class="math notranslate nohighlight">
+\[M_{\nu}\ddot{\mathbf{R}}^{(I)}_{\nu}(t) = -\nabla_{\nu}E^{(I)}_{r}(t),\]</div>
+<div class="math notranslate nohighlight">
+\[\dot{C}^{(I)}_{k}(t) = -{{i}\over{\hbar}}E^{(I)}_k(t)C^{(I)}_{k}(t)-\sum_{k}\sum_{\nu}\mathbf{d}^{(I)}_{kj\nu}\cdot\dot{\bf R}^{(I)}
+_{\nu}(t)C^{(I)}_j(t)\]</div>
+<p>The electronic propagation is still an Ehrenfest-type evolution, but the nuclei follow a <em>fixed</em> BO potential energy surface denoted by <span class="math notranslate nohighlight">\(E^{(I)}_{r}(t)\)</span>. The corresponding BO state is called a running state (force state).
+The running state is chosen probabilistically at every MD step. The probabilities governing this process are called hopping probabilities naturally depending on the adiabatic population and the nonadiabatic couplings:</p>
+<div class="math notranslate nohighlight">
+\[P^{(I)}_{j{\rightarrow}k}[t,t+{\Delta}t] = {{2\Re[\rho^{(I)}_{jk}(t)\sum_\nu \mathbf{d}^{(I)}_{jk\nu}(t)\cdot\dot{\bf R}^{(I)}_\nu(t)]
+{\Delta}t}\over{\rho^{(I)}_{jj}(t)}}, \rho^{(I)}_{jk}(t)=C^{(I)\ast}_j(t) C^{(I)}_k(t)\]</div>
+<p><span class="math notranslate nohighlight">\({\rho}(t)\)</span> represents the electronic density matrix. In this algorithm, the hopping probabilities
+from the “current” running state to the others are considered and a random number is called to select the next
+running state. If the coupling with an adiabatic state is strong enough, the probability will increase, so the running state is likely to transit to that state.</p>
+<p>In <code class="xref py py-class docutils literal notranslate"><span class="pre">SH</span></code> class, two ad hoc decoherence correction schemes are implemented.
+One is instantaneous decoherence correction (IDC).
+In the IDC algorithm, the electronic state immediately collapses to a running state whenever a hop occurs or is rejected.
+The other is energy-based decoherence correction (EDC) <span id="id2">[<a class="reference internal" href="../../references/main.html#id26" title="G. Granucci, M. Persico, and A. Zoccante. Including quantum decoherence in surface hopping. The Journal of Chemical Physics, 133:134111, 2010.">3</a>]</span> which rescales BO coefficients based on the running state <span class="math notranslate nohighlight">\(r\)</span> and energies of a target system as the following equations:</p>
+<div class="math notranslate nohighlight">
+\[
+C'^{(I)}_{k}(t)=
+\left\{
+\begin{array}{lr
+}
+  C^{(I)}_{k}(t)e^{-\Delta t/\tau_{k}(t)}   &amp; \text{if}\ k\neq r \\
+  C^{(I)}_{k}(t)\left[\dfrac{1-\sum_{j\neq r}|C'^{(I)}_{j}(t)|^2}{|C^{(I)}_{k}(t)|^2}\right]^{\frac{1}{2}}  &amp; \text{if}\ k = r
+\end{array}
+\right.
+\]</div><p>and</p>
+<div class="math notranslate nohighlight">
+\[\tau_{k}(t) = \dfrac{\hbar}{|E_k(t)-E_r(t)|}\left(1+\dfrac{C}{E_{kin}(t)}\right).\]</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameters</p></th>
+<th class="head"><p>Work</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>molecule</strong>
+(<code class="xref py py-class docutils literal notranslate"><span class="pre">Molecule</span></code>)</p></td>
+<td><p>Molecule object</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>thermostat</strong>
+(<code class="xref py py-class docutils literal notranslate"><span class="pre">Thermostat</span></code>)</p></td>
+<td><p>Thermostat object</p></td>
+<td><p><em>None</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>istate</strong>
+<em>(integer)</em></p></td>
+<td><p>Initial state</p></td>
+<td><p><em>0</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>dt</strong>
+<em>(double)</em></p></td>
+<td><p>Time interval</p></td>
+<td><p><em>0.5</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>nsteps</strong>
+<em>(integer)</em></p></td>
+<td><p>Total step of nuclear propagation</p></td>
+<td><p><em>1000</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>nesteps</strong>
+<em>(integer)</em></p></td>
+<td><p>Total step of electronic propagation</p></td>
+<td><p><em>20</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>elec_object</strong>
+<em>(string)</em></p></td>
+<td><p>Electronic equation of motions</p></td>
+<td><p><em>‘density’</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>propagator</strong>
+<em>(string)</em></p></td>
+<td><p>Electronic propagator</p></td>
+<td><p><em>‘rk4’</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>l_print_dm</strong>
+<em>(boolean)</em></p></td>
+<td><p>Logical to print BO population and coherence</p></td>
+<td><p><em>True</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>l_adj_nac</strong>
+<em>(boolean)</em></p></td>
+<td><p>Adjust nonadiabatic coupling to align the phases</p></td>
+<td><p><em>True</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>hop_rescale</strong>
+<em>(string)</em></p></td>
+<td><p>Velocity rescaling method after successful hop</p></td>
+<td><p><em>‘augment’</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>hop_reject</strong>
+<em>(string)</em></p></td>
+<td><p>Velocity rescaling method after frustrated hop</p></td>
+<td><p><em>‘reverse’</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>init_coef</strong>
+<em>(double/complex, list)</em></p></td>
+<td><p>Initial BO coefficient</p></td>
+<td><p><em>None</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>dec_correction</strong>
+<em>(string)</em></p></td>
+<td><p>Simple decoherence correction schemes</p></td>
+<td><p><em>None</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>edc_parameter</strong>
+<em>(double)</em></p></td>
+<td><p>Energy constant (H) for rescaling coefficients
+in edc</p></td>
+<td><p><em>0.1</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>unit_dt</strong>
+<em>(string)</em></p></td>
+<td><p>Unit of time interval</p></td>
+<td><p><em>‘fs’</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>out_freq</strong>
+<em>(integer)</em></p></td>
+<td><p>Frequency of printing output</p></td>
+<td><p><em>1</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>verbosity</strong>
+<em>(integer)</em></p></td>
+<td><p>Verbosity of output</p></td>
+<td><p><em>0</em></p></td>
+</tr>
+</tbody>
+</table>
+<section id="detailed-description-of-the-parameters">
+<h2>Detailed description of the parameters<a class="headerlink" href="#detailed-description-of-the-parameters" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p><strong>istate</strong> <em>(integer)</em> - Default: <em>0</em> (Ground state)</p>
+<p>This parameter specifies the initial running state. The possible range is from <em>0</em> to <code class="docutils literal notranslate"><span class="pre">molecule.nst</span> <span class="pre">-</span> <span class="pre">1</span></code>.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>dt</strong> <em>(double)</em> - Default: <em>0.5</em></p>
+<p>This parameter determines the time interval of the nuclear time steps.
+You can select the unit of time for the dynamics with the <strong>unit_dt</strong> parameter.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>nsteps</strong> <em>(integer)</em> - Default: <em>1000</em></p>
+<p>This parameter determines the total number of the nuclear time steps.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>nesteps</strong> <em>(integer)</em> - Default: <em>20</em></p>
+<p>This parameter determines the number of electronic time steps between one nuclear time step for the integration of the electronic equation of motion.
+The electronic equation of motion is more sensitive to the time interval than the nuclear equation of motion since the electrons are much lighter than the nuclei.
+Therefore, the nuclear time step is further divided and electronic equation of motion is integrated with smaller time step.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>elec_object</strong> <em>(string)</em>- Default: <em>‘density’</em></p>
+<p>The <strong>elec_object</strong> parameter determines the representation for the electronic state.</p>
+<ul class="simple">
+<li><p><em>‘density’</em>: Propagates the density matrix elements, i.e., <span class="math notranslate nohighlight">\(\{\rho_{ij}^{(I)}(t)\}\)</span></p></li>
+<li><p><em>‘coefficient’</em>: Propagates the coefficients, i.e., <span class="math notranslate nohighlight">\(\{C_{i}^{(I)}(t)\}\)</span></p></li>
+</ul>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>propagator</strong> <em>(string)</em> - Default: <em>‘rk4’</em></p>
+<p>This parameter determines the numerical integration method for the electronic equation of motion.
+Currently, only the RK4 algorithm (<em>‘rk4’</em>) is available.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>l_print_dm</strong> <em>(boolean)</em> - Default: <em>True</em></p>
+<p>This parameter determines whether to write output files for the density matrix elements (‘BOPOP’, ‘BOCOH’) or not.
+If this option is set to <em>True</em>, then the ‘BOPOP’ and ‘BOCOH’ files are written during the dynamics.
+This option is effective only if the <strong>elec_object</strong> parameter is set to <em>‘coefficient’</em> or ignored otherwise.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>l_adj_nac</strong> <em>(boolean)</em> - Default: <em>True</em></p>
+<p>If this parameter is set to <em>True</em>, the signs of the NACVs are adjusted to match the phases to the previous time step during the dynamics.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>hop_rescale</strong> <em>(string)</em> - Default: <em>‘augment’</em></p>
+<p>This parameter determines the direction of the momentum to be adjusted after a hop to conserve the total energy.
+If there is not enough kinetic energy in this direction, the hop is rejected and the running state is switched back to the original state.</p>
+<ul class="simple">
+<li><p><em>‘energy’</em>: Simply rescale the nuclear velocities.</p></li>
+<li><p><em>‘momentum’</em>: Adjust the momentum in the direction of the NACV.</p></li>
+<li><p><em>‘augment’</em>: First, the hop is evaluated as the <em>‘momentum’</em>.
+If the kinetic energy is not enough, then the hop is evaluated again as the <em>‘energy’</em>.</p></li>
+</ul>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>hop_reject</strong> <em>(string)</em> - Default: <em>‘reverse’</em></p>
+<p>This parameter determines the momentum rescaling method when a hop is rejected.</p>
+<ul class="simple">
+<li><p><em>‘keep’</em>: Do nothing, keeps the nuclear velocities.</p></li>
+<li><p><em>‘reverse’</em>: Reverse the momentum along the NACV.</p></li>
+</ul>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>init_coef</strong> <em>(double/complex, list)</em> - Default: <em>None</em></p>
+<p>This parameter defines the initial BO coefficients.
+The elements can be either real or complex values.
+The length of this paramter should be same to <code class="docutils literal notranslate"><span class="pre">molecule.nst</span></code>.
+If the parameter is not given, the BO coefficients and the density matrix are initialized according to the initial running state.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>dec_correction</strong> <em>(string)</em> - Default: <em>None</em></p>
+<p>This parameter determines the simple decoherence correction method.</p>
+<ul class="simple">
+<li><p><em>‘edc’</em>: Energy based decoherence correction (EDC) scheme of Granucci et al <span id="id3">[<a class="reference internal" href="../../references/main.html#id26" title="G. Granucci, M. Persico, and A. Zoccante. Including quantum decoherence in surface hopping. The Journal of Chemical Physics, 133:134111, 2010.">3</a>]</span>.</p></li>
+<li><p><em>‘idc’</em>: Instantaneous decoherence correction scheme</p></li>
+</ul>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>edc_parameter</strong> <em>(double)</em> - Default: <em>0.1</em></p>
+<p>This parameter defines the energy parameter in the EDC equation in unit of H.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>unit_dt</strong> <em>(string)</em> - Default: <em>‘fs’</em></p>
+<p>This parameter determines the unit of time for the simulation.</p>
+<ul class="simple">
+<li><p><em>‘fs’</em>: Femtosecond</p></li>
+<li><p><em>‘au’</em>: Atomic unit</p></li>
+</ul>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>out_freq</strong> <em>(integer)</em> - Default: <em>1</em></p>
+<p>PyUNIxMD prints and writes the dynamics information at every <strong>out_freq</strong> time step.</p>
+</li>
+</ul>
+<p></p>
+<ul>
+<li><p><strong>verbosity</strong> <em>(integer)</em> - Default: <em>0</em></p>
+<p>This parameter determines the verbosity of the output files and stream.</p>
+<ul class="simple">
+<li><p><strong>verbosity</strong> <span class="math notranslate nohighlight">\(\geq\)</span> <em>1</em>: Prints accumulated hopping probabilities and random numbers.</p></li>
+<li><p><strong>verbosity</strong> <span class="math notranslate nohighlight">\(\geq\)</span> <em>2</em>: Writes the NACVs (‘NACV_<span class="math notranslate nohighlight">\(i\)</span>_<span class="math notranslate nohighlight">\(j\)</span>’).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="eh.html" class="btn btn-neutral float-left" title="Ehrenfest" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="shxf.html" class="btn btn-neutral float-right" title="DISH-XF" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, mingroup.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
